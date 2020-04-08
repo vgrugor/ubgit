@@ -8,10 +8,10 @@ use App\Worker;
 
 class WorkerController extends Controller
 {
-    public function index()
-    {
-        $workers = Worker::select(['id', 'name', 'phone_number'])->get();
+    public function index() {
         
-        return view('worker.index')->with('workers', $workers);
+        $workers = Worker::select(['id', 'name', 'phone_number', 'date_refresh', 'note'])->orderBy('name', 'asc')->get();
+        
+        return view('worker.list')->with('workersList', $workers);
     }
 }

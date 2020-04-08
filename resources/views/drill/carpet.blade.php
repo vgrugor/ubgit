@@ -24,11 +24,11 @@
                         <tr>
                             <td>{{ $drillItem->drill }}</td>
                             <td>{{ $drillItem->actual_stage }}</td>
-                            <td>{{ date('d.m.Y',strtotime($drillItem->date_building)) }}</td>
-                            <td>{{ date('d.m.Y',strtotime($drillItem->date_drilling)) }}</td>
-                            <td>{{ date('d.m.Y',strtotime($drillItem->date_demount)) }}</td>
-                            <td>{{ date('d.m.Y',strtotime($drillItem->date_transfer)) }}</td>
-                            <td>{{ date('d.m.Y',strtotime($drillItem->date_refresh)) }}</td>
+                            <td>{{ $drillItem->date_building }}</td>
+                            <td>{{ $drillItem->date_drilling }}</td>
+                            <td>{{ $drillItem->date_demount }}</td>
+                            <td>{{ $drillItem->date_transfer }}</td>
+                            <td>{{ $drillItem->date_refresh }}</td>
                             <td>{{ $drillItem->note }}</td>
                         </tr>
                     @endforeach
