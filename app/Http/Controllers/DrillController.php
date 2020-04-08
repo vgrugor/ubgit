@@ -12,7 +12,8 @@ class DrillController extends Controller
         
         $drillsList = Drill::leftJoin('drill_types', 'drills.drill_type_id', '=', 'drill_types.id')
                 ->leftJoin('actual_stages', 'drills.actual_stage_id', '=', 'actual_stages.id')
-                ->select('drills.name as drill', 
+                ->select('drills.id',
+                        'drills.name as drill', 
                         'drills.number as number', 
                         'drills.note as note',
                         'drill_types.name as type',
@@ -53,5 +54,12 @@ class DrillController extends Controller
     public function location() {
         
         return view('drill.location');
+    }
+    
+    public function view($id)
+    {
+        $drill = Drill::find($id);
+        dump($drill);
+        //return view('drill.view')->with('drill', $drill);
     }
 }

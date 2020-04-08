@@ -21,7 +21,7 @@
                       <tbody id="worker-list-table">
                           @foreach ($workersList as $workerItem)
                             <tr>
-                                <td>{{ $workerItem->name }}</td>
+                                <td><a href="{{ route('viewWorker', ['id' => $workerItem->id])}}">{{ $workerItem->name }}</a></td>
                                 <td></td>
                                 <td></td>
                                 <td>{{ $workerItem->date_refresh }}</td>

@@ -20,5 +20,7 @@ Route::get('drill/internet', 'DrillController@internet');   //состояние
 Route::get('drill/carpet', 'DrillController@carpet');       //ковер бурения
 Route::get('drill/contacts', 'DrillController@contacts');   //контакты
 Route::get('drill/location', 'DrillController@location');   //размещение буровых
+Route::get('drill/{id}', 'DrillController@view')->name('viewDrill');           //подробно о буровой
 
 Route::get('workerlist', 'WorkerController@index');             //список сотрудников
+Route::get('worker/{id}', 'WorkerController@view')->name('viewWorker');         //подробно о сотруднике

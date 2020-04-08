@@ -22,7 +22,7 @@
                         <tr>
                             <td>{{ $drillItem->number }}</td>
                             <td>{{ $drillItem->type }}</td>
-                            <td>{{ $drillItem->drill }}</td>
+                            <td><a href="{{ route('viewDrill', ['id' => $drillItem->id]) }}">{{ $drillItem->drill }}</a></td>
                             <td></td>
                             <td>{{ $drillItem->actual_stage }}</td>
                             <td>{{ $drillItem->note }}</td>
