@@ -15,8 +15,8 @@
                           <th scope="col">Відділ</th>
                           <th scope="col">Підрозділ</th>
                           <th scope="col">Посада</th>
-                          <th scope="col">ПІБ</th>
                           <th scope="col">Бурова</th>
+                          <th scope="col">ПІБ</th>
                           <th scope="col">Примітка</th>
                         </tr>
                       </thead>
@@ -27,8 +27,8 @@
                                 <td>{{ $workerItem->department }}</td>
                                 <td>{{ $workerItem->division }}</td>
                                 <td>{{ $workerItem->position }}</td>
-                                <td><a href="{{ route('viewWorker', ['id' => $workerItem->id])}}">{{ $workerItem->name }}</a></td>
                                 <td>{{ $workerItem->drill }}</td>
+                                <td><a href="{{ route('viewWorker', ['id' => $workerItem->id])}}">{{ $workerItem->name }}</a></td>
                                 <td>{{ $workerItem->note }}</td>
                             </tr>
                           @endforeach

@@ -14,7 +14,7 @@
                 <p><strong>Транслітерація:</strong></p>
             </div>
             <div class="col">
-                
+                {{ App\Worker::getTranslitName($worker->name) }}
             </div>
         </div>
         <div class="row">
@@ -22,7 +22,7 @@
                 <p><strong>Обліковий запис в AD:</strong></p>
             </div>
             <div class="col">
-                
+                {{ $worker->account_ad }}
             </div>
         </div>
         <hr>
@@ -31,7 +31,7 @@
                 <p><strong>Організація:</strong></p>
             </div>
             <div class="col">
-                
+                {{ $worker->organization }}
             </div>
         </div>
         <div class="row">
@@ -39,7 +39,7 @@
                 <p><strong>Відділ:</strong></p>
             </div>
             <div class="col">
-                
+                {{ $worker->department }}
             </div>
         </div>
         <div class="row">
@@ -47,7 +47,7 @@
                 <p><strong>Підрозділ:</strong></p>
             </div>
             <div class="col">
-                
+                {{ $worker->division }}
             </div>
         </div>
         <div class="row">
@@ -55,7 +55,7 @@
                 <p><strong>Посада:</strong></p>
             </div>
             <div class="col">
-                
+                {{ $worker->position }}
             </div>
         </div>
         <div class="row">
@@ -63,7 +63,7 @@
                 <p><strong>Бурова:</strong></p>
             </div>
             <div class="col">
-                
+                {{ $worker->drill }}
             </div>
         </div>
         <hr>
@@ -72,7 +72,7 @@
                 <p><strong>Номер телефону:</strong></p>
             </div>
             <div class="col">
-                
+                {{ $worker->phone_number }}
             </div>
         </div>
         <div class="row">
@@ -80,7 +80,7 @@
                 <p><strong>Email:</strong></p>
             </div>
             <div class="col">
-                
+                {{ $worker->email }}
             </div>
         </div>
         <div class="row">
@@ -88,7 +88,7 @@
                 <p><strong>vpn:</strong></p>
             </div>
             <div class="col">
-                
+                {{ $worker->vpn }}
             </div>
         </div>
         <hr>
@@ -105,7 +105,7 @@
                 <p><strong>Дата оновлення:</strong></p>
             </div>
             <div class="col">
-                
+                {{ $worker->date_refresh }}
             </div>
         </div>
         <hr>
@@ -133,7 +133,7 @@
                 <div id="hide-me" class="collapse in">
                     <p>
                         З повагою,<br>
-                        
+                        {{ $worker->name }}
                     <p>
 
                     <p>
@@ -141,7 +141,7 @@
                         БУ «Укрбургаз» <br>
                         АТ «Укргазвидобування»
                     </p>
-                    <img src="/template/images/worker/view/logo.jpg">
+                    <img src=" {{ asset('img/worker/view/logo.jpg') }}">
 
                     <p>
                         вул. Ковалівська, 5<br>
@@ -149,8 +149,8 @@
                     </p>
 
                     <p>
-                        Тел.: <br>
-                        
+                        Тел.: {{ $worker->phone_number }} <br>
+                        <a href="#">{{ $worker->email }}</a>
                     </p>
                 </div>
             </div>
