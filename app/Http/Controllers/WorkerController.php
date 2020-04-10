@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Worker;
+use App\Department;
+use App\Drill;
+use App\Organization;
 
 class WorkerController extends Controller
 {
@@ -24,7 +27,20 @@ class WorkerController extends Controller
                 ->orderBy('name', 'asc')
                 ->get();
         
-        return view('worker.list')->with('workersList', $workers);
+        $organizations = Organization::select('name')->get();
+        
+        $departments = Department::leftJoin('organizations', 'organizations.id', '=', 'departments.organization_id')
+                ->select('departments.name as department',
+                        'organizations.name as organization')
+                ->orderBy('department', 'asc')
+                ->get();
+        
+        $drills = Drill::select('name')->orderBy('name', 'asc')->get();
+        
+        return view('worker.list')->with(['workersList' => $workers, 
+            'organizationsList' => $organizations, 
+            'departmentsList' => $departments,
+            'drillsList' => $drills]);
     }
     
     public function view($id)

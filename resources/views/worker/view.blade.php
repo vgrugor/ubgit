@@ -133,7 +133,8 @@
                 <div id="hide-me" class="collapse in">
                     <p>
                         З повагою,<br>
-                        {{ $worker->name }}
+                        {{ $worker->name }} <br>
+                        {{ $worker->position }} {{ $worker->drill }}
                     <p>
 
                     <p>
