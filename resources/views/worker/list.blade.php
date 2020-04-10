@@ -8,7 +8,7 @@
         <div class="col">
                     <h1 class="text-center">Список працівників</h1>
                     <br/>
-                    <table class="table">
+                    <table class="table table-hover">
                       <thead class="thead-dark">
                         <tr>
                           <th scope="col">Організація</th>

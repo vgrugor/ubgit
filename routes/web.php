@@ -24,3 +24,6 @@ Route::get('drill/{id}', 'DrillController@view')->name('viewDrill');           /
 
 Route::get('workerlist', 'WorkerController@index');             //список сотрудников
 Route::get('worker/{id}', 'WorkerController@view')->name('viewWorker');         //подробно о сотруднике
+
+//для тестов
+Route::get('test1', 'TestController@test1')->name('test');
