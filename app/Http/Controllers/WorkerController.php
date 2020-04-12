@@ -64,4 +64,14 @@ class WorkerController extends Controller
         
         return view('worker.view')->with('worker', $worker);
     }
+    
+    public function add()
+    {
+        return view('worker.add');
+    }
+    
+    public function store()
+    {
+        
+    }
 }

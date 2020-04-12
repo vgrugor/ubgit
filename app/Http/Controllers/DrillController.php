@@ -62,4 +62,14 @@ class DrillController extends Controller
         dump($drill);
         //return view('drill.view')->with('drill', $drill);
     }
+    
+    public function add()
+    {
+        return view('drill.add');
+    }
+    
+    public function store()
+    {
+        
+    }
 }

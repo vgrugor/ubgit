@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'IndexController@index');
 
+Route::get('drill/add', 'DrillController@add');             //страница с формой
+Route::post('drill/add', 'DrillController@store')->name('drillStore');          //добавление в БД
+
 Route::get('drill/general', 'DrillController@general');     //общая информация
 Route::get('drill/internet', 'DrillController@internet');   //состояние интернета
 Route::get('drill/carpet', 'DrillController@carpet');       //ковер бурения
@@ -22,8 +25,13 @@ Route::get('drill/contacts', 'DrillController@contacts');   //контакты
 Route::get('drill/location', 'DrillController@location');   //размещение буровых
 Route::get('drill/{id}', 'DrillController@view')->name('viewDrill');           //подробно о буровой
 
+Route::get('worker/add', 'WorkerController@add');
+Route::post('worker/add', 'WorkerController@store')->name('workerStore');
+
 Route::get('workerlist', 'WorkerController@index');             //список сотрудников
 Route::get('worker/{id}', 'WorkerController@view')->name('viewWorker');         //подробно о сотруднике
+
+
 
 //для тестов
 Route::get('test1', 'TestController@test1')->name('test');
