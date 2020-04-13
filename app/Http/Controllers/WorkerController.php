@@ -70,8 +70,23 @@ class WorkerController extends Controller
         return view('worker.add');
     }
     
-    public function store()
+    public function store(Request $request)
     {
+        
+        $this->validate($request, [
+            'organization_id' => 'required',
+            'department_id' => 'required',
+            'division_id' => '',
+            'position_id' => 'required',
+            'drill_id' => '',
+            'name' => 'required|max:100',
+            'account_ad' => 'max:50|unique:workers,account_ad',
+            'phone_number' => 'max:14|unique:workers,phone_number',
+            'email' => 'max:256|unique:workers,email',
+            'vpn_status_id' => '',
+            'date_refresh' => '',
+            'note' => ''
+        ]);
         
     }
 }
