@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Department extends Model
+class Position extends Model
 {
     protected $fillable = [
         'organization_id', 
-        'name', 
-        'phone_number', 
-        'note'
-        ];
+        'department_id', 
+        'division_id', 
+        'name'
+    ];
 }
