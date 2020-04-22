@@ -22,6 +22,7 @@
                 <div class="form-group">
                     <label for="organization_id">Оберіть потрібну організацію</label>
                     <select id="organization_id" name="organization_id" class="form-control">
+                        <option value="">не обрано</option>
                         @foreach($organizationsList as $organizationItem)
                             <option value="{{ $organizationItem->id }}">{{ $organizationItem->name }}</option>
                         @endforeach

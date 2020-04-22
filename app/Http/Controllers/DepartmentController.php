@@ -31,4 +31,10 @@ class DepartmentController extends Controller
         
         return redirect('workerlist');
     }
+    
+    public function getAjaxList()
+    {
+        $departments = Department::select('id', 'name')->get();
+        return response($departments ,200);
+    }
 }

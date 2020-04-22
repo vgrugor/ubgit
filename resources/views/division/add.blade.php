@@ -18,10 +18,11 @@
                     </ul>
                 </div>
             @endif
+            <a href="{{ route('ajaxListDepartment') }}">aaa</a>
             <form method="post" action="{{ route('divisionStore') }}">
                 <div class="form-group">
                     <label for="organization_id">Оберіть організацію</label>
-                    <select name="organization_id" class="form-control" id="organization_id">
+                    <select name="organization_id" class="form-control" id="organization_id" onchange="getDepartments()">
                         <option value="">не обрано</option>
                         @foreach($organizationsList as $organizationItem)
                             <option value="{{ $organizationItem->id }}">{{ $organizationItem->name }}</option>

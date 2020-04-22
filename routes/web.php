@@ -51,6 +51,7 @@ Route::post('organization/add', 'OrganizationController@store')->name('organizat
 
 Route::get('department/add', 'DepartmentController@add');
 Route::post('department/add', 'DepartmentController@store')->name('departmentStore');
+Route::post('department/getAjaxList', 'DepartmentController@getAjaxList')->name('ajaxListDepartment');
 
 //------------------------------------------------------------------------------
 
@@ -71,3 +72,5 @@ Route::post('position/add', 'PositionController@store')->name('positionStore');
 
 //для тестов
 Route::get('test1', 'TestController@test1')->name('test');
+
+Route::post('ajax', 'TestController@returnAjax');
