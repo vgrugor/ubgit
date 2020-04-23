@@ -1,41 +1,36 @@
-@extends('layouts.site')
-
-@section('content')
-    <h2>Filterable Table</h2>
-    <p>Type something in the input field to search the table for first names, last names or emails:</p>  
-    <input class="form-control" id="myInput" type="text" placeholder="Search..">
-    <br>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>Email</th>
-        </tr>
-      </thead>
-      <tbody id="myTable">
-        <tr>
-          <td>John</td>
-          <td>Doe</td>
-          <td>john@example.com</td>
-        </tr>
-        <tr>
-          <td>Mary</td>
-          <td>Moe</td>
-          <td>mary@mail.com</td>
-        </tr>
-        <tr>
-          <td>July</td>
-          <td>Dooley</td>
-          <td>july@greatstuff.com</td>
-        </tr>
-        <tr>
-          <td>Anja</td>
-          <td>Ravendale</td>
-          <td>a_r@test.com</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p>Note that we start the search in tbody, to prevent filtering the table headers.</p>    
-@endsection
+<head>
+     <title>Ajax Example</title>
+     
+     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+     </script>
+     
+     <script>
+        function getMessage(){
+           alert('Функция работает');
+           $.ajax({
+              type: 'POST',
+              url: '/ajax',
+              data:{ _token: '{!! csrf_token() !!}' },
+              success:function(data){
+                 alert('ajax успешно выполнен');
+                 $("#testSelect").html(data);
+              },
+              error: function () {
+                alert('Ошибка');
+              },
+            });
+        };
+     </script>
+  </head>
+  
+  <body>
+     <div id="msg">This message will be replaced using Ajax. 
+        Click the button to replace the message.
+        <select id="testSelect">
+            
+        </select>
+     </div>
+      <button onclick="getMessage()">Старт</button>
+  </body>
+ 
+</html>

@@ -9,11 +9,23 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-sm-6">
+            @if(count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form method="post" action="{{ route('departmentStore') }}">
                 <div class="form-group">
                     <label for="organization_id">Оберіть потрібну організацію</label>
                     <select id="organization_id" name="organization_id" class="form-control">
-                        
+                        <option value="">не обрано</option>
+                        @foreach($organizationsList as $organizationItem)
+                            <option value="{{ $organizationItem->id }}">{{ $organizationItem->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
