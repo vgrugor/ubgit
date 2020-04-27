@@ -22,7 +22,7 @@
             <form method="post" action="{{ route('positionStore') }}">
                 <div class="form-group">
                     <label for="organization_id">Оберіть організацію</label>
-                    <select name="organization_id" class="form-control" id="organization_id">
+                    <select name="organization_id" class="form-control" id="organization_id"  onchange="getDepartments()">
                         <option value="">не обрано</option>
                         @foreach($organizationsList as $organizationItem)
                             <option value="{{ $organizationItem->id }}">{{ $organizationItem->name }}</option>
@@ -31,20 +31,14 @@
                 </div>
                 <div class="form-group">
                     <label for="department_id">Оберіть відділ</label>
-                    <select name="department_id" class="form-control" id="department_id">
+                    <select name="department_id" class="form-control" id="department_id" onchange="getDivisions()">
                         <option value="">не обрано</option>
-                        @foreach($departmentsList as $departmentItem)
-                            <option value="{{ $departmentItem->id }}">{{ $departmentItem->name }}</option>
-                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="division_id">Оберіть підрозділ</label>
                     <select name="division_id" class="form-control" id="division_id">
                         <option value="0">не обрано</option>
-                        @foreach($divisionsList as $divisionItem)
-                        <option value="{{ $divisionItem->id }}">{{ $divisionItem->name }}</option>
-                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">

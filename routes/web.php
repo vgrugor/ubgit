@@ -58,6 +58,7 @@ Route::post('department/add', 'DepartmentController@store')->name('departmentSto
 //------------------------------ПОДРАЗДЕЛЕНИЯ-----------------------------------
 
 Route::get('division/add', 'DivisionController@add');
+Route::post('division/getAjaxList', 'DivisionController@getAjaxList');
 Route::post('division/add', 'DivisionController@store')->name('divisionStore');
 
 //------------------------------------------------------------------------------
@@ -65,6 +66,7 @@ Route::post('division/add', 'DivisionController@store')->name('divisionStore');
 //--------------------------------ДОЛЖНОСТИ-------------------------------------
 
 Route::get('position/add', 'PositionController@add');
+Route::post('position/getAjaxList', 'PositionController@getAjaxList');
 Route::post('position/add', 'PositionController@store')->name('positionStore');
 
 //------------------------------------------------------------------------------

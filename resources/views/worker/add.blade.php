@@ -12,32 +12,38 @@
             <form method="post" action="{{ route('workerStore') }}">
                 <div class="form-group">
                     <label for="organization_id">Оберіть організацію</label>
-                    <select name="organization_id" class="form-control" id="organization_id">
-                        
+                    <select name="organization_id" class="form-control" id="organization_id" onchange="getDepartments()">
+                        <option value="">не обрано</option>
+                        @foreach($organizationsList as $organizationItem)
+                            <option value="{{ $organizationItem->id }}">{{ $organizationItem->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="department_id">Оберіть відділ</label>
-                    <select name="department_id" class="form-control" id="department_id">
-                        
+                    <select name="department_id" class="form-control" id="department_id" onchange="getDivisions()">
+                        <option value="">не обрано</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="division_id">Оберіть підрозділ</label>
-                    <select name="division_id" class="form-control" id="division_id">
-                        
+                    <select name="division_id" class="form-control" id="division_id" onchange="getPositions()">
+                        <option value="0">не обрано</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="position_id">Оберіть посаду</label>
                     <select name="position_id" class="form-control" id="position_id">
-                        
+                        <option value="">не обрано</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="drill_id">Оберіть свердловину</label>
                     <select name="drill_id" class="form-control" id="drill_id">
-                        
+                        <option value="">не обрано</option>
+                        @foreach($drillsList as $drillItem)
+                            <option value="{{ $drillItem->id }}">{{ $drillItem->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">

@@ -67,7 +67,12 @@ class WorkerController extends Controller
     
     public function add()
     {
-        return view('worker.add');
+        $organizations = Organization::select('id', 'name')->get();
+        $drills = Drill::select('id', 'name')->get();
+        
+        return view('worker.add')->with(['organizationsList' => $organizations,
+                'drillsList' => $drills
+            ]);
     }
     
     public function store(Request $request)
