@@ -1,19 +1,26 @@
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 function getDepartments(){
-    var url = "{{ route('ajaxListDepartment') }}";
-    alert('Функция работает');
+    var url = '/department/getAjaxList';
+    
     $.ajax({
         type: 'POST',
-        url: '/' + url,
-        //url: "{{ URL::route('departmentListFromSelect') }}",
-        data:{ _token: '{!! csrf_token() !!}' },
+        url: url,
+        data: {organization: $("#organization_id").val()},
+        
         success:function(data){
-            alert('ajax успешно выполнен');
-            $("#testSelect").html(data);
+            //alert('ajax успешно выполнен');
+            $("#department_id").html(data.departmentsList);
             console.log(data);
         },
-        error: function () {
+        
+        error: function (result) {
             alert('Ошибка');
-            console.log(data);
-        },
+            console.log(result);
+        }
     });
 };

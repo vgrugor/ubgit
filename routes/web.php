@@ -50,8 +50,8 @@ Route::post('organization/add', 'OrganizationController@store')->name('organizat
 //---------------------------------ОТДЕЛЫ---------------------------------------
 
 Route::get('department/add', 'DepartmentController@add');
+Route::post('department/getAjaxList', 'DepartmentController@getAjaxList');
 Route::post('department/add', 'DepartmentController@store')->name('departmentStore');
-Route::post('department/getAjaxList', 'DepartmentController@getAjaxList')->name('ajaxListDepartment');
 
 //------------------------------------------------------------------------------
 

@@ -13,11 +13,8 @@ class DivisionController extends Controller
     public function add()
     {
         $organizations = Organization::select('id', 'name')->get();
-        $departments = Department::select('id', 'name')->get();
         
-        return view('division.add')->with(['organizationsList' => $organizations, 
-            'departmentsList' => $departments
-            ]);
+        return view('division.add')->with(['organizationsList' => $organizations]);
     }
     
     public function store(Request $request)

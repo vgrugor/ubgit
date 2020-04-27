@@ -1,6 +1,7 @@
 @extends('layouts.site')
 
 @section('content')
+<!--Создание нового подразделения-->
     <div class="row">
         <div class="col">
             <h1 class="text-center">Додати новий підрозділ</h1>
@@ -18,7 +19,6 @@
                     </ul>
                 </div>
             @endif
-            <a href="{{ route('ajaxListDepartment') }}">aaa</a>
             <form method="post" action="{{ route('divisionStore') }}">
                 <div class="form-group">
                     <label for="organization_id">Оберіть організацію</label>
@@ -33,9 +33,6 @@
                     <label for="department_id">Оберіть відділ</label>
                     <select name="department_id" class="form-control" id="department_id">
                         <option value="">не обрано</option>
-                        @foreach($departmentsList as $departmentItem)
-                            <option value="{{ $departmentItem->id }}">{{ $departmentItem->name }}</option>
-                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
