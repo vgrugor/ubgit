@@ -42,6 +42,8 @@ Route::get('worker/{id}', 'WorkerController@view')->name('viewWorker');         
 
 //------------------------------ОРГАНИЗАЦИИ-------------------------------------
 
+Route::get('organization/update/{id}', 'OrganizationController@update')->name('organizationUpdate');
+Route::post('organization/update/{id}', 'OrganizationController@updateSave')->name('organizationUpdateSave');
 Route::get('organization/add', 'OrganizationController@add');
 Route::post('organization/add', 'OrganizationController@store')->name('organizationStore');
 
