@@ -8,6 +8,7 @@ use App\Organization;
 use App\Department;
 use App\Division;
 use App\Position;
+use App\Worker;
 use App\Drill_type;
 use App\Vpn_status;
 use App\Internet_status;
@@ -79,6 +80,16 @@ class DirectoryController extends Controller
                     ]);
     }
     
+    public function workersList()
+    {
+        $workers = Worker::leftJoin('vpn_statuses', 'vpn_statuses.id', '=', 'workers.vpn_status_id')
+                ->select('workers.id as id', 'workers.name as name', 'account_ad', 'phone_number', 'vpn_statuses.name as vpn', 'phone_number2', 'email', 'note')
+                ->get();
+        
+        return view('directory.workers')->with('workersList', $workers);
+    }
+
+
     public function drillsTypesList()
     {
         $drillTypes = Drill_type::select('name')->get();

@@ -46,7 +46,7 @@
                 <tbody class="table-striped" id="tableForSearch">
                     @foreach($positionsList as $positionItem)
                         <tr>
-                            <td>{{ $positionItem->organization }}</td>
+                            <td class="text-nowrap">{{ $positionItem->organization }}</td>
                             <td>{{ $positionItem->department }}</td>
                             <td>{{ $positionItem->division }}</td>
                             <td>{{ $positionItem->name }}</td>

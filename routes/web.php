@@ -77,6 +77,7 @@ Route::get('directory/organizations', 'DirectoryController@organizationsList')->
 Route::get('directory/departments', 'DirectoryController@departmentsList')->name('departmentsList');
 Route::get('directory/divisions', 'DirectoryController@divisionsList')->name('divisionsList');
 Route::get('directory/positions', 'DirectoryController@positionsList')->name('positionsList');
+Route::get('directory/workers', 'DirectoryController@workersList')->name('workersList');
 Route::get('directory/drill_type', 'DirectoryController@drillsTypesList')->name('drillsTypesList');
 Route::get('directory/vpn_statuses', 'DirectoryController@vpnStatusesList')->name('vpnStatusesList');
 Route::get('directory/datagroup_statuses', 'DirectoryController@dataGroupStatusesList')->name('dataGroupStatusesList');
