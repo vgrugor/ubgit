@@ -35,13 +35,13 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Довідники</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Організації</a>
-                        <a class="dropdown-item" href="#">Відділи</a>
-                        <a class="dropdown-item" href="#">Підрозділи</a>
-                        <a class="dropdown-item" href="#">Посади</a>
-                        <a class="dropdown-item" href="#">Типи бурових</a>
-                        <a class="dropdown-item" href="#">Статуси vpn</a>
-                        <a class="dropdown-item" href="#">Статуси інтернету</a>
+                        <a class="dropdown-item" href="{{ route('organizationsList') }}">Організації</a>
+                        <a class="dropdown-item" href="{{ route('departmentsList') }}">Відділи</a>
+                        <a class="dropdown-item" href="{{ route('divisionsList') }}">Підрозділи</a>
+                        <a class="dropdown-item" href="{{ route('positionsList') }}">Посади</a>
+                        <a class="dropdown-item" href="{{ route('drillsTypesList') }}">Типи бурових</a>
+                        <a class="dropdown-item" href="{{ route('vpnStatusesList') }}">Статуси vpn</a>
+                        <a class="dropdown-item" href="{{ route('dataGroupStatusesList') }}">Статуси інтернету</a>
                     </div>
                 </li>
                 <li class="nav-item">

@@ -25,7 +25,7 @@ $(document).ready(function(){
 //поиск
 function searchTable() {
     var value = $("#search").val().toLowerCase();
-    $("#tableWorker tr").filter(function() {
+    $("#tableForSearch tr").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
     
@@ -37,7 +37,7 @@ function searchTable() {
 //фильтр по организации
 function filterOrganization() {
     var value = $("#selectOrganization").val().toLowerCase();
-    $("#tableWorker tr").filter(function() {
+    $("#tableForSearch tr").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
     $("#selectDepartment option").filter(function() {
@@ -51,7 +51,7 @@ function filterOrganization() {
 //фильтр по отделу
 function filterDepartment() {
     var value = $("#selectDepartment").val().toLowerCase();
-    $("#tableWorker tr").filter(function() {
+    $("#tableForSearch tr").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
     
@@ -61,7 +61,7 @@ function filterDepartment() {
 //фильтр по буровых
 function filterDrill() {
     var value = $("#selectDrill").val().toLowerCase();
-    $("#tableWorker tr").filter(function() {
+    $("#tableForSearch tr").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
     

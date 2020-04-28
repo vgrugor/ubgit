@@ -71,6 +71,17 @@ Route::post('position/add', 'PositionController@store')->name('positionStore');
 
 //------------------------------------------------------------------------------
 
+//-------------------------------СПРАВОЧНИКИ------------------------------------
+
+Route::get('directory/organizations', 'DirectoryController@organizationsList')->name('organizationsList');
+Route::get('directory/departments', 'DirectoryController@departmentsList')->name('departmentsList');
+Route::get('directory/divisions', 'DirectoryController@divisionsList')->name('divisionsList');
+Route::get('directory/positions', 'DirectoryController@positionsList')->name('positionsList');
+Route::get('directory/drill_type', 'DirectoryController@drillsTypesList')->name('drillsTypesList');
+Route::get('directory/vpn_statuses', 'DirectoryController@vpnStatusesList')->name('vpnStatusesList');
+Route::get('directory/datagroup_statuses', 'DirectoryController@dataGroupStatusesList')->name('dataGroupStatusesList');
+
+//------------------------------------------------------------------------------
 
 //для тестов
 Route::get('test1', 'TestController@test1')->name('test');
