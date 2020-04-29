@@ -31,6 +31,7 @@ function getDepartments(){
 //получить перечень подразделений для выпадающего списка по отделу
 function getDivisions(){
     $("#division_id").html('<option value="0">не обрано</option>');
+    
     var url = '/division/getAjaxList';
     
     $.ajax({

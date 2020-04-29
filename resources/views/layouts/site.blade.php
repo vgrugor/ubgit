@@ -46,7 +46,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin">Адміністрування</a>
+                    <a class="nav-link" href="{{ route('admin') }}">Адміністрування</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('test') }}">ТЕСТ</a>

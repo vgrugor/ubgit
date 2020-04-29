@@ -7,33 +7,11 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Organization;
 use App\Department;
 
 class DepartmentController extends Controller
 {
-    public function add()
-    {
-        $organizations = Organization::select('id', 'name')->get();
-        
-        return view('department.add')->with('organizationsList', $organizations);
-    }
-    
-    public function store(Request $request)
-    {
-        $this->validate($request, ['organization_id' => 'required|integer',
-            'name' => 'required|unique:departments,name|max:100',
-            'phone_number' => 'max:14'
-            ]);
-        
-        $data = $request->all();
-        
-        $department = new Department;
-        $department->fill($data);
-        $department->save();
-        
-        return redirect('workerlist');
-    }
+    //-------------------------ВЫПАДАЮЩИЙ СПИСОК--------------------------------
     
     public function getAjaxList(Request $request)
     {
@@ -51,4 +29,6 @@ class DepartmentController extends Controller
         
         return response(['departmentsList' => $departmentsList, 'options' => $request->all()], 200);
     }
+    
+    //--------------------------------------------------------------------------
 }

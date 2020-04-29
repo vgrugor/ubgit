@@ -13,65 +13,54 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+//***********************ОТКРЫТАЯ ЧАСТЬ САЙТА***********************************
+//******************************************************************************
+
+//-------------------------------ГЛАВНАЯ----------------------------------------
+
 Route::get('/', 'IndexController@index');
+
+//------------------------------------------------------------------------------
+
+
+//----------------------------------ОТДЕЛ---------------------------------------
+
+Route::post('department/getAjaxList', 'DepartmentController@getAjaxList');
+
+//------------------------------------------------------------------------------
+
+//------------------------------ПОДРАЗДЕЛЕНИЕ-----------------------------------
+
+Route::post('division/getAjaxList', 'DivisionController@getAjaxList');
+
+//------------------------------------------------------------------------------
+
+//----------------------------------ДОЛЖНОСТЬ---------------------------------------
+
+Route::post('position/getAjaxList', 'PositionController@getAjaxList');
+
+//------------------------------------------------------------------------------
+
 
 //-------------------------------БУРОВЫЕ----------------------------------------
 
-Route::get('drill/add', 'DrillController@add');             //страница с формой
-Route::post('drill/add', 'DrillController@store')->name('drillStore');          //добавление в БД
-
-Route::get('drill/general', 'DrillController@general');     //общая информация
-Route::get('drill/internet', 'DrillController@internet');   //состояние интернета
-Route::get('drill/carpet', 'DrillController@carpet');       //ковер бурения
-Route::get('drill/contacts', 'DrillController@contacts');   //контакты
-Route::get('drill/location', 'DrillController@location');   //размещение буровых
-Route::get('drill/{id}', 'DrillController@view')->name('viewDrill');           //подробно о буровой
+Route::get('drill/general', 'DrillController@general');                         //общая информация
+Route::get('drill/internet', 'DrillController@internet');                       //состояние интернета
+Route::get('drill/carpet', 'DrillController@carpet');                           //ковер бурения
+Route::get('drill/contacts', 'DrillController@contacts');                       //контакты
+Route::get('drill/location', 'DrillController@location');                       //размещение буровых
 
 //------------------------------------------------------------------------------
 
 
 //------------------------------СОТРУДНИКИ--------------------------------------
 
-Route::get('worker/add', 'WorkerController@add');
-Route::post('worker/add', 'WorkerController@store')->name('workerStore');
-
-Route::get('workerlist', 'WorkerController@index');             //список сотрудников
+Route::get('workerlist', 'WorkerController@index');                             //список сотрудников
 Route::get('worker/{id}', 'WorkerController@view')->name('viewWorker');         //подробно о сотруднике
 
 //------------------------------------------------------------------------------
 
-//------------------------------ОРГАНИЗАЦИИ-------------------------------------
-
-Route::get('organization/update/{id}', 'OrganizationController@update')->name('organizationUpdate');
-Route::post('organization/update/{id}', 'OrganizationController@updateSave')->name('organizationUpdateSave');
-Route::get('organization/add', 'OrganizationController@add');
-Route::post('organization/add', 'OrganizationController@store')->name('organizationStore');
-
-//------------------------------------------------------------------------------
-
-//---------------------------------ОТДЕЛЫ---------------------------------------
-
-Route::get('department/add', 'DepartmentController@add');
-Route::post('department/getAjaxList', 'DepartmentController@getAjaxList');
-Route::post('department/add', 'DepartmentController@store')->name('departmentStore');
-
-//------------------------------------------------------------------------------
-
-//------------------------------ПОДРАЗДЕЛЕНИЯ-----------------------------------
-
-Route::get('division/add', 'DivisionController@add');
-Route::post('division/getAjaxList', 'DivisionController@getAjaxList');
-Route::post('division/add', 'DivisionController@store')->name('divisionStore');
-
-//------------------------------------------------------------------------------
-
-//--------------------------------ДОЛЖНОСТИ-------------------------------------
-
-Route::get('position/add', 'PositionController@add');
-Route::post('position/getAjaxList', 'PositionController@getAjaxList');
-Route::post('position/add', 'PositionController@store')->name('positionStore');
-
-//------------------------------------------------------------------------------
 
 //-------------------------------СПРАВОЧНИКИ------------------------------------
 
@@ -85,6 +74,73 @@ Route::get('directory/vpn_statuses', 'DirectoryController@vpnStatusesList')->nam
 Route::get('directory/datagroup_statuses', 'DirectoryController@dataGroupStatusesList')->name('dataGroupStatusesList');
 
 //------------------------------------------------------------------------------
+
+//******************************************************************************
+//******************************************************************************
+
+
+
+
+//*****************************АДМИНИСТРИРОВАНИЕ********************************
+//******************************************************************************
+
+//----------------------------ГЛАВНАЯ АДМИНКИ-----------------------------------
+
+Route::get('admin', 'AdminController@index')->name('admin');
+
+//------------------------------------------------------------------------------
+
+//------------------------------ОРГАНИЗАЦИИ-------------------------------------
+
+Route::get('admin/organization/update/{id}', 'AdminOrganizationController@update')->name('organizationUpdate');
+Route::post('admin/organization/update/{id}', 'AdminOrganizationController@updateSave')->name('organizationUpdateSave');
+Route::get('admin/organization/add', 'AdminOrganizationController@add');
+Route::post('admin/organization/add', 'AdminOrganizationController@store')->name('organizationStore');
+
+//------------------------------------------------------------------------------
+
+//---------------------------------ОТДЕЛЫ---------------------------------------
+
+Route::get('admin/department/add', 'AdminDepartmentController@add');
+Route::post('admin/department/add', 'AdminDepartmentController@store')->name('departmentStore');
+
+//------------------------------------------------------------------------------
+
+//------------------------------ПОДРАЗДЕЛЕНИЯ-----------------------------------
+
+Route::get('admin/division/add', 'AdminDivisionController@add');
+Route::post('admin/division/add', 'AdminDivisionController@store')->name('divisionStore');
+
+//------------------------------------------------------------------------------
+
+//--------------------------------ДОЛЖНОСТИ-------------------------------------
+
+Route::get('admin/position/add', 'AdminPositionController@add');
+Route::post('admin/position/add', 'AdminPositionController@store')->name('positionStore');
+
+//------------------------------------------------------------------------------
+
+//------------------------------СОТРУДНИКИ--------------------------------------
+
+Route::get('admin/worker/add', 'AdminWorkerController@add');
+Route::post('admin/worker/add', 'AdminWorkerController@store')->name('workerStore');
+
+//------------------------------------------------------------------------------
+
+//-------------------------------БУРОВЫЕ----------------------------------------
+
+Route::get('admin/drill/add', 'DrillController@add');                                 //страница с формой добавления буровой
+Route::post('admin/drill/add', 'DrillController@store')->name('drillStore');          //добавление в БД
+Route::get('admin/drill/{id}', 'DrillController@view')->name('viewDrill');           //подробно о буровой
+
+//------------------------------------------------------------------------------
+
+//******************************************************************************
+//******************************************************************************
+
+
+
+
 
 //для тестов
 Route::get('test1', 'TestController@test1')->name('test');
