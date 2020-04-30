@@ -12,6 +12,7 @@ use App\Worker;
 use App\Drill_type;
 use App\Vpn_status;
 use App\Internet_status;
+use App\Actual_stage;
 
 class DirectoryController extends Controller
 {
@@ -109,5 +110,12 @@ class DirectoryController extends Controller
         $internetStatuses = Internet_status::select('name')->get();
         
         return view('directory.internet_statuses')->with('internetStatusesList', $internetStatuses);
+    }
+    
+    public function actualStagesList()
+    {
+        $actualStages = Actual_stage::select('name')->get();
+        
+        return view('directory.actual_stages')->with('actualStagesList', $actualStages);
     }
 }

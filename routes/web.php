@@ -72,6 +72,7 @@ Route::get('directory/workers', 'DirectoryController@workersList')->name('worker
 Route::get('directory/drill_type', 'DirectoryController@drillsTypesList')->name('drillsTypesList');
 Route::get('directory/vpn_statuses', 'DirectoryController@vpnStatusesList')->name('vpnStatusesList');
 Route::get('directory/datagroup_statuses', 'DirectoryController@dataGroupStatusesList')->name('dataGroupStatusesList');
+Route::get('directory/actual_stages', 'DirectoryController@actualStagesList')->name('actualStagesList');
 
 //------------------------------------------------------------------------------
 
@@ -91,7 +92,7 @@ Route::get('admin', 'AdminController@index')->name('admin');
 //------------------------------------------------------------------------------
 
 //------------------------------ОРГАНИЗАЦИИ-------------------------------------
-
+Route::get('admin/organizations', 'AdminOrganizationController@organizationsList')->name('adminOrganizationsList');
 Route::get('admin/organization/update/{id}', 'AdminOrganizationController@update')->name('organizationUpdate');
 Route::post('admin/organization/update/{id}', 'AdminOrganizationController@updateSave')->name('organizationUpdateSave');
 Route::get('admin/organization/add', 'AdminOrganizationController@add');
@@ -101,6 +102,7 @@ Route::post('admin/organization/add', 'AdminOrganizationController@store')->name
 
 //---------------------------------ОТДЕЛЫ---------------------------------------
 
+Route::get('admin/departments', 'AdminDepartmentController@departmentsList')->name('adminDepartmentsList');
 Route::get('admin/department/add', 'AdminDepartmentController@add');
 Route::post('admin/department/add', 'AdminDepartmentController@store')->name('departmentStore');
 
@@ -108,6 +110,7 @@ Route::post('admin/department/add', 'AdminDepartmentController@store')->name('de
 
 //------------------------------ПОДРАЗДЕЛЕНИЯ-----------------------------------
 
+Route::get('admin/divisions', 'AdminDivisionController@divisionsList')->name('adminDivisionsList');
 Route::get('admin/division/add', 'AdminDivisionController@add');
 Route::post('admin/division/add', 'AdminDivisionController@store')->name('divisionStore');
 
@@ -115,6 +118,7 @@ Route::post('admin/division/add', 'AdminDivisionController@store')->name('divisi
 
 //--------------------------------ДОЛЖНОСТИ-------------------------------------
 
+Route::get('admin/positions', 'AdminPositionController@positionsList')->name('adminPositionsList');
 Route::get('admin/position/add', 'AdminPositionController@add');
 Route::post('admin/position/add', 'AdminPositionController@store')->name('positionStore');
 
@@ -122,6 +126,7 @@ Route::post('admin/position/add', 'AdminPositionController@store')->name('positi
 
 //------------------------------СОТРУДНИКИ--------------------------------------
 
+Route::get('admin/workers', 'AdminWorkerController@workersList')->name('adminWorkersList');
 Route::get('admin/worker/add', 'AdminWorkerController@add');
 Route::post('admin/worker/add', 'AdminWorkerController@store')->name('workerStore');
 
@@ -129,9 +134,34 @@ Route::post('admin/worker/add', 'AdminWorkerController@store')->name('workerStor
 
 //-------------------------------БУРОВЫЕ----------------------------------------
 
+Route::get('admin/drills', 'AdminDrillController@drillsList')->name('adminDrillsList');
 Route::get('admin/drill/add', 'DrillController@add');                                 //страница с формой добавления буровой
 Route::post('admin/drill/add', 'DrillController@store')->name('drillStore');          //добавление в БД
 Route::get('admin/drill/{id}', 'DrillController@view')->name('viewDrill');           //подробно о буровой
+
+//------------------------------------------------------------------------------
+
+//-----------------------------ТИПЫ БУРОВЫХ-------------------------------------
+
+Route::get('admin/drilltypes', 'AdminDrillTypeController@drillTypesList')->name('adminDrillTypesList');
+
+//------------------------------------------------------------------------------
+
+//-----------------------------СТАТУСЫ ИНТЕРНЕТА--------------------------------
+
+Route::get('admin/internetstatuses', 'AdminInternetStatusController@internetStatusesList')->name('adminInternetStatusesList');
+
+//------------------------------------------------------------------------------
+
+//-----------------------------СТАТУСЫ ИНТЕРНЕТА--------------------------------
+
+Route::get('admin/vpnstatuses', 'AdminVpnStatusController@vpnStatusesList')->name('adminVpnStatusesList');
+
+//------------------------------------------------------------------------------
+
+//----------------------ФАКТИЧЕСКИЕ СТАДИИ БУРЕНИЯ------------------------------
+
+Route::get('admin/actualstages', 'AdminActualStageController@actualStagesList')->name('adminActualStagesList');
 
 //------------------------------------------------------------------------------
 

@@ -7,48 +7,50 @@
             <br/>
             <ul class="list-group">
                 <li class="list-group-item">
-                    <a href="/admin/organization">Керування організаціями</a>
+                    <a href="{{ route('adminOrganizationsList') }}">Керування організаціями</a>
                     <span class="badge">25</span>
                 </li>
                 <li class="list-group-item">
-                    <a href="/admin/department">Керування відділами</a>
+                    <a href="{{ route('adminDepartmentsList') }}">Керування відділами</a>
                     <span class="badge">25</span>
                 </li>
                 <li class="list-group-item">
-                    <a href="/admin/division">Керування підрозділами</a>
+                    <a href="{{ route('adminDivisionsList') }}">Керування підрозділами</a>
                     <span class="badge">25</span>
                 </li>
                 <li class="list-group-item">
-                    <a href="/admin/position">Керування посадами</a>
+                    <a href="{{ route('adminPositionsList') }}">Керування посадами</a>
                     <span class="badge">25</span>
                 </li>
                 <li class="list-group-item">
-                    <a href="/admin/worker">Керування працівниками</a>
+                    <a href="{{ route('adminWorkersList') }}">Керування працівниками</a>
                 </li>
                 <li class="list-group-item">
-                    <a href="/admin/drill">Керування буровими</a>
+                    <a href="{{ route('adminDrillsList') }}">Керування буровими</a>
                     <span class="badge">25</span>
                 </li>
                 <li class="list-group-item">
-                    <a href="/admin/drilltype">Типи бурових</a>
+                    <a href="{{ route('adminDrillTypesList') }}">Типи бурових</a>
                     <span class="badge">25</span>
                 </li>
                 <li class="list-group-item">
-                    <a href="/admin/internetstatus">Статуси інтернету</a>
+                    <a href="{{ route('adminInternetStatusesList') }}">Статуси інтернету</a>
                     <span class="badge">25</span>
                 </li>
                 <li class="list-group-item">
-                    <a href="/admin/vpnstatus">Статуси для vpn</a>
+                    <a href="{{ route('adminVpnStatusesList') }}">Статуси для vpn</a>
                     <span class="badge">25</span>
                 </li>
                 <li class="list-group-item">
-                    <a href="/admin/actualstage">Фактичні стадії буріння</a>
+                    <a href="{{ route('adminActualStagesList') }}">Фактичні стадії буріння</a>
                     <span class="badge">25</span>
                 </li>
+                <!--
                 <li class="list-group-item">
-                    <a href="/admin/user">Керування користувачами сайту</a>
+                    <a href="#">Керування користувачами сайту</a>
                     <span class="badge">25</span>
                 </li>
+                -->
             </ul>
         </div>
     </div>

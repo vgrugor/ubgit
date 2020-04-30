@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--Подключени е иконок https://fontawesome.com/icons?d=gallery&m=free-->
     <script src="https://kit.fontawesome.com/0f39bd7c71.js" crossorigin="anonymous"></script>
+    <!--Подключени е иконок https://fontawesome.com/icons?d=gallery&m=free-->
+    <script src="https://kit.fontawesome.com/0f39bd7c71.js" crossorigin="anonymous"></script>
     <title>Полтавське ВБР</title>
   </head>
   <body>
@@ -43,6 +45,7 @@
                         <a class="dropdown-item" href="{{ route('drillsTypesList') }}">Типи бурових</a>
                         <a class="dropdown-item" href="{{ route('vpnStatusesList') }}">Статуси vpn</a>
                         <a class="dropdown-item" href="{{ route('dataGroupStatusesList') }}">Статуси інтернету</a>
+                        <a class="dropdown-item" href="{{ route('actualStagesList') }}">Фактичні стадії буріння</a>
                     </div>
                 </li>
                 <li class="nav-item">

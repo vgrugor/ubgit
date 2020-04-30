@@ -10,6 +10,25 @@ use App\Division;
 
 class AdminDivisionController extends Controller
 {
+    
+    //-------------------------СПИСОК ПОДРАЗДЕЛЕНИЙ-----------------------------
+    
+    public function divisionsList()
+    {
+        $divisions = Division::leftJoin('organizations', 'organizations.id', '=', 'divisions.organization_id')
+                ->leftJoin('departments', 'departments.id', '=', 'divisions.department_id')
+                ->select('organizations.name as organization',
+                        'departments.name as department', 
+                        'divisions.name as name', 
+                        'divisions.note as note')
+                ->get();
+        
+        return view('admin.division.list')->with('divisionsList', $divisions);
+    }
+
+    //--------------------------------------------------------------------------
+    
+    
     //-------------------------ДОБАВЛЕНИЕ ПОДРАЗДЕЛЕНИЯ-------------------------
     
     public function add()

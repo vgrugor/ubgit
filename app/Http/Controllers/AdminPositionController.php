@@ -11,7 +11,37 @@ use App\Position;
 
 class AdminPositionController extends Controller
 {
+    //--------------------------СПИСОК ДОЛЖНОСТЕЙ-------------------------------
     
+    public function positionsList()
+    {
+        $organizations = Organization::select('name')->get();
+        
+        $departments = Department::leftJoin('organizations', 'organizations.id', '=', 'departments.organization_id')
+                ->select('departments.name as department',
+                        'organizations.name as organization')
+                ->orderBy('department', 'asc')
+                ->get();
+        
+        $positions = Position::leftJoin('organizations', 'organizations.id', '=', 'positions.organization_id')
+                ->leftJoin('departments', 'departments.id', '=', 'positions.department_id')
+                ->leftJoin('divisions', 'divisions.id', '=', 'positions.division_id')
+                ->select('organizations.name as organization',
+                        'departments.name as department', 
+                        'divisions.name as division', 
+                        'positions.name as name', 
+                        'divisions.note as note')
+                ->get();
+        
+        return view('admin.position.list')
+                ->with(['positionsList' => $positions,
+                    'organizationsList' => $organizations,
+                    'departmentsList' => $departments
+                    ]);
+    }
+    
+    //--------------------------------------------------------------------------
+
     //-----------------------ДОБАВЛЕНИЯ ДОЛЖНОСТИ-------------------------------
     
     public function add()

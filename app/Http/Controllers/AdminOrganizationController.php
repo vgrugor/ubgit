@@ -4,8 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Organization;
+
 class AdminOrganizationController extends Controller
 {
+    //-------------------------СПИСОК ОРГАНИЗАЦИЙ-------------------------------
+    
+    public function organizationsList()
+    {
+        $organizations = Organization::select('name', 'address', 'note')->get();
+        
+        return view('admin.organization.list')->with('organizationsList', $organizations);
+    }
+    
+    //--------------------------------------------------------------------------
+
+    
     //-----------------------ДОБАВЛЕНИЕ ОРГАНИЗАЦИИ-----------------------------
     
     public function add()

@@ -9,6 +9,29 @@ use App\Department;
 
 class AdminDepartmentController extends Controller
 {
+    
+    //--------------------------------СПИСОК ОТДЕЛОВ----------------------------
+    
+    public function departmentsList()
+    {
+        $organizations = Organization::select('name')->get();
+        
+        $departments = Department::leftJoin('organizations', 'organizations.id', '=', 'departments.organization_id')
+                ->select('organizations.name as organization',
+                        'departments.name as name', 
+                        'phone_number', 
+                        'departments.note as note')
+                ->get();
+        
+        return view('admin.department.list')
+                ->with([
+                    'departmentsList' => $departments, 
+                    'organizationsList' => $organizations
+                ]);
+    }
+    
+    //--------------------------------------------------------------------------
+
     //--------------------------ДОБАВЛЕНИЕ ОТДЕЛА-------------------------------
     
     public function add()
