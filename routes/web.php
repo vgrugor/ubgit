@@ -93,8 +93,10 @@ Route::get('admin', 'AdminController@index')->name('admin');
 
 //------------------------------ОРГАНИЗАЦИИ-------------------------------------
 Route::get('admin/organizations', 'AdminOrganizationController@organizationsList')->name('adminOrganizationsList');
+//Редактирование
 Route::get('admin/organization/update/{id}', 'AdminOrganizationController@update')->name('organizationUpdate');
 Route::post('admin/organization/update/{id}', 'AdminOrganizationController@updateSave')->name('organizationUpdateSave');
+//Добавление
 Route::get('admin/organization/add', 'AdminOrganizationController@add');
 Route::post('admin/organization/add', 'AdminOrganizationController@store')->name('organizationStore');
 
@@ -167,9 +169,6 @@ Route::get('admin/actualstages', 'AdminActualStageController@actualStagesList')-
 
 //******************************************************************************
 //******************************************************************************
-
-
-
 
 
 //для тестов

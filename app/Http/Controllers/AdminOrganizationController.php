@@ -12,7 +12,7 @@ class AdminOrganizationController extends Controller
     
     public function organizationsList()
     {
-        $organizations = Organization::select('name', 'address', 'note')->get();
+        $organizations = Organization::select('id', 'name', 'address', 'note')->get();
         
         return view('admin.organization.list')->with('organizationsList', $organizations);
     }
@@ -70,7 +70,7 @@ class AdminOrganizationController extends Controller
         
         $organization->save();
         
-        return redirect()->route('organizationsList'); //->with('success', 'Организация была добавлена');
+        return redirect()->route('adminOrganizationsList'); //->with('success', 'Организация была добавлена');
     }
     
     //--------------------------------------------------------------------------

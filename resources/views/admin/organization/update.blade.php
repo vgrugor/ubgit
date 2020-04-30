@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col text-center">
-            <h1>Додати нову організацію</h1>
+            <h1>Редагувати організацію</h1>
             <br/>
         </div>
     </div>
@@ -31,7 +31,10 @@
                     <label for="note">Примітка</label>
                     <textarea name="note" id="note" class="form-control">{{ $organization->note }}</textarea>
                 </div>
-                <input type="submit" name="submit" value="Зберегти" class="btn btn-primary" role="button">
+                <div class="form-group text-right">
+                    <a href="{{ route('adminOrganizationsList') }}" class="btn btn-secondary" role="button">Відмінити</a>
+                    <input type="submit" name="submit" value="Зберегти" class="btn btn-primary" role="button">
+                </div>
                 {{ csrf_field() }}
             </form>
         </div>
