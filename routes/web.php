@@ -129,8 +129,12 @@ Route::post('admin/division/update/{id}', 'AdminDivisionController@save')->name(
 //--------------------------------ДОЛЖНОСТИ-------------------------------------
 
 Route::get('admin/positions', 'AdminPositionController@positionsList')->name('adminPositionsList');
+
 Route::get('admin/position/add', 'AdminPositionController@add');
 Route::post('admin/position/add', 'AdminPositionController@store')->name('positionStore');
+
+Route::get('admin/position/update/{id}', 'AdminPositionController@update')->name('positionUpdate');
+Route::post('admin/position/update/{id}', 'AdminPositionController@save')->name('positionSave');
 
 //------------------------------------------------------------------------------
 

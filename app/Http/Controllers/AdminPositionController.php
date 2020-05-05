@@ -29,6 +29,7 @@ class AdminPositionController extends Controller
                 ->select('organizations.name as organization',
                         'departments.name as department', 
                         'divisions.name as division', 
+                        'positions.id as id',
                         'positions.name as name', 
                         'divisions.note as note')
                 ->get();
@@ -74,6 +75,51 @@ class AdminPositionController extends Controller
         $position->save();
         
         return redirect('workerlist');
+    }
+    
+    //--------------------------------------------------------------------------
+    
+    //--------------------РЕДАКТИРОВАНИЕ ДОЛЖНОСТИ------------------------------
+    
+    public function update($id)
+    {
+        $position = Position::find($id);
+        
+        $organizations = Organization::select('id', 'name')->get();
+        $departments = Department::select('id', 'name')
+                ->where('organization_id', $position->organization_id)
+                ->get();
+        
+        $divisions = Division::select('id', 'name')
+                ->where('department_id', $position->department_id)
+                ->get();
+        
+        return view('admin.position.update')->with(['position' => $position,
+            'organizationsList' => $organizations,
+            'departmentsList' => $departments,
+            'divisionsList' => $divisions
+        ]);
+    }
+    
+    public function save($id, Request $request)
+    {
+        $position = Position::find($id);
+        
+        $this->validate($request, [
+            'organization_id' => 'required|integer',
+            'department_id' => 'required|integer',
+            'division_id' => 'required|integer',
+            'name' => 'required|max:256',
+        ]);
+        
+        $position->organization_id = $request->organization_id;
+        $position->department_id = $request->department_id;
+        $position->division_id = $request->division_id;
+        $position->name = $request->name;
+        
+        $position->save();
+        
+        return redirect()->route('adminPositionsList');
     }
     
     //--------------------------------------------------------------------------

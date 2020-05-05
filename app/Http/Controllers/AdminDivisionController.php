@@ -75,14 +75,14 @@ class AdminDivisionController extends Controller
         ]);
     }
     
-    public function save($id)
+    public function save($id, Request $request)
     {
         $division = Division::find($id);
         
         $this->validate($request, [
             'organization_id' => 'required|integer',
             'department_id' => 'required|integer',
-            'name' => 'required|max100'
+            'name' => 'required|max:100'
         ]);
         
         $division->organization_id = $request->organization_id;
@@ -92,7 +92,7 @@ class AdminDivisionController extends Controller
         
         $division->save();
         
-        return redirect()->view('admin.division.list');
+        return redirect()->route('adminDivisionsList');
     }
 
     //--------------------------------------------------------------------------
