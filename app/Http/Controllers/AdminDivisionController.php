@@ -19,6 +19,7 @@ class AdminDivisionController extends Controller
                 ->leftJoin('departments', 'departments.id', '=', 'divisions.department_id')
                 ->select('organizations.name as organization',
                         'departments.name as department', 
+                        'divisions.id as id',
                         'divisions.name as name', 
                         'divisions.note as note')
                 ->get();
@@ -55,5 +56,44 @@ class AdminDivisionController extends Controller
         return redirect('workerlist');
     }
     
+    //--------------------------------------------------------------------------
+    
+    
+    //-------------------------РЕДАКТИРОВАНИЕ ПОДРАЗДЕЛЕНИЯ---------------------
+    
+    public function update($id)
+    {
+        $division = Division::find($id);
+        
+        $organizations = Organization::select('id', 'name')->get();
+        $departments = Department::select('id', 'name')->where('organization_id', $division->organization_id)->get();
+        
+        return view('admin.division.update')->with([
+            'division' => $division, 
+            'organizationsList' => $organizations, 
+            'departmentsList' => $departments
+        ]);
+    }
+    
+    public function save($id)
+    {
+        $division = Division::find($id);
+        
+        $this->validate($request, [
+            'organization_id' => 'required|integer',
+            'department_id' => 'required|integer',
+            'name' => 'required|max100'
+        ]);
+        
+        $division->organization_id = $request->organization_id;
+        $division->department_id = $request->department_id;
+        $division->name = $request->name;
+        $division->note = $request->note;
+        
+        $division->save();
+        
+        return redirect()->view('admin.division.list');
+    }
+
     //--------------------------------------------------------------------------
 }

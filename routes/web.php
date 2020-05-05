@@ -117,8 +117,12 @@ Route::post('admin/department/update/{id}', 'AdminDepartmentController@save')->n
 //------------------------------ПОДРАЗДЕЛЕНИЯ-----------------------------------
 
 Route::get('admin/divisions', 'AdminDivisionController@divisionsList')->name('adminDivisionsList');
+
 Route::get('admin/division/add', 'AdminDivisionController@add');
 Route::post('admin/division/add', 'AdminDivisionController@store')->name('divisionStore');
+
+Route::get('admin/division/update/{id}', 'AdminDivisionController@update')->name('divisionUpdate');
+Route::post('admin/division/update/{id}', 'AdminDivisionController@save')->name('divisionSave');
 
 //------------------------------------------------------------------------------
 
