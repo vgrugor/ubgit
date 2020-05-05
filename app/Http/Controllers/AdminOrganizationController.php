@@ -55,7 +55,7 @@ class AdminOrganizationController extends Controller
         return view('admin.organization.update')->with('organization', $organization);
     }
     
-    public function updateSave($id, Request $request)
+    public function save($id, Request $request)
     {
         $organization = Organization::find($id);
         

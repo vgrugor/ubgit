@@ -95,7 +95,7 @@ Route::get('admin', 'AdminController@index')->name('admin');
 Route::get('admin/organizations', 'AdminOrganizationController@organizationsList')->name('adminOrganizationsList');
 //Редактирование
 Route::get('admin/organization/update/{id}', 'AdminOrganizationController@update')->name('organizationUpdate');
-Route::post('admin/organization/update/{id}', 'AdminOrganizationController@updateSave')->name('organizationUpdateSave');
+Route::post('admin/organization/update/{id}', 'AdminOrganizationController@save')->name('organizationSave');
 //Добавление
 Route::get('admin/organization/add', 'AdminOrganizationController@add');
 Route::post('admin/organization/add', 'AdminOrganizationController@store')->name('organizationStore');
@@ -105,8 +105,12 @@ Route::post('admin/organization/add', 'AdminOrganizationController@store')->name
 //---------------------------------ОТДЕЛЫ---------------------------------------
 
 Route::get('admin/departments', 'AdminDepartmentController@departmentsList')->name('adminDepartmentsList');
+
 Route::get('admin/department/add', 'AdminDepartmentController@add');
 Route::post('admin/department/add', 'AdminDepartmentController@store')->name('departmentStore');
+
+Route::get('admin/department/update/{id}', 'AdminDepartmentController@update')->name('departmentUpdate');
+Route::post('admin/department/update/{id}', 'AdminDepartmentController@save')->name('departmentSave');
 
 //------------------------------------------------------------------------------
 

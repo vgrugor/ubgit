@@ -18,6 +18,7 @@ class AdminDepartmentController extends Controller
         
         $departments = Department::leftJoin('organizations', 'organizations.id', '=', 'departments.organization_id')
                 ->select('organizations.name as organization',
+                        'departments.id as id',
                         'departments.name as name', 
                         'phone_number', 
                         'departments.note as note')
@@ -57,5 +58,41 @@ class AdminDepartmentController extends Controller
         return redirect('workerlist');
     }
     
+    //--------------------------------------------------------------------------
+    
+    //-------------------РЕДАКТИРОВАНИЕ ОТДЕЛОВ---------------------------------
+    
+    public function update($id)
+    {
+        $organizations = Organization::select('id', 'name')->get();
+        
+        $department = Department::find($id);
+        
+        return view('admin.department.update')->with([
+            'department' => $department,
+            'organizationsList' => $organizations
+        ]);
+    }
+    
+    public function save($id, Request $request)
+    {
+        $department = Department::find($id);
+        
+        $this->validate($request, [
+            'organization_id' => 'required|integer',
+            'name' => 'required|max:100',
+            'phone_number' => 'max:14',
+        ]);
+        
+        $department->organization_id = $request->organization_id;
+        $department->name = $request->name;
+        $department->phone_number = $request->phone_number;
+        $department->note = $request->note;
+        
+        $department->save();
+        
+        return redirect()->route('adminDepartmentsList');
+    }
+
     //--------------------------------------------------------------------------
 }

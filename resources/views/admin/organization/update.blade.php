@@ -18,7 +18,7 @@
                     </ul>
                 </div>
             @endif
-            <form method="post" action="{{ route('organizationUpdateSave', $organization->id) }}">
+            <form method="post" action="{{ route('organizationSave', $organization->id) }}">
                 <div class="form-group">
                     <label for="name">Введіть назву організації</label>
                     <input type="text" name="name" id="name" class="form-control" value="{{ $organization->name }}">

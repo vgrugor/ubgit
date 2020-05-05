@@ -41,7 +41,7 @@
                             <td>{{ $departmentItem->phone_number }}</td>
                             <td>{{ $departmentItem->note }}</td>
                             <td>
-                                <a href="#" title="Редагувати"><i class="far fa-edit"></i></a>
+                                <a href="{{ route('departmentUpdate', $departmentItem->id) }}" title="Редагувати"><i class="far fa-edit"></i></a>
                             </td>
                             <td>
                                 <a href="#" title="Видалити"><i class="far fa-trash-alt"></i></a>
