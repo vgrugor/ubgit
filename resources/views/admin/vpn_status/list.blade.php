@@ -18,7 +18,7 @@
                         <tr>
                             <td>{{ $vpnStatusItem->name }}</td>
                             <td>
-                                <a href="#" title="Редагувати"><i class="far fa-edit"></i></a>
+                                <a href="{{ route('vpnStatusUpdate', $vpnStatusItem->id) }}" title="Редагувати"><i class="far fa-edit"></i></a>
                             </td>
                             <td>
                                 <a href="#" title="Видалити"><i class="far fa-trash-alt"></i></a>

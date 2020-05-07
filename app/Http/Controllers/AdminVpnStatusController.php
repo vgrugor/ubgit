@@ -12,7 +12,7 @@ class AdminVpnStatusController extends Controller
     
     public function vpnStatusesList()
     {
-        $vpnStatuses = Vpn_status::select('name')->get();
+        $vpnStatuses = Vpn_status::select('id', 'name')->get();
         
         return view('admin.vpn_status.list')->with('vpnStatusesList', $vpnStatuses);
     }
@@ -49,12 +49,24 @@ class AdminVpnStatusController extends Controller
     
     public function update($id)
     {
+        $vpn_status = Vpn_status::find($id);
         
+        return view('admin.vpn_status.update')->with('vpn_status', $vpn_status);
     }
     
     public function save($id, Request $request)
     {
+        $vpn_status = Vpn_status::find($id);
         
+        $this->validate($request, [
+            'name' => 'required|max:50',
+        ]);
+        
+        $vpn_status->name = $request->input('name');
+        
+        $vpn_status->save();
+        
+        return redirect()->route('adminVpnStatusesList');
     }
     
     //--------------------------------------------------------------------------
