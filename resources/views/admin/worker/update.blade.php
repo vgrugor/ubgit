@@ -3,28 +3,21 @@
 @section('content')
     <div class="row">
         <div class="col text-center">
-            <h1>Додати працівника</h1>
+            <h1>Редагувати інформацію про працівника</h1>
             <br/>
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="col-sm-6">
-            @if(count($errors) > 0)
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-            <form method="post" action="{{ route('workerStore') }}">
+            <form method="post" action="{{ route('workerSave', $worker->id) }}">
                 <div class="form-group">
                     <label for="organization_id">Оберіть організацію</label>
                     <select name="organization_id" class="form-control" id="organization_id" onchange="getDepartments()">
                         <option value="">не обрано</option>
                         @foreach($organizationsList as $organizationItem)
-                            <option value="{{ $organizationItem->id }}">{{ $organizationItem->name }}</option>
+                            <option value="{{ $organizationItem->id }}" {{ $organizationItem->id == $worker->organization_id ? 'selected' : '' }}>
+                                {{ $organizationItem->name }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -32,18 +25,33 @@
                     <label for="department_id">Оберіть відділ</label>
                     <select name="department_id" class="form-control" id="department_id" onchange="getDivisions()">
                         <option value="">не обрано</option>
+                        @foreach ($departmentsList as $departmentItem)
+                            <option value="{{ $departmentItem->id }}" {{ $departmentItem->id == $worker->department_id ? 'selected' : '' }}>
+                                {{ $departmentItem->name }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="division_id">Оберіть підрозділ</label>
                     <select name="division_id" class="form-control" id="division_id" onchange="getPositions()">
                         <option value="0">не обрано</option>
+                        @foreach ($divisionsList as $divisionItem)
+                            <option value="{{ $divisionItem->id }}" {{ $divisionItem->id == $worker->division_id ? 'selected' : '' }}>
+                                {{ $divisionItem->name }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="position_id">Оберіть посаду</label>
                     <select name="position_id" class="form-control" id="position_id">
                         <option value="">не обрано</option>
+                        @foreach ($positionsList as $positionItem)
+                            <option value="{{ $positionItem->id }}" {{ $positionItem->id == $worker->position_id ? 'selected' : '' }}>
+                                {{ $positionItem->name }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
@@ -51,48 +59,52 @@
                     <select name="drill_id" class="form-control" id="drill_id">
                         <option value="0">не обрано</option>
                         @foreach($drillsList as $drillItem)
-                            <option value="{{ $drillItem->id }}">{{ $drillItem->name }}</option>
+                            <option value="{{ $drillItem->id }}" {{ $drillItem->id == $worker->drill_id ? 'selected' : '' }}>{{ $drillItem->name }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="name">Прізвище Ім'я Побатькові</label>
-                    <input type="text" name="name" value="" id="name" class="form-control">
+                    <input type="text" name="name" value="{{ $worker->name }}" id="name" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="account_ad">Акаунт в AD</label>
-                    <input type="text" name="account_ad" value="" id="account_ad" class="form-control">
+                    <input type="text" name="account_ad" value="{{ $worker->account_ad }}" id="account_ad" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="phone_number">Номер телефону в форматі (XXX)XXX-XX-XX</label>
-                    <input type="text" name="phone_number" value="" id="phone_number" class="form-control" placeholder="(XXX)XXX-XX-XX">
+                    <label for="phone_number">Номер телефону 1 в форматі (XXX)XXX-XX-XX</label>
+                    <input type="text" name="phone_number" value="{{ $worker->phone_number }}" id="phone_number" class="form-control" placeholder="(XXX)XXX-XX-XX">
                 </div>
                 <div class="form-group">
-                    <label for="phone_number2">Номер телефону в форматі (XXX)XXX-XX-XX</label>
-                    <input type="text" name="phone_number2" value="" id="phone_number2" class="form-control" placeholder="(XXX)XXX-XX-XX">
+                    <label for="phone_number2">Номер телефону 2 в форматі (XXX)XXX-XX-XX</label>
+                    <input type="text" name="phone_number2" value="{{ $worker->phone_number2 }}" id="phone_number2" class="form-control" placeholder="(XXX)XXX-XX-XX">
                 </div>
                 <div class="form-group">
                     <label for="email">email</label>
-                    <input type="email" name="email" value="" id="email" class="form-control">
+                    <input type="email" name="email" value="{{ $worker->email }}" id="email" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="vpn_status_id">Стан VPN</label>
                     <select name="vpn_status_id" class="form-control" id="vpn_status_id">
+                        <option value="0">не обрано</option>
                         @foreach ($vpnsList as $vpnItem)
-                            <option value="{{ $vpnItem->id }}">{{ $vpnItem->name }}</option>
+                            <option value="{{ $vpnItem->id }}" {{ $vpnItem->id == $worker->vpn_status_id ? 'selected' : '' }}>
+                                {{ $vpnItem->name }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="date_refresh">Дата оновлення інформації</label>
-                    <input type="date" name="date_refresh" value="" id="date_refresh" class="form-control">
+                    <input type="date" name="date_refresh" value="{{ date('Y-m-d', strtotime($worker->date_refresh)) }}" id="date_refresh" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="note">Примітка</label>
-                    <textarea name="note" class="form-control" id="note"></textarea>
+                    <textarea name="note" class="form-control" id="note">{{ $worker->note }}</textarea>
                 </div>
-                <div class="form-group">
-                    <input type="submit" name="submit" value="Додати" class="btn btn-success" role="button">
+                <div class="form-group text-right">
+                    <a href="{{ route('adminWorkersList') }}" class="btn btn-secondary" role="button">Відмінити</a>
+                    <input type="submit" name="submit" value="Зберегти" class="btn btn-primary" role="button">
                 </div>
                 {{ csrf_field() }}
             </form>

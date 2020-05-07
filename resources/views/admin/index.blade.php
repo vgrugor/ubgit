@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-sm-12">
-            <h1 class="text-center">Вітаємо, адміністратор!</h1>
+            <h1 class="text-center">Панель адміністратора</h1>
             <br/>
             <ul class="list-group">
                 <li class="list-group-item">

@@ -40,7 +40,6 @@
                     <th scope="col">Відділ</th>
                     <th scope="col">Підрозділ</th>
                     <th scope="col">Назва посади</th>
-                    <th scope="col">Примітка</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -52,7 +51,6 @@
                             <td>{{ $positionItem->department }}</td>
                             <td>{{ $positionItem->division }}</td>
                             <td>{{ $positionItem->name }}</td>
-                            <td>{{ $positionItem->note }}</td>
                             <td>
                                 <a href="{{ route('positionUpdate', $positionItem->id) }}" title="Редагувати"><i class="far fa-edit"></i></a>
                             </td>

@@ -53,6 +53,7 @@ class WorkerController extends Controller
                 ->leftJoin('drills', 'drills.id', '=', 'workers.drill_id')
                 ->leftJoin('vpn_statuses', 'vpn_statuses.id', '=', 'workers.vpn_status_id')
                 ->select(['workers.id', 'workers.name', 'workers.phone_number',
+                    'workers.phone_number2',
                     'workers.account_ad', 'workers.email', 'workers.note', 'workers.date_refresh', 
                     'organizations.name as organization',
                     'departments.name as department',

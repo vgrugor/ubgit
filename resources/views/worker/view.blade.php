@@ -69,10 +69,18 @@
         <hr>
         <div class="row">
             <div class="col-sm-4">
-                <p><strong>Номер телефону:</strong></p>
+                <p><strong>Номер телефону 1:</strong></p>
             </div>
             <div class="col">
                 {{ $worker->phone_number }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <p><strong>Номер телефону 2:</strong></p>
+            </div>
+            <div class="col">
+                {{ $worker->phone_number2 }}
             </div>
         </div>
         <div class="row">

@@ -8,7 +8,17 @@ use Carbon\Carbon;
 
 class Worker extends Model
 {
-    protected $fillable = ['name', 'email', 'phone_number'];
+    protected $fillable = ['drill_id', 
+        'position_id', 
+        'name', 
+        'account_ad',
+        'phone_number',
+        'phone_number2',
+        'email', 
+        'vpn_status_id',
+        'date_refresh',
+        'note'
+    ];
     
     public function getDateRefreshAttribute($date) 
     {

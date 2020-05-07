@@ -141,8 +141,12 @@ Route::post('admin/position/update/{id}', 'AdminPositionController@save')->name(
 //------------------------------СОТРУДНИКИ--------------------------------------
 
 Route::get('admin/workers', 'AdminWorkerController@workersList')->name('adminWorkersList');
+
 Route::get('admin/worker/add', 'AdminWorkerController@add');
 Route::post('admin/worker/add', 'AdminWorkerController@store')->name('workerStore');
+
+Route::get('admin/worker/update/{id}', 'AdminWorkerController@update')->name('workerUpdate');
+Route::post('admin/worker/update/{id}', 'AdminWorkerController@save')->name('workerSave');
 
 //------------------------------------------------------------------------------
 
