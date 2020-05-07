@@ -4,8 +4,13 @@
     @if ($worker)
         
         <div class="row">
-            <div class="col">
-                <h1>{{ $worker->name }}</h1>
+            <div class="col-sm-10">
+                <h1>
+                    {{ $worker->name }}
+                </h1>
+            </div>
+            <div class="col-sm-2 text-right">
+                <a href="{{ route('workerUpdate', $worker->id) }}" title="Редагувати"><i class="far fa-edit"></i></a>
             </div>
         </div>
         <br/>

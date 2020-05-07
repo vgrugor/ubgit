@@ -74,7 +74,7 @@ class AdminPositionController extends Controller
         
         $position->save();
         
-        return redirect('workerlist');
+        return redirect()->route('adminPositionsList');
     }
     
     //--------------------------------------------------------------------------

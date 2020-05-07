@@ -55,7 +55,7 @@ class AdminDepartmentController extends Controller
         $department->fill($data);
         $department->save();
         
-        return redirect('workerlist');
+        return redirect()->route('adminDepartmentsList');
     }
     
     //--------------------------------------------------------------------------

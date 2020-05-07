@@ -53,7 +53,7 @@ class AdminDivisionController extends Controller
         
         $division->save();
                 
-        return redirect('workerlist');
+        return redirect()->route('adminDivisionsList');
     }
     
     //--------------------------------------------------------------------------
