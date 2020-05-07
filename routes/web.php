@@ -171,9 +171,15 @@ Route::get('admin/internetstatuses', 'AdminInternetStatusController@internetStat
 
 //------------------------------------------------------------------------------
 
-//-----------------------------СТАТУСЫ ИНТЕРНЕТА--------------------------------
+//--------------------------------СТАТУСЫ VPN--------------------------------------
 
 Route::get('admin/vpnstatuses', 'AdminVpnStatusController@vpnStatusesList')->name('adminVpnStatusesList');
+
+Route::get('admin/vpnstatus/add', 'AdminVpnStatusController@add');
+Route::post('admin/vpnstatus/add', 'AdminVpnStatusController@store')->name('vpnStatusStore');
+
+Route::get('admin/vpnstatus/update/{id}', 'AdminVpnStatusController@update')->name('vpnStatusUpdate');
+Route::post('admin/vpnstatus/update/{id}', 'AdminVpnStatusController@save')->name('vpnStatusSave');
 
 //------------------------------------------------------------------------------
 

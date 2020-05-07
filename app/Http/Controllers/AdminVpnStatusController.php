@@ -18,4 +18,44 @@ class AdminVpnStatusController extends Controller
     }
     
     //--------------------------------------------------------------------------
+    
+    
+    //----------------------------ДОБАВЛЕНИЕ СТАТУСА----------------------------
+    
+    public function add()
+    {
+        return view('admin.vpn_status.add');
+    }
+    
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:50'
+        ]);
+        
+        $data = $request->all();
+        
+        $vpn = new Vpn_status;
+        $vpn->fill($data);
+        $vpn->save();
+        
+        return redirect()->route('adminVpnStatusesList');
+    }
+
+    //--------------------------------------------------------------------------
+    
+    
+    //---------------------------РЕДАКТИРОВАНИЕ СТАТУСА-------------------------
+    
+    public function update($id)
+    {
+        
+    }
+    
+    public function save($id, Request $request)
+    {
+        
+    }
+    
+    //--------------------------------------------------------------------------
 }
