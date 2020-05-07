@@ -26,23 +26,23 @@
                     <a href="{{ route('adminWorkersList') }}">Керування працівниками</a>
                 </li>
                 <li class="list-group-item">
-                    <a href="{{ route('adminDrillsList') }}">Керування буровими</a>
-                    <span class="badge">25</span>
-                </li>
-                <li class="list-group-item">
-                    <a href="{{ route('adminDrillTypesList') }}">Типи бурових</a>
-                    <span class="badge">25</span>
-                </li>
-                <li class="list-group-item">
-                    <a href="{{ route('adminInternetStatusesList') }}">Статуси інтернету</a>
-                    <span class="badge">25</span>
-                </li>
-                <li class="list-group-item">
                     <a href="{{ route('adminVpnStatusesList') }}">Статуси для vpn</a>
                     <span class="badge">25</span>
                 </li>
                 <li class="list-group-item">
+                    <a href="{{ route('adminDrillsList') }}">Керування свердловинами</a>
+                    <span class="badge">25</span>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ route('adminDrillTypesList') }}">Типи свердловин</a>
+                    <span class="badge">25</span>
+                </li>
+                <li class="list-group-item">
                     <a href="{{ route('adminActualStagesList') }}">Фактичні стадії буріння</a>
+                    <span class="badge">25</span>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ route('adminInternetStatusesList') }}">Статуси інтернету</a>
                     <span class="badge">25</span>
                 </li>
                 <!--

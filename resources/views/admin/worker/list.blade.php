@@ -6,7 +6,12 @@
         <div class="col">
             <h1 class="text-center">Керування працівниками</h1>
             <br/>
-            
+            <p class="text-right">
+                <a href="{{ route('workerAdd') }}">
+                    <i class="fas fa-plus-circle"></i>
+                    Додати працівника
+                </a>
+            </p>
             <!---------------------------------------------------Поиск---------------------------------------------------->
             <div class="row">
                 <div class="col-sm-3">

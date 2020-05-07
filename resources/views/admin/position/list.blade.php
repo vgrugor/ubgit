@@ -6,6 +6,12 @@
         <div class="col-sm-12">
             <h1 class="text-center">Керування посадами</h1>
             <br/>
+            <p class="text-right">
+                <a href="{{ route('positionAdd') }}">
+                    <i class="fas fa-plus-circle"></i>
+                    Додати посаду
+                </a>
+            </p>
             <!---------------------------------------------------Поиск---------------------------------------------------->
             <div class="row">
                         <div class="col-sm-4">

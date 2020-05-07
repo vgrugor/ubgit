@@ -5,6 +5,12 @@
         <div class="col-sm-12">
             <h1 class="text-center">Довідник типів бурових</h1>
             <br/>
+            <p class="text-right">
+                <a href="#">
+                    <i class="fas fa-plus-circle"></i>
+                    Додати тип бурової
+                </a>
+            </p>
             <table class="table">
                 <thead class="thead-dark">
                 <tr>

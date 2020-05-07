@@ -97,7 +97,7 @@ Route::get('admin/organizations', 'AdminOrganizationController@organizationsList
 Route::get('admin/organization/update/{id}', 'AdminOrganizationController@update')->name('organizationUpdate');
 Route::post('admin/organization/update/{id}', 'AdminOrganizationController@save')->name('organizationSave');
 //Добавление
-Route::get('admin/organization/add', 'AdminOrganizationController@add');
+Route::get('admin/organization/add', 'AdminOrganizationController@add')->name('organizationAdd');
 Route::post('admin/organization/add', 'AdminOrganizationController@store')->name('organizationStore');
 
 //------------------------------------------------------------------------------
@@ -106,7 +106,7 @@ Route::post('admin/organization/add', 'AdminOrganizationController@store')->name
 
 Route::get('admin/departments', 'AdminDepartmentController@departmentsList')->name('adminDepartmentsList');
 
-Route::get('admin/department/add', 'AdminDepartmentController@add');
+Route::get('admin/department/add', 'AdminDepartmentController@add')->name('departmentAdd');
 Route::post('admin/department/add', 'AdminDepartmentController@store')->name('departmentStore');
 
 Route::get('admin/department/update/{id}', 'AdminDepartmentController@update')->name('departmentUpdate');
@@ -118,7 +118,7 @@ Route::post('admin/department/update/{id}', 'AdminDepartmentController@save')->n
 
 Route::get('admin/divisions', 'AdminDivisionController@divisionsList')->name('adminDivisionsList');
 
-Route::get('admin/division/add', 'AdminDivisionController@add');
+Route::get('admin/division/add', 'AdminDivisionController@add')->name('divisionAdd');
 Route::post('admin/division/add', 'AdminDivisionController@store')->name('divisionStore');
 
 Route::get('admin/division/update/{id}', 'AdminDivisionController@update')->name('divisionUpdate');
@@ -130,7 +130,7 @@ Route::post('admin/division/update/{id}', 'AdminDivisionController@save')->name(
 
 Route::get('admin/positions', 'AdminPositionController@positionsList')->name('adminPositionsList');
 
-Route::get('admin/position/add', 'AdminPositionController@add');
+Route::get('admin/position/add', 'AdminPositionController@add')->name('positionAdd');
 Route::post('admin/position/add', 'AdminPositionController@store')->name('positionStore');
 
 Route::get('admin/position/update/{id}', 'AdminPositionController@update')->name('positionUpdate');
@@ -142,7 +142,7 @@ Route::post('admin/position/update/{id}', 'AdminPositionController@save')->name(
 
 Route::get('admin/workers', 'AdminWorkerController@workersList')->name('adminWorkersList');
 
-Route::get('admin/worker/add', 'AdminWorkerController@add');
+Route::get('admin/worker/add', 'AdminWorkerController@add')->name('workerAdd');
 Route::post('admin/worker/add', 'AdminWorkerController@store')->name('workerStore');
 
 Route::get('admin/worker/update/{id}', 'AdminWorkerController@update')->name('workerUpdate');
@@ -175,7 +175,7 @@ Route::get('admin/internetstatuses', 'AdminInternetStatusController@internetStat
 
 Route::get('admin/vpnstatuses', 'AdminVpnStatusController@vpnStatusesList')->name('adminVpnStatusesList');
 
-Route::get('admin/vpnstatus/add', 'AdminVpnStatusController@add');
+Route::get('admin/vpnstatus/add', 'AdminVpnStatusController@add')->name('vpnStatusAdd');
 Route::post('admin/vpnstatus/add', 'AdminVpnStatusController@store')->name('vpnStatusStore');
 
 Route::get('admin/vpnstatus/update/{id}', 'AdminVpnStatusController@update')->name('vpnStatusUpdate');

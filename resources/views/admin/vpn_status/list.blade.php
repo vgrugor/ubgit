@@ -5,6 +5,12 @@
         <div class="col-sm-12">
             <h1 class="text-center">Керування статусами VPN</h1>
             <br/>
+            <p class="text-right">
+                <a href="{{ route('vpnStatusAdd') }}">
+                    <i class="fas fa-plus-circle"></i>
+                    Додати статус
+                </a>
+            </p>
             <table class="table">
                 <thead class="thead-dark">
                 <tr>
