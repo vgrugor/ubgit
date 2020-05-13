@@ -64,6 +64,10 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label for="worker_id">id працівника</label>
+                    <input type="text" name="worker_id" value="{{ $worker->id }}" id="worker_id" disabled class="form-control">
+                </div>
+                <div class="form-group">
                     <label for="name">Прізвище Ім'я Побатькові</label>
                     <input type="text" name="name" value="{{ $worker->name }}" id="name" class="form-control">
                 </div>

@@ -130,10 +130,19 @@ class AdminWorkerController extends Controller
         $divisions = Division::select('id', 'name')
                 ->where('department_id', $worker->department_id)
                 ->get();
-        
+        /*
         $positions = Position::select('id', 'name')
                 ->where('department_id', $worker->department_id)
                 ->where('division_id', $worker->division_id)
+                ->get();
+        */
+        
+        $positions = Position::leftJoin('workers', 'workers.position_id', '=', 'positions.id')
+                ->select('positions.id as id', 'positions.name as name')
+                ->where('department_id', $worker->department_id)
+                ->where('division_id', $worker->division_id)
+                ->whereNull('workers.position_id')
+                ->orWhere('workers.position_id', $worker->position_id)
                 ->get();
         
         $drills = Drill::select('id', 'name')->get();

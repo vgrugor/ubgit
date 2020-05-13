@@ -61,7 +61,7 @@ function getPositions(){
         type: 'POST',
         url: url,
         data: {department: $("#department_id").val(),
-            division: $("#division_id").val()
+            division: $("#division_id").val(),
         },
         
         success:function(data){
