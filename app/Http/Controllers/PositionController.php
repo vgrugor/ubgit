@@ -40,4 +40,39 @@ class PositionController extends Controller
     }
     
     //--------------------------------------------------------------------------
+    
+    public function getAjaxListForUpdate(Request $request)
+    {
+        $options = $request->all();
+        
+        $options['currentPosition'] = Worker::where('id', $options['worker'])->value('position_id');
+               
+        $positions = Position::leftJoin('workers', 'workers.position_id', '=', 'positions.id')
+                ->select('positions.id as id', 'positions.name as name')
+                ->where(function ($query) use ($options) {
+                    $query->where('positions.department_id', $options['department'])
+                        ->where('positions.division_id', $options['division'])
+                        ->whereNull('workers.position_id');})
+                ->orWhere(function ($query) use ($options) {
+                    $query->where('positions.department_id', $options['department'])
+                        ->where('positions.division_id', $options['division'])
+                        ->where('workers.position_id', $options['currentPosition']);
+                })
+                ->get();
+                
+        $positionsList[] = '<option value="0">не обрано</option>';
+        
+        foreach ($positions as $positionItem) {
+            
+            if ($options['currentPosition'] == $positionItem->id) {
+                $current = '       --- поточна посада --- ';
+            } else {
+                $current = '';
+            }
+            
+            $positionsList[] = '<option value="' . $positionItem->id . '">' . $positionItem->name . ' ' . $current . '</option>';
+        }
+        
+        return response(['positionsList' => $positionsList, 'options' => $request->all()], 200);
+    }
 }

@@ -76,3 +76,28 @@ function getPositions(){
         }
     });
 };
+
+
+function getPositionsForUpdateWorker(){
+    var url = '/position/getAjaxListForUpdate';
+    
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: {department: $("#department_id").val(),
+            division: $("#division_id").val(),
+            worker: $("#worker_id").val(),
+        },
+        
+        success:function(data){
+            //alert('ajax успешно выполнен. Обновление работника');
+            $("#position_id").html(data.positionsList);
+            console.log(data);
+        },
+        
+        error: function (result) {
+            alert('Ошибка. Обновление работника');
+            console.log(result);
+        }
+    });
+};
