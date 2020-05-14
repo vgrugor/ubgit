@@ -21,6 +21,7 @@
             <form method="post" action="{{ route('departmentStore') }}">
                 <div class="form-group">
                     <label for="organization_id">Оберіть потрібну організацію</label>
+                    <a href="{{ route('organizationAdd') }}" title="Додати посаду" target="_blank"><i class="far fa-plus-square"></i></a>
                     <select id="organization_id" name="organization_id" class="form-control">
                         <option value="">не обрано</option>
                         @foreach($organizationsList as $organizationItem)
