@@ -38,7 +38,7 @@ Route::post('division/getAjaxList', 'DivisionController@getAjaxList');
 
 //----------------------------------ДОЛЖНОСТЬ---------------------------------------
 
-Route::post('position/getAjaxList', 'PositionController@getAjaxList');
+Route::post('position/getAjaxListForAdd', 'PositionController@getAjaxListForAdd');
 Route::post('position/getAjaxListForUpdate', 'PositionController@getAjaxListForUpdate');
 
 //------------------------------------------------------------------------------

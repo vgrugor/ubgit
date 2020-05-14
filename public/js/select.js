@@ -55,7 +55,7 @@ function getDivisions(){
 
 //получить перечень должностей для выпадающего списка по отделу и подразделению
 function getPositions(){
-    var url = '/position/getAjaxList';
+    var url = '/position/getAjaxListForAdd';
     
     $.ajax({
         type: 'POST',

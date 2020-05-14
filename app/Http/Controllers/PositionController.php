@@ -9,9 +9,9 @@ use App\Worker;
 
 class PositionController extends Controller
 {
-    //------------------------------ВЫПАДАЮЩИЙ СПИСОК---------------------------
+    //---------------ВЫПАДАЮЩИЙ СПИСОК при добавлении сотрудника----------------
     
-    public function getAjaxList(Request $request)
+    public function getAjaxListForAdd(Request $request)
     {
         $options = $request->all();
         
@@ -40,6 +40,9 @@ class PositionController extends Controller
     }
     
     //--------------------------------------------------------------------------
+    
+    
+    //-------------ВЫПАДАЮЩИЙ СПИСОК при редактировании сотрудника--------------
     
     public function getAjaxListForUpdate(Request $request)
     {
@@ -75,4 +78,6 @@ class PositionController extends Controller
         
         return response(['positionsList' => $positionsList, 'options' => $request->all()], 200);
     }
+    
+    //--------------------------------------------------------------------------
 }

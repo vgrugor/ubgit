@@ -8,42 +8,43 @@
             <ul class="list-group">
                 <li class="list-group-item">
                     <a href="{{ route('adminOrganizationsList') }}">Керування організаціями</a>
-                    <span class="badge">25</span>
+                    <span class="badge">{{ $count['organizations'] }}</span>
                 </li>
                 <li class="list-group-item">
                     <a href="{{ route('adminDepartmentsList') }}">Керування відділами</a>
-                    <span class="badge">25</span>
+                    <span class="badge">{{ $count['departments'] }}</span>
                 </li>
                 <li class="list-group-item">
                     <a href="{{ route('adminDivisionsList') }}">Керування підрозділами</a>
-                    <span class="badge">25</span>
+                    <span class="badge">{{ $count['divisions'] }}</span>
                 </li>
                 <li class="list-group-item">
                     <a href="{{ route('adminPositionsList') }}">Керування посадами</a>
-                    <span class="badge">25</span>
+                    <span class="badge">{{ $count['positions'] }}</span>
                 </li>
                 <li class="list-group-item">
                     <a href="{{ route('adminWorkersList') }}">Керування працівниками</a>
+                    <span class="badge">{{ $count['workers'] }}</span>
                 </li>
                 <li class="list-group-item">
                     <a href="{{ route('adminVpnStatusesList') }}">Статуси для vpn</a>
-                    <span class="badge">25</span>
+                    <span class="badge">{{ $count['vpnStatuses'] }}</span>
                 </li>
                 <li class="list-group-item">
                     <a href="{{ route('adminDrillsList') }}">Керування свердловинами</a>
-                    <span class="badge">25</span>
+                    <span class="badge">{{ $count['drills'] }}</span>
                 </li>
                 <li class="list-group-item">
                     <a href="{{ route('adminDrillTypesList') }}">Типи свердловин</a>
-                    <span class="badge">25</span>
+                    <span class="badge">{{ $count['drillTypes'] }}</span>
                 </li>
                 <li class="list-group-item">
                     <a href="{{ route('adminActualStagesList') }}">Фактичні стадії буріння</a>
-                    <span class="badge">25</span>
+                    <span class="badge">{{ $count['actualStages'] }}</span>
                 </li>
                 <li class="list-group-item">
                     <a href="{{ route('adminInternetStatusesList') }}">Статуси інтернету</a>
-                    <span class="badge">25</span>
+                    <span class="badge">{{ $count['internetStatuses'] }}</span>
                 </li>
                 <!--
                 <li class="list-group-item">
