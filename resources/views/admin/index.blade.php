@@ -35,6 +35,10 @@
                     <span class="badge">{{ $count['drills'] }}</span>
                 </li>
                 <li class="list-group-item">
+                    <a href="{{ route('adminMotorcadesList') }}">Керування колонами автомобільної техніки</a>
+                    <span class="badge">{{ $count['motorcades'] }}</span>
+                </li>
+                <li class="list-group-item">
                     <a href="{{ route('adminDrillTypesList') }}">Типи свердловин</a>
                     <span class="badge">{{ $count['drillTypes'] }}</span>
                 </li>
