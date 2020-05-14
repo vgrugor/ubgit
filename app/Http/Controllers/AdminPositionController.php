@@ -26,9 +26,11 @@ class AdminPositionController extends Controller
         $positions = Position::leftJoin('organizations', 'organizations.id', '=', 'positions.organization_id')
                 ->leftJoin('departments', 'departments.id', '=', 'positions.department_id')
                 ->leftJoin('divisions', 'divisions.id', '=', 'positions.division_id')
+                ->leftJoin('workers', 'workers.position_id', '=', 'positions.id')
                 ->select('organizations.name as organization',
                         'departments.name as department', 
-                        'divisions.name as division', 
+                        'divisions.name as division',
+                        'workers.name as worker',
                         'positions.id as id',
                         'positions.name as name', 
                         'divisions.note as note')

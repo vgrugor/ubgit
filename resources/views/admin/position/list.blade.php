@@ -46,6 +46,7 @@
                     <th scope="col">Відділ</th>
                     <th scope="col">Підрозділ</th>
                     <th scope="col">Назва посади</th>
+                    <th>Статус</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -56,7 +57,12 @@
                             <td class="text-nowrap">{{ $positionItem->organization }}</td>
                             <td>{{ $positionItem->department }}</td>
                             <td>{{ $positionItem->division }}</td>
-                            <td>{{ $positionItem->name }}</td>
+                            <td>
+                                <strong>{{ $positionItem->name }}</strong>
+                                <br>
+                                <i>({{ $positionItem->worker }})</i>
+                            </td>
+                            <td>{{ $positionItem->worker == NULL ? 'вакансія' : 'зайнята' }}</td>
                             <td>
                                 <a href="{{ route('positionUpdate', $positionItem->id) }}" title="Редагувати"><i class="far fa-edit"></i></a>
                             </td>
