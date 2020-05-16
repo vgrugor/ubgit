@@ -12,6 +12,7 @@
             <form method="post" action="{{ route('workerSave', $worker->id) }}">
                 <div class="form-group">
                     <label for="organization_id">Оберіть організацію</label>
+                    <a href="{{ route('organizationAdd') }}" title="Додати організацію" target="_blank"><i class="far fa-plus-square"></i></a>
                     <select name="organization_id" class="form-control" id="organization_id" onchange="getDepartments()">
                         <option value="">не обрано</option>
                         @foreach($organizationsList as $organizationItem)
@@ -23,6 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label for="department_id">Оберіть відділ</label>
+                    <a href="{{ route('departmentAdd') }}" title="Додати відділ" target="_blank"><i class="far fa-plus-square"></i></a>
                     <select name="department_id" class="form-control" id="department_id" onchange="getDivisionsForUpdateWorker()">
                         <option value="">не обрано</option>
                         @foreach ($departmentsList as $departmentItem)
@@ -34,6 +36,7 @@
                 </div>
                 <div class="form-group">
                     <label for="division_id">Оберіть підрозділ</label>
+                    <a href="{{ route('divisionAdd') }}" title="Додати підрозділ" target="_blank"><i class="far fa-plus-square"></i></a>
                     <select name="division_id" class="form-control" id="division_id" onchange="getPositionsForUpdateWorker()">
                         <option value="0">не обрано</option>
                         @foreach ($divisionsList as $divisionItem)
@@ -45,6 +48,7 @@
                 </div>
                 <div class="form-group">
                     <label for="position_id">Оберіть посаду</label>
+                    <a href="{{ route('positionAdd') }}" title="Додати посаду" target="_blank"><i class="far fa-plus-square"></i></a>
                     <select name="position_id" class="form-control" id="position_id">
                         <option value="">не обрано</option>
                         @foreach ($positionsList as $positionItem)

@@ -21,7 +21,7 @@
             <form method="post" action="{{ route('workerStore') }}">
                 <div class="form-group">
                     <label for="organization_id">Оберіть організацію</label>
-                    <a href="{{ route('organizationAdd') }}" title="Додати посаду" target="_blank"><i class="far fa-plus-square"></i></a>
+                    <a href="{{ route('organizationAdd') }}" title="Додати організацію" target="_blank"><i class="far fa-plus-square"></i></a>
                     <select name="organization_id" class="form-control" id="organization_id" onchange="getDepartments()">
                         <option value="">не обрано</option>
                         @foreach($organizationsList as $organizationItem)
@@ -31,14 +31,14 @@
                 </div>
                 <div class="form-group">
                     <label for="department_id">Оберіть відділ</label>
-                    <a href="{{ route('departmentAdd') }}" title="Додати посаду" target="_blank"><i class="far fa-plus-square"></i></a>
+                    <a href="{{ route('departmentAdd') }}" title="Додати відділ" target="_blank"><i class="far fa-plus-square"></i></a>
                     <select name="department_id" class="form-control" id="department_id" onchange="getDivisions()">
                         <option value="">не обрано</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="division_id">Оберіть підрозділ</label>
-                    <a href="{{ route('divisionAdd') }}" title="Додати посаду" target="_blank"><i class="far fa-plus-square"></i></a>
+                    <a href="{{ route('divisionAdd') }}" title="Додати підрозділ" target="_blank"><i class="far fa-plus-square"></i></a>
                     <select name="division_id" class="form-control" id="division_id" onchange="getPositions()">
                         <option value="0">не обрано</option>
                     </select>
