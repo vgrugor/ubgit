@@ -74,6 +74,7 @@ Route::get('directory/drill_type', 'DirectoryController@drillsTypesList')->name(
 Route::get('directory/vpn_statuses', 'DirectoryController@vpnStatusesList')->name('vpnStatusesList');
 Route::get('directory/datagroup_statuses', 'DirectoryController@dataGroupStatusesList')->name('dataGroupStatusesList');
 Route::get('directory/actual_stages', 'DirectoryController@actualStagesList')->name('actualStagesList');
+Route::get('directory/motorcades', 'DirectoryController@motorcadesList')->name('motorcadesList');
 
 //------------------------------------------------------------------------------
 

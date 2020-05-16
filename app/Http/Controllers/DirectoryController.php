@@ -13,6 +13,7 @@ use App\Drill_type;
 use App\Vpn_status;
 use App\Internet_status;
 use App\Actual_stage;
+use App\Motorcade;
 
 class DirectoryController extends Controller
 {
@@ -117,5 +118,12 @@ class DirectoryController extends Controller
         $actualStages = Actual_stage::select('name')->get();
         
         return view('directory.actual_stages')->with('actualStagesList', $actualStages);
+    }
+    
+    public function motorcadesList()
+    {
+        $motorcades = Motorcade::select('name', 'address', 'note')->get();
+        
+        return view('directory.motorcades')->with('motorcadesList', $motorcades);
     }
 }

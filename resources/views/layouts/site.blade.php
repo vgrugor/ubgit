@@ -42,6 +42,7 @@
                         <a class="dropdown-item" href="{{ route('divisionsList') }}">Підрозділи</a>
                         <a class="dropdown-item" href="{{ route('positionsList') }}">Посади</a>
                         <a class="dropdown-item" href="{{ route('workersList') }}">Працівники</a>
+                        <a class="dropdown-item" href="{{ route('motorcadesList') }}">Колони автомобільної техніки</a>
                         <a class="dropdown-item" href="{{ route('drillsTypesList') }}">Типи бурових</a>
                         <a class="dropdown-item" href="{{ route('vpnStatusesList') }}">Статуси vpn</a>
                         <a class="dropdown-item" href="{{ route('dataGroupStatusesList') }}">Статуси інтернету</a>
