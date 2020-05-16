@@ -11,6 +11,7 @@
             </div>
             <div class="col-sm-2 text-right">
                 <a href="{{ route('workerUpdate', $worker->id) }}" title="Редагувати"><i class="far fa-edit"></i></a>
+                <a href="#" title="Звільнити"><i class="far fa-calendar-times"></i></a>
             </div>
         </div>
         <br/>

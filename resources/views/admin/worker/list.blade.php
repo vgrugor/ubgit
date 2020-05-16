@@ -79,6 +79,9 @@
                                 <a href="{{ route('workerUpdate', $workerItem->id) }}" title="Редагувати"><i class="far fa-edit"></i></a>
                             </td>
                             <td>
+                                <a href="#" title="Звільнити"><i class="far fa-calendar-times"></i></a>
+                            </td>
+                            <td>
                                 <a href="#" title="Видалити"><i class="far fa-trash-alt"></i></a>
                             </td>
                         </tr>

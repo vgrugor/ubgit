@@ -194,6 +194,12 @@ Route::get('admin/actualstages', 'AdminActualStageController@actualStagesList')-
 
 Route::get('admin/motorcades', 'AdminMotorcadeController@motorcadesList')->name('adminMotorcadesList');
 
+Route::get('admin/motorcade/add', 'AdminMotorcadeController@add')->name('motorcadeAdd');
+Route::post('admin/motorcade/add', 'AdminMotorcadeController@store')->name('motorcadeStore');
+
+Route::get('admin/motorcade/update/{id}', 'AdminMotorcadeController@update')->name('motorcadeUpdate');
+Route::post('admin/motorcade/update/{id}', 'AdminMotorcadeController@save')->name('motorcadeSave');
+
 //------------------------------------------------------------------------------
 
 //******************************************************************************

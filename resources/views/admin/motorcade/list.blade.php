@@ -6,7 +6,7 @@
             <h1 class="text-center">Керування колонами автомобільної техніки</h1>
             <br/>
             <p class="text-right">
-                <a href="#">
+                <a href="{{route('motorcadeAdd')}}">
                     <i class="fas fa-plus-circle"></i>
                     Додати колону автомобільної техніки
                 </a>
@@ -28,7 +28,7 @@
                             <td>{{ $motorcadeItem->address }}</td>
                             <td>{{ $motorcadeItem->note }}</td>
                             <td>
-                                <a href="#" title="Редагувати"><i class="far fa-edit"></i></a>
+                                <a href="{{route('motorcadeUpdate', $motorcadeItem->id)}}" title="Редагувати"><i class="far fa-edit"></i></a>
                             </td>
                             <td>
                                 <a href="#" title="Видалити"><i class="far fa-trash-alt"></i></a>

@@ -40,7 +40,7 @@ class AdminOrganizationController extends Controller
         $organization->fill($data);
         $organization->save();
         
-        return redirect('adminOrganizationsList');
+        return redirect()->route('adminOrganizationsList');
     }
     
     //--------------------------------------------------------------------------
