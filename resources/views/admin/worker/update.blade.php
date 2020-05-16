@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group">
                     <label for="department_id">Оберіть відділ</label>
-                    <select name="department_id" class="form-control" id="department_id" onchange="getDivisions()">
+                    <select name="department_id" class="form-control" id="department_id" onchange="getDivisionsForUpdateWorker()">
                         <option value="">не обрано</option>
                         @foreach ($departmentsList as $departmentItem)
                             <option value="{{ $departmentItem->id }}" {{ $departmentItem->id == $worker->department_id ? 'selected' : '' }}>

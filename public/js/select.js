@@ -77,7 +77,34 @@ function getPositions(){
     });
 };
 
+//получить перечень подразделений для выпадающего списка 
+//по отделу при редактировании работника
+function getDivisionsForUpdateWorker(){
+    $("#division_id").html('<option value="0">не обрано</option>');
+    
+    var url = '/division/getAjaxList';
+    
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: {department: $("#department_id").val()},
+        
+        success:function(data){
+            //alert('ajax успешно выполнен');
+            $("#division_id").html(data.divisionsList);
+            console.log(data);
+        },
+        
+        error: function (result) {
+            alert('Ошибка');
+            console.log(result);
+        }
+    });
+    getPositionsForUpdateWorker()
+};
 
+//получить перечень должностей для выпадающего списка 
+//по подразделению или отделу при редактировании работника
 function getPositionsForUpdateWorker(){
     var url = '/position/getAjaxListForUpdate';
     
