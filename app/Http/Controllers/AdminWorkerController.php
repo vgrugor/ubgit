@@ -12,6 +12,7 @@ use App\Drill;
 use App\Organization;
 use App\Vpn_status;
 use App\Motorcade;
+use App\Organization_type;
 
 class AdminWorkerController extends Controller
 {
@@ -144,7 +145,13 @@ class AdminWorkerController extends Controller
         
         $drills = Drill::select('id', 'name')->get();
         
+        $motorcades = Motorcade::select('id', 'name')->get();
+        
         $vpns = Vpn_status::select('id', 'name')->get();
+        
+        //для определения, какой выпадающий список отображать
+        $organizationTypeId = Organization::where('id', $worker->organization_id)->pluck('type');
+        $organizationType = Organization_type::find($organizationTypeId)->first();
         
         return view('admin.worker.update')->with([
             'organizationsList' => $organizations,
@@ -152,8 +159,10 @@ class AdminWorkerController extends Controller
             'divisionsList' => $divisions,
             'positionsList' => $positions,
             'drillsList' => $drills,
+            'motorcadesList' => $motorcades,
             'vpnsList' => $vpns,
-            'worker' => $worker
+            'worker' => $worker,
+            'organizationType' => $organizationType
         ]);
     }
     
