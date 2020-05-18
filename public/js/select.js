@@ -26,6 +26,10 @@ function getDepartments(){
     });
     $("#division_id").html('<option value="0">не обрано</option>');
     $("#position_id").html('<option value="0">не обрано</option>');
+    
+    if($("#organization_id").val() > 0){
+        getOrganizationType();
+    };
 };
 
 //получить перечень подразделений для выпадающего списка по отделу
@@ -128,3 +132,56 @@ function getPositionsForUpdateWorker(){
         }
     });
 };
+
+
+function getOrganizationType() {
+    var url = '/organization/getAjaxOrganizationType';
+    
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: {organization: $("#organization_id").val()},
+        
+        success:function(data){
+            console.log(data);
+            if (data == 'ВБР') 
+            {
+                showDrill();
+            }
+            else if (data == 'ВТТіСТ') {
+                showMotorcare();
+            }
+            else {
+                hideDrillMotorcade();
+            }
+        },
+        
+        error: function (result) {
+            alert('Ошибка получения типа организации');
+            console.log(result);
+        }
+    });
+};
+
+//показать поле с выбором буровой
+function showDrill(){
+    document.getElementById('drill_form').classList.remove('d-none');
+    document.getElementById('motorcade_form').classList.add('d-none');
+    $("#motorcade_id").val("0");
+}
+
+//показать поле с выбором автоколоны
+function showMotorcare(){
+    document.getElementById('motorcade_form').classList.remove('d-none');
+    document.getElementById('drill_form').classList.add('d-none');
+    $("#drill_id").val("0");
+}
+
+//скрыть поля для выбора автоколоны и буровой
+function hideDrillMotorcade(){
+    document.getElementById('motorcade_form').classList.add('d-none');
+    document.getElementById('drill_form').classList.add('d-none');
+    $("#drill_id").val("0");
+    $("#motorcade_id").val("0");
+}
+

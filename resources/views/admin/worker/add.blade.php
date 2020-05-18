@@ -50,12 +50,21 @@
                         <option value="">не обрано</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group d-none" id="drill_form">
                     <label for="drill_id">Оберіть свердловину</label>
                     <select name="drill_id" class="form-control" id="drill_id">
                         <option value="0">не обрано</option>
                         @foreach($drillsList as $drillItem)
                             <option value="{{ $drillItem->id }}">{{ $drillItem->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group d-none" id="motorcade_form">
+                    <label for="motorcade_id">Оберіть колону автомобільної техніки</label>
+                    <select name="motorcade_id" class="form-control" id="motorcade_id">
+                        <option value="0">не обрано</option>
+                        @foreach($motorcadesList as $motorcadeItem)
+                            <option value="{{ $motorcadeItem->id }}">{{ $motorcadeItem->name }}</option>
                         @endforeach
                     </select>
                 </div>

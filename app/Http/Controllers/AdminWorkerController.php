@@ -11,6 +11,7 @@ use App\Position;
 use App\Drill;
 use App\Organization;
 use App\Vpn_status;
+use App\Motorcade;
 
 class AdminWorkerController extends Controller
 {
@@ -60,10 +61,12 @@ class AdminWorkerController extends Controller
     {
         $organizations = Organization::select('id', 'name')->get();
         $drills = Drill::select('id', 'name')->get();
+        $motorcades = Motorcade::select('id', 'name')->get();
         $vpns = Vpn_status::select('id', 'name')->get();
         
         return view('admin.worker.add')->with(['organizationsList' => $organizations,
                 'drillsList' => $drills,
+                'motorcadesList' => $motorcades,
                 'vpnsList' => $vpns
             ]);
     }
