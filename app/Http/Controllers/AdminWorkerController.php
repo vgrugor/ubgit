@@ -93,7 +93,7 @@ class AdminWorkerController extends Controller
         $worker->fill($data);
         $worker->save();
         
-        return redirect()->route('adminWorkersList');
+        return redirect()->route('viewWorker', $worker->id);
     }
     
     //--------------------------------------------------------------------------
@@ -130,12 +130,6 @@ class AdminWorkerController extends Controller
         $divisions = Division::select('id', 'name')
                 ->where('department_id', $worker->department_id)
                 ->get();
-        /*
-        $positions = Position::select('id', 'name')
-                ->where('department_id', $worker->department_id)
-                ->where('division_id', $worker->division_id)
-                ->get();
-        */
         
         $positions = Position::leftJoin('workers', 'workers.position_id', '=', 'positions.id')
                 ->select('positions.id as id', 'positions.name as name')
@@ -182,7 +176,7 @@ class AdminWorkerController extends Controller
         
         $worker->save();
         
-        return redirect()->route('adminWorkersList');
+        return redirect()->route('viewWorker', $worker->id);
     }
 
     //--------------------------------------------------------------------------
