@@ -76,17 +76,18 @@ class AdminWorkerController extends Controller
     {
         
         $this->validate($request, [
-            'organization_id' => 'required',
-            'department_id' => 'required',
-            'division_id' => '',
-            'position_id' => 'required',
-            'drill_id' => '',
+            'organization_id' => 'required|integer',
+            'department_id' => 'required|integer',
+            'division_id' => 'integer',
+            'position_id' => 'required|integer',
+            'drill_id' => 'integer',
+            'motorcade_id' => 'integer',
             'name' => 'required|max:100',
             'account_ad' => 'max:50',
             'phone_number' => 'max:14',
             'phone_number2' => 'max:14',
             'email' => 'max:256',
-            'vpn_status_id' => '',
+            'vpn_status_id' => 'integer',
             'date_refresh' => '',
             'note' => ''
         ]);
@@ -112,6 +113,7 @@ class AdminWorkerController extends Controller
                         'workers.name as name',
                         'workers.position_id as position_id',
                         'workers.drill_id as drill_id',
+                        'workers.motorcade_id as motorcade_id',
                         'workers.account_ad as account_ad', 
                         'workers.phone_number as phone_number', 
                         'workers.phone_number2 as phone_number2', 
@@ -171,11 +173,24 @@ class AdminWorkerController extends Controller
         $worker = Worker::find($id);
         
         $this->validate($request, [
+            'organization_id' => 'required|integer',
+            'department_id' => 'required|integer',
+            'division_id' => 'integer',
             'position_id' => 'required|integer',
-            'name' => 'required|max:100'
+            'drill_id' => 'integer',
+            'motorcade_id' => 'integer',
+            'name' => 'required|max:100',
+            'account_ad' => 'max:50',
+            'phone_number' => 'max:14',
+            'phone_number2' => 'max:14',
+            'email' => 'max:256',
+            'vpn_status_id' => 'integer',
+            'date_refresh' => '',
+            'note' => ''
         ]);
         
         $worker->drill_id = $request->drill_id;
+        $worker->motorcade_id = $request->motorcade_id;
         $worker->position_id = $request->position_id;
         $worker->name = $request->name;
         $worker->account_ad = $request->account_ad;

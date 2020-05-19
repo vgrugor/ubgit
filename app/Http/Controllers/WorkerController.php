@@ -51,6 +51,7 @@ class WorkerController extends Controller
                 ->leftJoin('divisions', 'divisions.id', '=', 'positions.division_id')
                 ->leftJoin('organizations', 'organizations.id', '=', 'positions.organization_id')
                 ->leftJoin('drills', 'drills.id', '=', 'workers.drill_id')
+                ->leftJoin('motorcades', 'motorcades.id', '=', 'workers.motorcade_id')
                 ->leftJoin('vpn_statuses', 'vpn_statuses.id', '=', 'workers.vpn_status_id')
                 ->select(['workers.id', 'workers.name', 'workers.phone_number',
                     'workers.phone_number2',
@@ -60,6 +61,7 @@ class WorkerController extends Controller
                     'divisions.name as division',
                     'positions.name as position',
                     'drills.name as drill',
+                    'motorcades.name as motorcade',
                     'vpn_statuses.name as vpn'])
                 ->where('workers.id', $id)
                 ->first();

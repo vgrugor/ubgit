@@ -72,6 +72,14 @@
                 {{ $worker->drill }}
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <p><strong>Колона автомобільної техніки:</strong></p>
+            </div>
+            <div class="col">
+                {{ $worker->motorcade }}
+            </div>
+        </div>
         <hr>
         <div class="row">
             <div class="col-sm-4">
