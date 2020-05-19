@@ -62,7 +62,6 @@
                         <th scope="col">ПІБ</th>
                         <th scope="col">Примітка</th>
                         <th></th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="tableForSearch">
@@ -77,12 +76,8 @@
                             <td>{{ $workerItem->note }}</td>
                             <td>
                                 <a href="{{ route('workerUpdate', $workerItem->id) }}" title="Редагувати"><i class="far fa-edit"></i></a>
-                            </td>
-                            <td>
                                 <a href="#" title="Звільнити"><i class="far fa-calendar-times"></i></a>
-                            </td>
-                            <td>
-                                <a href="#" title="Видалити"><i class="far fa-trash-alt"></i></a>
+                                <!--<a href="#" title="Видалити"><i class="far fa-trash-alt"></i></a>-->
                             </td>
                         </tr>
                     @endforeach

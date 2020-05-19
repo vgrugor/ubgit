@@ -46,7 +46,7 @@
             <!------------------------------------------------------------------------------------------------------------->
             
             <br/>
-            <table class="table table-hover">
+            <table class="table table-sm table-hover table-responsive">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Організація</th>
