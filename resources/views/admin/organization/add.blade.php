@@ -24,6 +24,15 @@
                     <input type="text" name="name" id="name" class="form-control" value="">
                 </div>
                 <div class="form-group">
+                    <label for="type">Оберіть тип організації</label>
+                    <select name="type" class="form-control" id="type">
+                        <option value="0">не обрано</option>
+                        @foreach ($organizationTypesList as $organizationTypeItem)
+                            <option value="{{ $organizationTypeItem->id }}" >{{ $organizationTypeItem->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="address">Вкажіть адресу</label>
                     <input type="text" name="address" id="address" class="form-control" value="">
                 </div>

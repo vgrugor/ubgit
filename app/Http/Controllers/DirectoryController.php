@@ -19,7 +19,12 @@ class DirectoryController extends Controller
 {
     public function organizationsList()
     {
-        $organizations = Organization::select('name', 'address', 'note')->get();
+        $organizations = Organization::leftJoin('organization_types', 'organization_types.id', '=', 'organizations.type')
+                ->select('organizations.name', 
+                        'organization_types.name as type', 
+                        'address', 
+                        'note')
+                ->get();
         
         return view('directory.organizations')->with('organizationsList', $organizations);
     }
