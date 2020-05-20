@@ -99,6 +99,7 @@ Route::get('admin', 'AdminController@index')->name('admin');
 //------------------------------------------------------------------------------
 
 //------------------------------ОРГАНИЗАЦИИ-------------------------------------
+
 Route::get('admin/organizations', 'AdminOrganizationController@organizationsList')->name('adminOrganizationsList');
 //Редактирование
 Route::get('admin/organization/update/{id}', 'AdminOrganizationController@update')->name('organizationUpdate');
@@ -147,13 +148,20 @@ Route::post('admin/position/update/{id}', 'AdminPositionController@save')->name(
 
 //------------------------------СОТРУДНИКИ--------------------------------------
 
+//Список сотрудников в админке
 Route::get('admin/workers', 'AdminWorkerController@workersList')->name('adminWorkersList');
 
+//Добавление сотрудника
 Route::get('admin/worker/add', 'AdminWorkerController@add')->name('workerAdd');
 Route::post('admin/worker/add', 'AdminWorkerController@store')->name('workerStore');
 
+//Обновление информации о сотруднике
 Route::get('admin/worker/update/{id}', 'AdminWorkerController@update')->name('workerUpdate');
 Route::post('admin/worker/update/{id}', 'AdminWorkerController@save')->name('workerSave');
+
+//Увольнение сотрудника
+Route::get('admin/worker/dismiss/{id}', 'AdminWorkerController@dismiss')->name('dismissWorker');
+Route::get('admin/worker/remove/{id}', 'AdminWorkerController@remove')->name('removeWorker');
 
 //------------------------------------------------------------------------------
 

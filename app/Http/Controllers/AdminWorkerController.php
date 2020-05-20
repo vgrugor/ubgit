@@ -207,4 +207,31 @@ class AdminWorkerController extends Controller
     }
 
     //--------------------------------------------------------------------------
+    
+    
+    //------------------------УВОЛЬНЕНИЕ СОТРУДНИКА-----------------------------
+    
+    public function dismiss($id)
+    {
+        $worker = Worker::find($id);
+        
+        $position = Position::find($worker->position_id);
+        
+        return view('admin.worker.dismiss')->with(['worker' => $worker,
+                'position' => $position
+                ]);
+    }
+    
+    public function remove($id)
+    {
+        $worker = Worker::find($id);
+        
+        $worker->position_id = NULL;
+        
+        $worker->save();
+        
+        return redirect()->route('adminWorkersList');
+    }
+
+    //--------------------------------------------------------------------------
 }
