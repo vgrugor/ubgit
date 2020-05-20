@@ -54,6 +54,7 @@
             <table class="table table-hover">
                 <thead class="thead-dark">
                     <tr>
+                        <th>id</th>
                         <th scope="col">Організація</th>
                         <th scope="col">Відділ</th>
                         <th scope="col">Підрозділ</th>
@@ -62,12 +63,12 @@
                         <th scope="col">ПІБ</th>
                         <th scope="col">Примітка</th>
                         <th></th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="tableForSearch">
                     @foreach ($workersList as $workerItem)
                         <tr>
+                            <td>{{ $workerItem->id }}</td>
                             <td>{{ $workerItem->organization }}</td>
                             <td>{{ $workerItem->department }}</td>
                             <td>{{ $workerItem->division }}</td>
@@ -77,12 +78,8 @@
                             <td>{{ $workerItem->note }}</td>
                             <td>
                                 <a href="{{ route('workerUpdate', $workerItem->id) }}" title="Редагувати"><i class="far fa-edit"></i></a>
-                            </td>
-                            <td>
-                                <a href="#" title="Звільнити"><i class="far fa-calendar-times"></i></a>
-                            </td>
-                            <td>
-                                <a href="#" title="Видалити"><i class="far fa-trash-alt"></i></a>
+                                <a href="{{ route('dismissWorker', $workerItem->id) }}" title="Звільнити"><i class="far fa-calendar-times"></i></a>
+                                <!--<a href="#" title="Видалити"><i class="far fa-trash-alt"></i></a>-->
                             </td>
                         </tr>
                     @endforeach

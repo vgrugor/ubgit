@@ -11,6 +11,10 @@
         <div class="col-sm-6">
             <form method="post" action="{{ route('workerSave', $worker->id) }}">
                 <div class="form-group">
+                    <label for="worker_id">id працівника</label>
+                    <input type="text" name="worker_id" value="{{ $worker->id }}" id="worker_id" disabled class="form-control">
+                </div>
+                <div class="form-group">
                     <label for="organization_id">Оберіть організацію</label>
                     <a href="{{ route('organizationAdd') }}" title="Додати організацію" target="_blank"><i class="far fa-plus-square"></i></a>
                     <select name="organization_id" class="form-control" id="organization_id" onchange="getDepartments()">
@@ -72,13 +76,9 @@
                     <select name="motorcade_id" class="form-control" id="motorcade_id">
                         <option value="0">не обрано</option>
                         @foreach($motorcadesList as $motorcadeItem)
-                            <option value="{{ $motorcadeItem->id }}">{{ $motorcadeItem->name }}</option>
+                            <option value="{{ $motorcadeItem->id }}" {{ $motorcadeItem->id == $worker->motorcade_id ? 'selected' : '' }}>{{ $motorcadeItem->name }}</option>
                         @endforeach
                     </select>
-                </div>
-                <div class="form-group">
-                    <label for="worker_id">id працівника</label>
-                    <input type="text" name="worker_id" value="{{ $worker->id }}" id="worker_id" disabled class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="name">Прізвище Ім'я Побатькові</label>

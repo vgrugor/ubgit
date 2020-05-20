@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Organization;
+use App\Organization_type;
 
 class AdminOrganizationController extends Controller
 {
@@ -12,7 +13,12 @@ class AdminOrganizationController extends Controller
     
     public function organizationsList()
     {
-        $organizations = Organization::select('id', 'name', 'address', 'note')->get();
+        $organizations = Organization::leftJoin('organization_types', 'organization_types.id', '=', 'organizations.type')
+                ->select('organizations.id as id', 
+                        'organizations.name as name', 
+                        'organization_types.name as type',
+                        'address', 
+                        'note')->get();
         
         return view('admin.organization.list')->with('organizationsList', $organizations);
     }
@@ -24,13 +30,16 @@ class AdminOrganizationController extends Controller
     
     public function add()
     {
-        return view('admin.organization.add');
+        $organizationTypes = Organization_type::select('id', 'name')->get();
+        
+        return view('admin.organization.add')->with('organizationTypesList', $organizationTypes);
     }
     
     public function store(Request $request)
     {
         $this->validate($request, [
                 'name' => 'required|max:50|unique:organizations,name',
+                'type' => 'integer',
                 'address' => 'max:200'
             ]);
         
@@ -52,7 +61,13 @@ class AdminOrganizationController extends Controller
     {
         $organization = Organization::find($id);
         
-        return view('admin.organization.update')->with('organization', $organization);
+        $organizationTypes = Organization_type::select('id', 'name')->get();
+        
+        return view('admin.organization.update')
+                ->with([
+                    'organization' => $organization,
+                    'organizationTypesList' => $organizationTypes
+                ]);
     }
     
     public function save($id, Request $request)
@@ -60,11 +75,13 @@ class AdminOrganizationController extends Controller
         $organization = Organization::find($id);
         
         $this->validate($request, [
-            'name' => 'required|max:50|unique:organizations,name',
+            'name' => 'required|max:50',
+            'type' => 'integer',
             'address' => 'max:200'
         ]);
         
         $organization->name = $request->input('name');
+        $organization->type = $request->input('type');
         $organization->address = $request->input('address');
         $organization->note = $request->input('note');
         

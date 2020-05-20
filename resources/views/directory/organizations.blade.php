@@ -9,6 +9,7 @@
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">Назва</th>
+                    <th scope="col">Тип</th>
                     <th scope="col">Адреса</th>
                     <th scope="col">Примітка</th>
                 </tr>
@@ -17,6 +18,7 @@
                     @foreach($organizationsList as $organizationItem)
                         <tr>
                             <td>{{ $organizationItem->name }}</td>
+                            <td>{{ $organizationItem->type }}</td>
                             <td>{{ $organizationItem->address }}</td>
                             <td>{{ $organizationItem->note }}</td>
                         </tr>

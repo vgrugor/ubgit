@@ -8,7 +8,9 @@ use Carbon\Carbon;
 
 class Worker extends Model
 {
-    protected $fillable = ['drill_id', 
+    protected $fillable = [
+        'drill_id', 
+        'motorcade_id',
         'position_id', 
         'name', 
         'account_ad',
