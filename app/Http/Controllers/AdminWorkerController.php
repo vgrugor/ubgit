@@ -152,8 +152,12 @@ class AdminWorkerController extends Controller
         $vpns = Vpn_status::select('id', 'name')->get();
         
         //для определения, какой выпадающий список отображать
+        /*
         $organizationTypeId = Organization::where('id', $worker->organization_id)->pluck('type');
         $organizationType = Organization_type::find($organizationTypeId)->first();
+         */
+        $organizationType = Organization::getOrganizationType($worker->organization_id);
+        
         
         return view('admin.worker.update')->with([
             'organizationsList' => $organizations,

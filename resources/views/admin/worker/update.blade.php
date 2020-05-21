@@ -62,8 +62,8 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group {{ $organizationType->name == 'ВБР' ? : 'd-none' }}" id="drill_form">
-                    <label for="drill_id">Оберіть свердловину {{ $organizationType->name }}</label>
+                <div class="form-group {{ $organizationType == 'ВБР' ? : 'd-none' }}" id="drill_form">
+                    <label for="drill_id">Оберіть свердловину</label>
                     <select name="drill_id" class="form-control" id="drill_id">
                         <option value="0">не обрано</option>
                         @foreach($drillsList as $drillItem)
@@ -71,7 +71,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group {{ $organizationType->name == 'ВТТіСТ' ? : 'd-none'}}" id="motorcade_form">
+                <div class="form-group {{ $organizationType == 'ВТТіСТ' ? : 'd-none'}}" id="motorcade_form">
                     <label for="motorcade_id">Оберіть колону автомобільної техніки</label>
                     <select name="motorcade_id" class="form-control" id="motorcade_id">
                         <option value="0">не обрано</option>
