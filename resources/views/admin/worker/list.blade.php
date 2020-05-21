@@ -72,7 +72,7 @@
                             <td>{{ $workerItem->organization }}</td>
                             <td>{{ $workerItem->department }}</td>
                             <td>{{ $workerItem->division }}</td>
-                            <td>{{ $workerItem->position }}</td>
+                            <td>{{ $workerItem->position == NULL ? 'ЗВІЛЬНЕНИЙ' : $workerItem->position }}</td>
                             <td>{{ $workerItem->drill }}</td>
                             <td><a href="{{ route('viewWorker', ['id' => $workerItem->id])}}">{{ $workerItem->name }}</a></td>
                             <td>{{ $workerItem->note }}</td>

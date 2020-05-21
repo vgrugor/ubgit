@@ -25,6 +25,7 @@ class WorkerController extends Controller
                     'organizations.name as organization',
                     'departments.name as department',
                     'divisions.name as division'])
+                ->whereNotNull('workers.position_id')
                 ->orderBy('name', 'asc')
                 ->get();
         
