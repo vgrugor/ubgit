@@ -10,6 +10,7 @@
                 </h1>
             </div>
             <div class="col-sm-2 text-right">
+                <a href="#" type="button" title="Створення облікового запису в AD" data-toggle="modal" data-target="#exampleModalLong">+AD</a>
                 <a href="{{ route('workerUpdate', $worker->id) }}" title="Редагувати"><i class="far fa-edit"></i></a>
                 <a href="#" title="Звільнити"><i class="far fa-calendar-times"></i></a>
             </div>
@@ -149,32 +150,141 @@
             </div>
         </div>
         <hr>
-        <div class="row">
-            <div class="col-sm-12">
-                <a href="#" data-toggle="collapse" data-target="#hide-me">Підпис для пошти</a>
-                <div id="hide-me" class="collapse in">
-                    <p>
-                        З повагою,<br>
-                        {{ $worker->name }} <br>
-                        {{ $worker->position }} {{ $worker->drill }}
-                    <p>
+          
 
-                    <p>
-                        Полтавське ВБР<br>
-                        БУ «Укрбургаз» <br>
-                        АТ «Укргазвидобування»
-                    </p>
-                    <img src=" {{ asset('img/worker/view/logo.jpg') }}">
+        <!-- Модальное окно создания учетной записи в AD -->
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Створення облікового запису в AD</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>ПІБ:</strong></p>
+                            </div>
+                            <div class="col">
+                                {{ $worker->name }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>Логін:</strong></p>
+                            </div>
+                            <div class="col">
+                                {{ App\Worker::getTranslitName($worker->name) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>Пароль:</strong></p>
+                            </div>
+                            <div class="col">
+                                a-123456 
+                                b-123456<br>
+                                c-123456 
+                                d-123456
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>email:</strong></p>
+                            </div>
+                            <div class="col">
+                                {{ $worker->email }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>Пароль email:</strong></p>
+                            </div>
+                            <div class="col">
+                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>Сервер пошти:</strong></p>
+                            </div>
+                            <div class="col">
+                                mailubg
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>Сервер LDAP:</strong></p>
+                            </div>
+                            <div class="col">
+                                ugv.corp
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>Параметри:</strong></p>
+                            </div>
+                            <div class="col">
+                                
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>vpn:</strong></p>
+                            </div>
+                            <div class="col">
+                                ra.ugv.com.ua
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>Підпис:</strong></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div>
+                                    <p>
+                                        З повагою,<br>
+                                        {{ $worker->name }} <br>
+                                        {{ $worker->position }} {{ $worker->drill }}
+                                    <p>
 
-                    <p>
-                        вул. Ковалівська, 5<br>
-                        м. Полтава, 36015, а/с 1715, Україна
-                    </p>
+                                    <p>
+                                        Полтавське ВБР<br>
+                                        БУ «Укрбургаз» <br>
+                                        АТ «Укргазвидобування»
+                                    </p>
+                                    <img src=" {{ asset('img/worker/view/logo.jpg') }}">
 
-                    <p>
-                        Тел.: {{ $worker->phone_number }} <br>
-                        <a href="#">{{ $worker->email }}</a>
-                    </p>
+                                    <p>
+                                        вул. Ковалівська, 5<br>
+                                        м. Полтава, 36015, а/с 1715, Україна
+                                    </p>
+
+                                    <p>
+                                        Тел.: {{ $worker->phone_number }} <br>
+                                        <a href="#">{{ $worker->email }}</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>Додатково:</strong></p>
+                            </div>
+                            <div class="col">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                    </div>
                 </div>
             </div>
         </div>

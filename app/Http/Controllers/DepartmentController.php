@@ -19,6 +19,7 @@ class DepartmentController extends Controller
         
         $departments = Department::select('id', 'name')
                 ->where('departments.organization_id', $options['organization'])
+                ->orderBy('name')
                 ->get();
         
         $departmentsList[] = '<option value="">не обрано</option>';
