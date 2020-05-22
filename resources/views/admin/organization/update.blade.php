@@ -37,6 +37,10 @@
                     <input type="text" name="address" id="address" class="form-control" value="{{ $organization->address }}">
                 </div>
                 <div class="form-group">
+                    <label for="prefix">Префікс (UBG_)</label>
+                    <input type="text" name="prefix" id="prefix" class="form-control" value="{{ $organization->prefix }}">
+                </div>
+                <div class="form-group">
                     <label for="note">Примітка</label>
                     <textarea name="note" id="note" class="form-control">{{ $organization->note }}</textarea>
                 </div>

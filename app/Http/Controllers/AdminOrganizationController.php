@@ -17,6 +17,7 @@ class AdminOrganizationController extends Controller
                 ->select('organizations.id as id', 
                         'organizations.name as name', 
                         'organization_types.name as type',
+                        'organizations.prefix as prefix',
                         'address', 
                         'note')->get();
         
@@ -40,6 +41,7 @@ class AdminOrganizationController extends Controller
         $this->validate($request, [
                 'name' => 'required|max:50|unique:organizations,name',
                 'type' => 'integer',
+                'prefix' => 'max:10',
                 'address' => 'max:200'
             ]);
         
@@ -77,11 +79,13 @@ class AdminOrganizationController extends Controller
         $this->validate($request, [
             'name' => 'required|max:50',
             'type' => 'integer',
+            'prefix' => 'max:10',
             'address' => 'max:200'
         ]);
         
         $organization->name = $request->input('name');
         $organization->type = $request->input('type');
+        $organization->prefix = $request->input('prefix');
         $organization->address = $request->input('address');
         $organization->note = $request->input('note');
         
