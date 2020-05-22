@@ -67,6 +67,11 @@ class WorkerController extends Controller
                 ->where('workers.id', $id)
                 ->first();
         
-        return view('worker.view')->with('worker', $worker);
+        $password = Worker::createPasswordAd($worker->id);
+        
+        return view('worker.view')->with([
+            'worker' => $worker,
+            'password' => $password
+        ]);
     }
 }
