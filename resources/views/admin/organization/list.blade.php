@@ -17,6 +17,7 @@
                     <th scope="col">Назва</th>
                     <th scope="col">Тип</th>
                     <th scope="col">Адреса</th>
+                    <th scope="col">Префікс</th>
                     <th scope="col">Примітка</th>
                     <th></th>
                     <th></th>
@@ -28,6 +29,7 @@
                             <td>{{ $organizationItem->name }}</td>
                             <td>{{ $organizationItem->type }}</td>
                             <td>{{ $organizationItem->address }}</td>
+                            <td>{{ $organizationItem->prefix }}</td>
                             <td>{{ $organizationItem->note }}</td>
                             <td>
                                 <a href="{{ route('organizationUpdate', $organizationItem->id) }}" title="Редагувати"><i class="far fa-edit"></i></a>

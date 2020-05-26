@@ -11,7 +11,7 @@
             </p>
             <div class="text-center">
                 <a href="{{ route('adminWorkersList') }}" class="btn btn-secondary" role="button">Відмінити</a>
-                <a href="{{ route('removeWorker', $worker->id) }}" role='button' class="btn btn-danger">Видалити</a>
+                <a href="{{ route('removeWorker', $worker->id) }}" role='button' class="btn btn-danger">Звільнити</a>
             </div>
         </div>
     </div>

@@ -231,6 +231,9 @@ class AdminWorkerController extends Controller
         $worker = Worker::find($id);
         
         $worker->position_id = NULL;
+        $worker->email = NULL;
+        $worker->drill_id = NULL;
+        $worker->motorcade_id = NULL;
         
         $worker->save();
         

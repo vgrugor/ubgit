@@ -12,7 +12,7 @@
             <div class="col-sm-2 text-right">
                 <a href="#" type="button" title="Створення облікового запису в AD" data-toggle="modal" data-target="#exampleModalLong">+AD</a>
                 <a href="{{ route('workerUpdate', $worker->id) }}" title="Редагувати"><i class="far fa-edit"></i></a>
-                <a href="#" title="Звільнити"><i class="far fa-calendar-times"></i></a>
+                <a href="{{ route('dismissWorker', $worker->id) }}" title="Звільнити"><i class="far fa-calendar-times"></i></a>
             </div>
         </div>
         <br/>
@@ -162,6 +162,15 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-sm-4">
+                                <p><strong>Ім'я ПК:</strong></p>
+                            </div>
+                            <div class="col">
+                                UBG03
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
                                 <p><strong>ПІБ:</strong></p>
                             </div>
                             <div class="col">
@@ -181,6 +190,7 @@
                                 <p><strong>Пароль:</strong></p>
                             </div>
                             <div class="col">
+                                {{ $password }}<br>
                                 a-123456 
                                 b-123456<br>
                                 c-123456 
@@ -225,7 +235,7 @@
                                 <p><strong>Параметри:</strong></p>
                             </div>
                             <div class="col">
-                                
+                                ou=ugv,dc=ugv,dc=corp
                             </div>
                         </div>
                         <hr>
@@ -282,7 +292,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
                         <!--<button type="button" class="btn btn-primary">Save changes</button>-->
                     </div>
                 </div>

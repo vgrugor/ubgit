@@ -79,4 +79,73 @@ class Worker extends Model
         
         return false;
     }
+    
+    /**
+     * Автоматическая генерация пароля при создании пользователя в AD
+     * @param type $workerId
+     * @return string
+     */
+    public static function createPasswordAd($workerId)
+    {
+        $worker = Worker::find($workerId);
+        
+        $workerNameArray = explode(' ', $worker->name);
+        
+        if (count($workerNameArray) < 3) { 
+            return 'Неповне ПІБ';
+        }
+        
+        $password = '';
+        
+        foreach ($workerNameArray as $workerNameItem) {
+            $password .= mb_substr($workerNameItem, 0, 1);
+        }
+        
+        $password .= '-0159';
+        
+        $password = mb_strtolower($password);
+        
+        $password = mb_strtoupper(mb_substr($password, 0, 1)) . mb_substr($password, 1);
+        
+        $englishPassword = self::convertPasswordToEnglish($password);
+        
+        return $englishPassword;
+    }
+    
+    private static function convertPasswordToEnglish($password)
+    {
+        $converter = [
+            "а" => "f",             "б" => ",",             "в" => "d", 
+            "г" => "u",             "ґ" => "u",             "д" => "l", 
+            "е" => "t",             "є" => "'",             "ё" => "`", 
+            "ж" => ";",             "з" => "p",             "и" => "b", 
+            "і" => "s",             "ї" => "]",             "й" => "q", 
+            "к" => "r",             "л" => "k",             "м" => "v", 
+            "н" => "y",             "о" => "j",             "п" => "g", 
+            "р" => "h",             "с" => "c",             "т" => "n", 
+            "у" => "e",             "ф" => "a",             "х" => "[", 
+            "ц" => "w",             "ч" => "x",             "ш" => "i", 
+            "щ" => "o",             "ъ" => "",              "ы" => "s", 
+            "ь" => "m",             "э" => "'",             "ю" => ".", 
+            "я" => "z",             "і" => "s",             "ї" => "]", 
+            "А" => "F",             "Б" => "<",             "В" => "D", 
+            "Г" => "S",             "Ґ" => "U",             "Д" => "L", 
+            "Е" => "E",             "Ё" => "",              "Ж" => ":", 
+            "З" => "P",             "И" => "B",             "Й" => "Q", 
+            "К" => "R",             "Л" => "K",             "М" => "V", 
+            "Н" => "Y",             "О" => "J",             "П" => "G", 
+            "Р" => "H",             "С" => "C",             "Т" => "N", 
+            "У" => "E",             "Ф" => "A",             "Х" => "{", 
+            "Ц" => "W",             "Ч" => "X",             "Ш" => "I", 
+            "Щ" => "O",             "Ъ" => "",              "Ы" => "S", 
+            "Ь" => "M",             "Э" => "'",             "Ю" => ">", 
+            "Я" => "Z",             "’" => "",              "І" => "S", 
+            "Ї" => "}",             "Є" => '"',             "'" => "", 
+            " " => " ",             "." => "."
+        ];
+        
+        $englishPassword = strtr($password, $converter);
+        
+        return $englishPassword;
+    }
 }
