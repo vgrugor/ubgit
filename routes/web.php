@@ -206,7 +206,7 @@ Route::get('admin/actualstages', 'AdminActualStageController@actualStagesList')-
 
 //-------------------------------АВТОКОЛОННЫ------------------------------------
 
-Route::get('admin/motorcades', 'AdminMotorcadeController@motorcadesList')->name('adminMotorcadesList');
+Route::get('admin/motorcades', 'AdminMotorcadeController@motorcadesList')->name('adminMotorcadesList')->middleware('auth');
 
 Route::get('admin/motorcade/add', 'AdminMotorcadeController@add')->name('motorcadeAdd');
 Route::post('admin/motorcade/add', 'AdminMotorcadeController@store')->name('motorcadeStore');
@@ -224,3 +224,7 @@ Route::post('admin/motorcade/update/{id}', 'AdminMotorcadeController@save')->nam
 Route::get('test1', 'TestController@test1')->name('test');
 
 Route::post('ajax', 'TestController@returnAjax');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
