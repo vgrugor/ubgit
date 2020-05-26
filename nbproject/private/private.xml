@@ -4,9 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/OServer/OSPanel/domains/ubgit/routes/web.php</file>
-            <file>file:/C:/OServer/OSPanel/domains/ubgit/app/Http/Controllers/AdminPositionController.php</file>
+            <file>file:/C:/OServer/OSPanel/domains/ubgit/resources/views/admin/organization/add.blade.php</file>
+            <file>file:/C:/OServer/OSPanel/domains/ubgit/app/Http/Controllers/AdminOrganizationController.php</file>
+            <file>file:/C:/OServer/OSPanel/domains/ubgit/resources/views/admin/organization/update.blade.php</file>
             <file>file:/C:/OServer/OSPanel/domains/ubgit/.env</file>
-            <file>file:/C:/OServer/OSPanel/domains/ubgit/resources/views/admin/position/list.blade.php</file>
+            <file>file:/C:/OServer/OSPanel/domains/ubgit/resources/views/admin/organization/list.blade.php</file>
         </group>
     </open-files>
 </project-private>
