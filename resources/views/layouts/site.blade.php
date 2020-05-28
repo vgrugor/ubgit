@@ -58,8 +58,26 @@
             </ul>
             
             <div class="row justify-content-end">
-                <div class="col-sm-2 text-right">
-                    <a href="/user/login">Вхід</a>
+                
+                <div>
+                    @guest
+                        <a href="{{ route('login') }}">{{ __('Вхід') }}</a>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}">{{ __('Зареєструватися') }}</a>
+                        @endif
+                    @else
+                        <a id="navbarDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+                        <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                            {{ __('Вихід') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endguest
                 </div>
             </div>
 

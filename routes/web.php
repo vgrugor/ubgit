@@ -83,6 +83,14 @@ Route::get('directory/motorcades', 'DirectoryController@motorcadesList')->name('
 
 //------------------------------------------------------------------------------
 
+//---------------------------ДОСТУП ЗАПРЕЩЕН------------------------------------
+
+Route::get('access_denied', function(){
+    return view('access_denied');
+})->name('access_denied');
+
+//------------------------------------------------------------------------------
+
 //******************************************************************************
 //******************************************************************************
 
@@ -94,7 +102,9 @@ Route::get('directory/motorcades', 'DirectoryController@motorcadesList')->name('
 
 //----------------------------ГЛАВНАЯ АДМИНКИ-----------------------------------
 
-Route::get('admin', 'AdminController@index')->name('admin');
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('admin', 'AdminController@index')->middleware('auth', 'admin')->name('admin');
+
 
 //------------------------------------------------------------------------------
 
@@ -215,7 +225,7 @@ Route::get('admin/motorcade/update/{id}', 'AdminMotorcadeController@update')->na
 Route::post('admin/motorcade/update/{id}', 'AdminMotorcadeController@save')->name('motorcadeSave');
 
 //------------------------------------------------------------------------------
-
+});
 //******************************************************************************
 //******************************************************************************
 
