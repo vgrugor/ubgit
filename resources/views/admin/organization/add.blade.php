@@ -41,6 +41,10 @@
                     <input type="text" name="prefix" id="prefix" class="form-control" value="">
                 </div>
                 <div class="form-group">
+                    <label for="add_ad">Додати ПК в AD (скрипт PowerShell)</label>
+                    <textarea name="add_ad" id="add_ad" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
                     <label for="note">Примітка</label>
                     <textarea name="note" id="note" class="form-control"></textarea>
                 </div>

@@ -8,7 +8,7 @@ use App\Organization_type;
 
 class Organization extends Model
 {
-    protected $fillable = ['name', 'type', 'address', 'note'];
+    protected $fillable = ['name', 'type', 'address', 'prefix', 'add_ad', 'note'];
     
     public static function getOrganizationType($organizationId)
     {

@@ -162,6 +162,15 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-sm-4">
+                                <p><strong>Включення ПК в домен:</strong></p>
+                            </div>
+                            <div class="col-sm-8 text-break">
+                                {{ $worker->add_ad }}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-4">
                                 <p><strong>Ім'я ПК:</strong></p>
                             </div>
                             <div class="col">

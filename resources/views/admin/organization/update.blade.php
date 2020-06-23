@@ -41,6 +41,10 @@
                     <input type="text" name="prefix" id="prefix" class="form-control" value="{{ $organization->prefix }}">
                 </div>
                 <div class="form-group">
+                    <label for="add_ad">Додати ПК в AD (скрипт PowerShell)</label>
+                    <textarea name="add_ad" id="add_ad" class="form-control">{{ $organization->add_ad }}</textarea>
+                </div>
+                <div class="form-group">
                     <label for="note">Примітка</label>
                     <textarea name="note" id="note" class="form-control">{{ $organization->note }}</textarea>
                 </div>
