@@ -52,11 +52,13 @@ class AdminPositionController extends Controller
         $organizations = Organization::select('id', 'name')->get();
         $departments = Department::select('id', 'name')->get();
         $divisions = Division::select('id', 'name')->get();
+        $locations = $organizations;
         
         return view('admin.position.add')->with([
             'organizationsList' => $organizations,
             'departmentsList' => $departments,
-            'divisionsList' => $divisions
+            'divisionsList' => $divisions,
+            'locationsList' => $locations
         ]);
     }
     
@@ -66,6 +68,7 @@ class AdminPositionController extends Controller
             'organization_id' => 'required|integer',
             'department_id' => 'required|integer',
             'division_id' => 'integer',
+            'location_id' => 'integer',
             'name' => 'required|max:256'
         ]);
         
@@ -96,10 +99,13 @@ class AdminPositionController extends Controller
                 ->where('department_id', $position->department_id)
                 ->get();
         
+        $locations = $organizations;
+        
         return view('admin.position.update')->with(['position' => $position,
             'organizationsList' => $organizations,
             'departmentsList' => $departments,
-            'divisionsList' => $divisions
+            'divisionsList' => $divisions,
+            'locationsList' => $locations
         ]);
     }
     
@@ -111,12 +117,14 @@ class AdminPositionController extends Controller
             'organization_id' => 'required|integer',
             'department_id' => 'required|integer',
             'division_id' => 'required|integer',
+            'location_id' => 'required|integer',
             'name' => 'required|max:256',
         ]);
         
         $position->organization_id = $request->organization_id;
         $position->department_id = $request->department_id;
         $position->division_id = $request->division_id;
+        $position->location_id = $request->location_id;
         $position->name = $request->name;
         
         $position->save();

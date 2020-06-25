@@ -49,6 +49,17 @@
                     <input type="text" name="name" value="" class="form-control" id="name">
                 </div>
                 <div class="form-group">
+                    <label for="location_id">Розташування робочого місця</label>
+                    <select name="location_id" class="form-control" id="location_id">
+                        <option value="0">не обрано</option>
+                        @foreach ($locationsList as $locationItem)
+                            <option value="{{ $locationItem->id }}">
+                                {{ $locationItem->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
                     <input type="submit" name="submit" value="Додати" role="button" class="btn btn-success">
                 </div>
                 {{ csrf_field() }}

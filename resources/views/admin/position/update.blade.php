@@ -57,6 +57,17 @@
                     <label for="name">Назва посади</label>
                     <input type="text" name="name" value="{{ $position->name }}" class="form-control" id="name">
                 </div>
+                <div class="form-group">
+                    <label for="location_id">Розташування робочого місця</label>
+                    <select name="location_id" class="form-control" id="location_id">
+                        <option value="0">не обрано</option>
+                        @foreach ($locationsList as $locationItem)
+                            <option value="{{ $locationItem->id }}" {{ $locationItem->id == $position->location_id ? 'selected' : '' }}>
+                                {{ $locationItem->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="form-group text-right">
                     <a href="{{ route('adminPositionsList') }}" class="btn btn-secondary" role="button">Відмінити</a>
                     <input type="submit" name="submit" value="Зберегти" class="btn btn-primary" role="button">
