@@ -59,6 +59,7 @@ class WorkerController extends Controller
                     'workers.account_ad', 'workers.email', 'workers.note', 'workers.date_refresh', 
                     'organizations.name as organization',
                     'organizations.add_ad as add_ad',
+                    'organizations.address as address',
                     'departments.name as department',
                     'divisions.name as division',
                     'positions.name as position',

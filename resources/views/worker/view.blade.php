@@ -279,8 +279,7 @@
                                     <img src=" {{ asset('img/worker/view/logo.jpg') }}">
 
                                     <p>
-                                        вул. Ковалівська, 5<br>
-                                        м. Полтава, 36015, а/с 1715, Україна
+                                        {{ $worker->address }}
                                     </p>
 
                                     <p>
