@@ -277,7 +277,9 @@
 
                                     <p>
                                         {{ $worker->organization }}<br>
-                                        БУ «Укрбургаз» <br>
+                                        @if(!$isBu)
+                                            БУ «Укрбургаз» {{ $isBu }}<br>
+                                        @endif
                                         АТ «Укргазвидобування»
                                     </p>
                                     <img src=" {{ asset('img/worker/view/logo.jpg') }}">

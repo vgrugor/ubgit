@@ -20,4 +20,14 @@ class Organization extends Model
         
         return $organizationType->name;
     }
+    
+    public static function organizationTypeIsBu($organizationId)
+    {
+        $organizationType = self::getOrganizationType($organizationId);
+        
+        if ($organizationType == 'БУ') {
+            return true;
+        }
+        return false;
+    }
 }

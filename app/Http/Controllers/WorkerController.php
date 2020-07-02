@@ -57,6 +57,7 @@ class WorkerController extends Controller
                 ->select(['workers.id', 'workers.name', 'workers.phone_number',
                     'workers.phone_number2',
                     'workers.account_ad', 'workers.email', 'workers.note', 'workers.date_refresh', 
+                    'organizations.id as organization_id',
                     'organizations.name as organization',
                     'organizations.add_ad as add_ad',
                     'organizations.address as address',
@@ -71,9 +72,12 @@ class WorkerController extends Controller
         
         $password = Worker::createPasswordAd($worker->id);
         
+        $isBu = Organization::organizationTypeIsBu($worker->organization_id);
+        
         return view('worker.view')->with([
             'worker' => $worker,
-            'password' => $password
+            'password' => $password,
+            'isBu' => $isBu
         ]);
     }
 }
