@@ -103,7 +103,9 @@
                 <p><strong>Email:</strong></p>
             </div>
             <div class="col">
-                {{ $worker->email }}
+                <a href="mailto:{{ $worker->email }}">
+                    {{ $worker->email }}
+                </a>
             </div>
         </div>
         <div class="row">
@@ -264,6 +266,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
+                                <!-- -------------------Подпись для эл почты-------------------- -->
                                 <div>
                                     <p>
                                         З повагою,<br>
@@ -293,6 +296,7 @@
                                         <a href="#">{{ $worker->email }}</a>
                                     </p>
                                 </div>
+                                <!-- -------------------------------------------------------------- -->
                             </div>
                         </div>
                         <hr>
