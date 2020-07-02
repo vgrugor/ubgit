@@ -268,11 +268,15 @@
                                     <p>
                                         З повагою,<br>
                                         {{ $worker->name }} <br>
-                                        {{ $worker->position }} {{ $worker->drill }}
+                                        {{ $worker->position }} {{ $worker->drill }}<br>
+                                        @if($worker->division)
+                                            {{ $worker->division }}<br>
+                                        @endif
+                                        {{ $worker->department }}
                                     <p>
 
                                     <p>
-                                        Полтавське ВБР<br>
+                                        {{ $worker->organization }}<br>
                                         БУ «Укрбургаз» <br>
                                         АТ «Укргазвидобування»
                                     </p>
