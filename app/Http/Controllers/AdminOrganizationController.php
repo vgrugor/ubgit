@@ -87,6 +87,7 @@ class AdminOrganizationController extends Controller
         $organization->type = $request->input('type');
         $organization->prefix = $request->input('prefix');
         $organization->add_ad = $request->input('add_ad');
+        $organization->add_ad2 = $request->input('add_ad2');
         $organization->address = $request->input('address');
         $organization->note = $request->input('note');
         

@@ -60,10 +60,12 @@ class WorkerController extends Controller
                     'organizations.id as organization_id',
                     'organizations.name as organization',
                     'organizations.add_ad as add_ad',
+                    'organizations.add_ad2 as add_ad2',
                     'organizations.address as address',
                     'departments.name as department',
                     'divisions.name as division',
                     'positions.name as position',
+                    'positions.location_id as location_id',
                     'drills.name as drill',
                     'motorcades.name as motorcade',
                     'vpn_statuses.name as vpn'])
@@ -73,11 +75,18 @@ class WorkerController extends Controller
         $password = Worker::createPasswordAd($worker->id);
         
         $isBu = Organization::organizationTypeIsBu($worker->organization_id);
+        $isVbr = Organization::organizationTypeIsVbr($worker->organization_id);
+        $isVttist = Organization::organizationTypeIsVttist($worker->organization_id);
+        
+        $location = Organization::getOrganizationNameById($worker->location_id);
         
         return view('worker.view')->with([
             'worker' => $worker,
             'password' => $password,
-            'isBu' => $isBu
+            'isBu' => $isBu,
+            'isVbr' => $isVbr,
+            'isVttist' => $isVttist,
+            'location' => $location
         ]);
     }
 }

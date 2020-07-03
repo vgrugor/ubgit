@@ -37,12 +37,16 @@
                     <input type="text" name="address" id="address" class="form-control" value="">
                 </div>
                 <div class="form-group">
-                    <label for="prefix">Префікс (UBG_)</label>
+                    <label for="prefix">Префікс UBG_ (для імені ПК)</label>
                     <input type="text" name="prefix" id="prefix" class="form-control" value="">
                 </div>
                 <div class="form-group">
-                    <label for="add_ad">Додати ПК в AD (скрипт PowerShell)</label>
+                    <label for="add_ad">Додати ПК в AD (скрипт PowerShell для 1-го користувача)</label>
                     <textarea name="add_ad" id="add_ad" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="add_ad2">Додати ПК в AD (скрипт PowerShell для 2-го користувача)</label>
+                    <textarea name="add_ad2" id="add_ad2" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="note">Примітка</label>

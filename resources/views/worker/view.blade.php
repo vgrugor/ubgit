@@ -69,22 +69,36 @@
                 {{ $worker->position }}
             </div>
         </div>
+        <hr>
         <div class="row">
             <div class="col-sm-4">
-                <p><strong>Бурова:</strong></p>
+                <p><strong>Посада закріплена за:</strong></p>
             </div>
             <div class="col">
-                {{ $worker->drill }}
+                {{ $location }}
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <p><strong>Колона автомобільної техніки:</strong></p>
+        <!-- -----------------------Буровая или КАТ------------------------- -->
+        @if($isVbr)
+            <div class="row">
+                <div class="col-sm-4">
+                    <p><strong>Бурова:</strong></p>
+                </div>
+                <div class="col">
+                    {{ $worker->drill }}
+                </div>
             </div>
-            <div class="col">
-                {{ $worker->motorcade }}
+        @elseif($isVttist)
+            <div class="row">
+                <div class="col-sm-4">
+                    <p><strong>Колона автомобільної техніки:</strong></p>
+                </div>
+                <div class="col">
+                    {{ $worker->motorcade }}
+                </div>
             </div>
-        </div>
+        @endif
+        <!-- --------------------------------------------------------------- -->
         <hr>
         <div class="row">
             <div class="col-sm-4">
@@ -172,6 +186,8 @@
                             </div>
                             <div class="col-sm-8 text-break">
                                 {{ $worker->add_ad }}
+                                <hr>
+                                {{ $worker->add_ad2 }}
                             </div>
                         </div>
                         <br>
