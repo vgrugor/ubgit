@@ -10,9 +10,13 @@
                 </h1>
             </div>
             <div class="col-sm-2 text-right">
-                <a href="#" type="button" title="Створення облікового запису в AD" data-toggle="modal" data-target="#exampleModalLong">+AD</a>
+                @if($worker->position)
+                    <a href="#" type="button" title="Створення облікового запису в AD" data-toggle="modal" data-target="#exampleModalLong">+AD</a>
+                @endif
                 <a href="{{ route('workerUpdate', $worker->id) }}" title="Редагувати"><i class="far fa-edit"></i></a>
-                <a href="{{ route('dismissWorker', $worker->id) }}" title="Звільнити"><i class="far fa-calendar-times"></i></a>
+                @if($worker->position)
+                    <a href="{{ route('dismissWorker', $worker->id) }}" title="Звільнити"><i class="far fa-calendar-times"></i></a>
+                @endif
             </div>
         </div>
         <br/>
@@ -121,7 +125,7 @@
             <div class="col-sm-4">
                 <p><strong>Примітка:</strong></p>
             </div>
-            <div class="col">
+            <div class="col text-danger">
                 {{ $worker->note }}
             </div>
         </div>

@@ -67,7 +67,7 @@
                             <td>{{ $workerItem->position }}</td>
                             <td>{{ $workerItem->drill }}</td>
                             <td><a href="{{ route('viewWorker', ['id' => $workerItem->id])}}">{{ $workerItem->name }}</a></td>
-                            <td>{{ $workerItem->note }}</td>
+                            <td class="text-danger">{{ $workerItem->note }}</td>
                         </tr>
                     @endforeach
                 </tbody>
