@@ -74,6 +74,8 @@ class WorkerController extends Controller
         
         $password = Worker::createPasswordAd($worker->id);
         
+        $pcName = Worker::getNamePcByWorkerId($worker->id);
+        
         $isBu = Organization::organizationTypeIsBu($worker->organization_id);
         $isVbr = Organization::organizationTypeIsVbr($worker->organization_id);
         $isVttist = Organization::organizationTypeIsVttist($worker->organization_id);
@@ -86,7 +88,8 @@ class WorkerController extends Controller
             'isBu' => $isBu,
             'isVbr' => $isVbr,
             'isVttist' => $isVttist,
-            'location' => $location
+            'location' => $location,
+            'pcName' => $pcName
         ]);
     }
 }

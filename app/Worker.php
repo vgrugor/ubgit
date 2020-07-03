@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 use Carbon\Carbon;
 
+use App\Organization;
+
 class Worker extends Model
 {
     protected $fillable = [
@@ -147,5 +149,74 @@ class Worker extends Model
         $englishPassword = strtr($password, $converter);
         
         return $englishPassword;
+    }
+    
+    /**
+     * Получить ФИО работника по его ид
+     * @param int $workerId
+     * @return string
+     */
+    
+    public static function getTranslitWorkerNameById($workerId)
+    {
+        $worker = self::find($workerId);
+        
+        $translitWorkerName = self::getTranslitName($worker->name);
+        
+        return $translitWorkerName;
+    }
+    
+    /**
+     * Получить фамилию сотрудника по id
+     * @param type $workerId
+     * @return type
+     */
+    public static function getWorkerLastNameById($workerId)
+    {
+        $workerName = self::getTranslitWorkerNameById($workerId);
+        
+        //dump($workerName);
+        
+        $workerNameArray = explode('.', $workerName);
+        
+        if(count($workerNameArray) > 1) {
+            
+            return $workerNameArray[1];
+        }
+    }
+    
+    public static function getNamePcByWorkerId($workerId)
+    {
+        $workerLastName = self::getWorkerLastNameById($workerId);
+        
+        //dump($workerLastName);
+        
+        $workerLastNameUpper = mb_strtoupper($workerLastName);
+        
+        $locationPfefix = self::getWorkerLocationPrefix($workerId);
+        
+        $pcName = $locationPfefix . $workerLastNameUpper;
+        
+        return $pcName;
+    }
+    
+    /**
+     * Получить префикс для организации, в которой размещен работник, по его ид
+     * @param id $workerId
+     * @return string
+     */
+    public static function getWorkerLocationPrefix($workerId)
+    {
+        //$worker = self::find($workerId)->leftJoin('positions', 'positions.id', '=', 'workers.position_id');
+        
+        $worker = self::select('location_id')->where('workers.id', $workerId)
+                ->leftJoin('positions', 'positions.id', '=', 'workers.position_id')
+                ->first();
+        
+        $workerLocationId = $worker->location_id;
+        
+        $organizationPrefix = Organization::getOrganizationPrefixById($workerLocationId);
+        
+        return $organizationPrefix;
     }
 }

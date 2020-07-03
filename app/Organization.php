@@ -57,4 +57,16 @@ class Organization extends Model
         }
         return false;
     }
+    
+    /**
+     * Получить префикс организации для имени ПК, по ее ид
+     * @param type $organizationId
+     * @return type
+     */
+    public static function getOrganizationPrefixById($organizationId)
+    {
+        $organization = Organization::find($organizationId);
+        
+        return $organization->prefix;
+    }
 }

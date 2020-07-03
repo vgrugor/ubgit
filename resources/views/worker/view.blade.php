@@ -196,7 +196,7 @@
                                 <p><strong>Ім'я ПК:</strong></p>
                             </div>
                             <div class="col">
-                                UBG03
+                                {{ $pcName }}
                             </div>
                         </div>
                         <hr>
