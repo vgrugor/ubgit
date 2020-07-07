@@ -22,10 +22,10 @@
         <br/>
         <div class="row">
             <div class="col-sm-4">
-                <p><strong>Транслітерація:</strong></p>
+                <p><strong>Транслітерація для аккаунта в AD:</strong></p>
             </div>
             <div class="col">
-                {{ App\Worker::getTranslitName($worker->name) }}
+                {{ App\Worker::createAccountAd($worker->name) }}
             </div>
         </div>
         <div class="row">
@@ -213,7 +213,7 @@
                                 <p><strong>Логін:</strong></p>
                             </div>
                             <div class="col">
-                                {{ App\Worker::getTranslitName($worker->name) }}
+                                {{ App\Worker::createAccountAd($worker->name) }}
                             </div>
                         </div>
                         <div class="row">

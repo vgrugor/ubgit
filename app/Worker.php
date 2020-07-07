@@ -32,7 +32,7 @@ class Worker extends Model
         return '-';
     }
     
-    public static function getTranslitName($workerName)
+    public static function getTranslit($text)
     {
         $converter = [
             "а" => "a",             "б" => "b",             "в" => "v", 
@@ -61,20 +61,29 @@ class Worker extends Model
             "Ь" => "",              "Э" => "E",             "Ю" => "Yu", 
             "Я" => "Ya",            "’" => "",              "І" => "I", 
             "Ї" => "Yi",            "Є" => "Ye",            "'" => "", 
-            " " => ".",             "." => "."
+            " " => " ",             "." => "."
         ];
         
+        $translitText = strtr($text, $converter);
+        
+        return $translitText;
+    }
+    
+
+    public static function createAccountAd($workerName)
+    {        
         //преобразуем строку в массив
         $dividedWorkerNameArray = explode(' ', $workerName);
         
         //если в массиве есть хотя бы имя и фамилия, разделенный пробелом
         if (count($dividedWorkerNameArray) > 1) {
+            
             list($lastName, $firstName) = $dividedWorkerNameArray;
             
             //правильная последовательность: имя фамилия
-            $workerNameForTranslit = $firstName . ' ' . $lastName;
+            $workerNameForTranslit = $firstName . '.' . $lastName;
         
-            $translitWorkerName = strtr($workerNameForTranslit, $converter);
+            $translitWorkerName = self::getTranslit($workerNameForTranslit);
             
             return $translitWorkerName;
         }
@@ -161,7 +170,7 @@ class Worker extends Model
     {
         $worker = self::find($workerId);
         
-        $translitWorkerName = self::getTranslitName($worker->name);
+        $translitWorkerName = self::getTranslit($worker->name);
         
         return $translitWorkerName;
     }
@@ -175,21 +184,17 @@ class Worker extends Model
     {
         $workerName = self::getTranslitWorkerNameById($workerId);
         
-        //dump($workerName);
-        
-        $workerNameArray = explode('.', $workerName);
+        $workerNameArray = explode(' ', $workerName);
         
         if(count($workerNameArray) > 1) {
             
-            return $workerNameArray[1];
+            return $workerNameArray[0];
         }
     }
     
     public static function getNamePcByWorkerId($workerId)
     {
         $workerLastName = self::getWorkerLastNameById($workerId);
-        
-        //dump($workerLastName);
         
         $workerLastNameUpper = mb_strtoupper($workerLastName);
         
