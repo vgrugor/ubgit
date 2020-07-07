@@ -31,7 +31,10 @@
                     <label for="note">Примітка</label>
                     <textarea name="note" id="note" class="form-control"></textarea>
                 </div>
-                <input type="submit" name="submit" value="Додати" class="btn btn-success" role="button">
+                <div class="form-group text-right">
+                    <a href="{{ route('adminMotorcadesList') }}" class="btn btn-secondary" role="button">Відмінити</a>
+                    <input type="submit" name="submit" value="Додати" class="btn btn-success" role="button">
+                </div>
                 {{ csrf_field() }}
             </form>
         </div>

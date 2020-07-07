@@ -59,7 +59,8 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group text-right">
+                    <a href="{{ route('adminPositionsList') }}" class="btn btn-secondary" role="button">Відмінити</a>
                     <input type="submit" name="submit" value="Додати" role="button" class="btn btn-success">
                 </div>
                 {{ csrf_field() }}
