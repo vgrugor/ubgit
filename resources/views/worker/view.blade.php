@@ -173,6 +173,7 @@
           
 
         <!-- Модальное окно создания учетной записи в AD -->
+        
         <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -185,9 +186,9 @@
                                 <p><strong>Включення ПК в домен:</strong></p>
                             </div>
                             <div class="col-sm-8 text-break">
-                                {{ $worker->add_ad }}
+                                {{ $scriptAddAd['user1'] }}
                                 <hr>
-                                {{ $worker->add_ad2 }}
+                                {{ $scriptAddAd['user2'] }}
                             </div>
                         </div>
                         <br>
@@ -286,7 +287,9 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
+                                
                                 <!-- -------------------Подпись для эл почты-------------------- -->
+                                
                                 <div>
                                     <p>
                                         З повагою,<br>
@@ -316,7 +319,9 @@
                                         <a href="#">{{ $worker->email }}</a>
                                     </p>
                                 </div>
+                                
                                 <!-- -------------------------------------------------------------- -->
+                                
                             </div>
                         </div>
                         <hr>

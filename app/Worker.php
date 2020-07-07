@@ -93,7 +93,7 @@ class Worker extends Model
     
     /**
      * Автоматическая генерация пароля при создании пользователя в AD
-     * @param type $workerId
+     * @param int $workerId
      * @return string
      */
     public static function createPasswordAd($workerId)
@@ -207,12 +207,11 @@ class Worker extends Model
     
     /**
      * Получить префикс для организации, в которой размещен работник, по его ид
-     * @param id $workerId
+     * @param int $workerId
      * @return string
      */
     public static function getWorkerLocationPrefix($workerId)
     {
-        //$worker = self::find($workerId)->leftJoin('positions', 'positions.id', '=', 'workers.position_id');
         
         $worker = self::select('location_id')->where('workers.id', $workerId)
                 ->leftJoin('positions', 'positions.id', '=', 'workers.position_id')
@@ -223,5 +222,18 @@ class Worker extends Model
         $organizationPrefix = Organization::getOrganizationPrefixById($workerLocationId);
         
         return $organizationPrefix;
+    }
+    
+    public static function getScriptAddAdByLocation($workerId)
+    {
+        $worker = self::select('location_id')->where('workers.id', $workerId)
+                ->leftJoin('positions', 'positions.id', '=', 'workers.position_id')
+                ->first();
+        
+        $workerLocationId = $worker->location_id;
+        
+        $organizationAddAd = Organization::getScriptAddAdById($workerLocationId);
+        
+        return $organizationAddAd;
     }
 }

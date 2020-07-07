@@ -59,8 +59,6 @@ class WorkerController extends Controller
                     'workers.account_ad', 'workers.email', 'workers.note', 'workers.date_refresh', 
                     'organizations.id as organization_id',
                     'organizations.name as organization',
-                    'organizations.add_ad as add_ad',
-                    'organizations.add_ad2 as add_ad2',
                     'organizations.address as address',
                     'departments.name as department',
                     'divisions.name as division',
@@ -82,6 +80,8 @@ class WorkerController extends Controller
         
         $location = Organization::getOrganizationNameById($worker->location_id);
         
+        $scriptAddAd = Worker::getScriptAddAdByLocation($worker->id);
+        
         return view('worker.view')->with([
             'worker' => $worker,
             'password' => $password,
@@ -89,7 +89,8 @@ class WorkerController extends Controller
             'isVbr' => $isVbr,
             'isVttist' => $isVttist,
             'location' => $location,
-            'pcName' => $pcName
+            'pcName' => $pcName,
+            'scriptAddAd' => $scriptAddAd
         ]);
     }
 }

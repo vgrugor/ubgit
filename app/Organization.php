@@ -69,4 +69,19 @@ class Organization extends Model
         
         return $organization->prefix;
     }
+    
+    /**
+     * Получить скрипты добавления ПК в домен для 2-ух пользователей по ид организации
+     * @param int $organizationId
+     * @return array
+     */
+    public static function getScriptAddAdById($organizationId)
+    {
+        $organization = Organization::find($organizationId);
+        
+        $add_ad['user1'] = $organization->add_ad;
+        $add_ad['user2'] = $organization->add_ad2;
+        
+        return $add_ad;
+    }
 }
