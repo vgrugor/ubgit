@@ -20,7 +20,9 @@
                 <tr>
                     <th scope="col">ПІБ</th>
                     <th scope="col">Акаунт в AD</th>
-                    <th scope="col">Телефон</th>
+                    @auth
+                        <th scope="col">Телефон</th>
+                    @endauth
                     <th scope="col">email</th>
                     <th scope="col">vpn</th>
                     <th scope="col">Примітка</th>
@@ -35,10 +37,12 @@
                             <td>
                                 {{ $workerItem->account_ad }}
                             </td>
-                            <td class="text-nowrap">
-                                {{ $workerItem->phone_number }} <br> 
-                                {{ $workerItem->phone_number2 }}
-                            </td>
+                            @auth
+                                <td class="text-nowrap">
+                                    {{ $workerItem->phone_number }} <br> 
+                                    {{ $workerItem->phone_number2 }}
+                                </td>
+                            @endauth
                             <td>
                                 <a href="mailto:{{ $workerItem->email }}">
                                     {{ $workerItem->email }}

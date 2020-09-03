@@ -232,6 +232,31 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-4">
+                                <p><strong>Посада:</strong></p>
+                            </div>
+                            <div class="col">
+                                {{ $worker->position }}<br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>Відділ:</strong></p>
+                            </div>
+                            <div class="col">
+                                {{ $worker->department }}<br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>Організація:</strong></p>
+                            </div>
+                            <div class="col">
+                                БУ «Укрбургаз» (UBG)<br>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
                                 <p><strong>email:</strong></p>
                             </div>
                             <div class="col">
