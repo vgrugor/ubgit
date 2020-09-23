@@ -75,10 +75,12 @@
                             <td>{{ $workerItem->position == NULL ? 'ЗВІЛЬНЕНИЙ' : $workerItem->position }}</td>
                             <td>{{ $workerItem->drill }}</td>
                             <td><a href="{{ route('viewWorker', ['id' => $workerItem->id])}}">{{ $workerItem->name }}</a></td>
-                            <td>{{ $workerItem->note }}</td>
+                            <td class="text-danger">{{ $workerItem->note }}</td>
                             <td>
                                 <a href="{{ route('workerUpdate', $workerItem->id) }}" title="Редагувати"><i class="far fa-edit"></i></a>
-                                <a href="{{ route('dismissWorker', $workerItem->id) }}" title="Звільнити"><i class="far fa-calendar-times"></i></a>
+                                @if($workerItem->position)
+                                    <a href="{{ route('dismissWorker', $workerItem->id) }}" title="Звільнити"><i class="far fa-calendar-times"></i></a>
+                                @endif
                                 <!--<a href="#" title="Видалити"><i class="far fa-trash-alt"></i></a>-->
                             </td>
                         </tr>

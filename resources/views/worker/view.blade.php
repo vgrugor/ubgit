@@ -10,18 +10,22 @@
                 </h1>
             </div>
             <div class="col-sm-2 text-right">
-                <a href="#" type="button" title="Створення облікового запису в AD" data-toggle="modal" data-target="#exampleModalLong">+AD</a>
+                @if($worker->position)
+                    <a href="#" type="button" title="Створення облікового запису в AD" data-toggle="modal" data-target="#exampleModalLong">+AD</a>
+                @endif
                 <a href="{{ route('workerUpdate', $worker->id) }}" title="Редагувати"><i class="far fa-edit"></i></a>
-                <a href="{{ route('dismissWorker', $worker->id) }}" title="Звільнити"><i class="far fa-calendar-times"></i></a>
+                @if($worker->position)
+                    <a href="{{ route('dismissWorker', $worker->id) }}" title="Звільнити"><i class="far fa-calendar-times"></i></a>
+                @endif
             </div>
         </div>
         <br/>
         <div class="row">
             <div class="col-sm-4">
-                <p><strong>Транслітерація:</strong></p>
+                <p><strong>Транслітерація для аккаунта в AD:</strong></p>
             </div>
             <div class="col">
-                {{ App\Worker::getTranslitName($worker->name) }}
+                {{ App\Worker::createAccountAd($worker->name) }}
             </div>
         </div>
         <div class="row">
@@ -65,22 +69,36 @@
                 {{ $worker->position }}
             </div>
         </div>
+        <hr>
         <div class="row">
             <div class="col-sm-4">
-                <p><strong>Бурова:</strong></p>
+                <p><strong>Посада закріплена за:</strong></p>
             </div>
             <div class="col">
-                {{ $worker->drill }}
+                {{ $location }}
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <p><strong>Колона автомобільної техніки:</strong></p>
+        <!-- -----------------------Буровая или КАТ------------------------- -->
+        @if($isVbr)
+            <div class="row">
+                <div class="col-sm-4">
+                    <p><strong>Бурова:</strong></p>
+                </div>
+                <div class="col">
+                    {{ $worker->drill }}
+                </div>
             </div>
-            <div class="col">
-                {{ $worker->motorcade }}
+        @elseif($isVttist)
+            <div class="row">
+                <div class="col-sm-4">
+                    <p><strong>Колона автомобільної техніки:</strong></p>
+                </div>
+                <div class="col">
+                    {{ $worker->motorcade }}
+                </div>
             </div>
-        </div>
+        @endif
+        <!-- --------------------------------------------------------------- -->
         <hr>
         <div class="row">
             <div class="col-sm-4">
@@ -103,7 +121,9 @@
                 <p><strong>Email:</strong></p>
             </div>
             <div class="col">
-                {{ $worker->email }}
+                <a href="mailto:{{ $worker->email }}">
+                    {{ $worker->email }}
+                </a>
             </div>
         </div>
         <div class="row">
@@ -119,7 +139,7 @@
             <div class="col-sm-4">
                 <p><strong>Примітка:</strong></p>
             </div>
-            <div class="col">
+            <div class="col text-danger">
                 {{ $worker->note }}
             </div>
         </div>
@@ -153,6 +173,7 @@
           
 
         <!-- Модальное окно создания учетной записи в AD -->
+        
         <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -162,10 +183,21 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-sm-4">
+                                <p><strong>Включення ПК в домен:</strong></p>
+                            </div>
+                            <div class="col-sm-8 text-break">
+                                {{ $scriptAddAd['user1'] }}
+                                <hr>
+                                {{ $scriptAddAd['user2'] }}
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-4">
                                 <p><strong>Ім'я ПК:</strong></p>
                             </div>
                             <div class="col">
-                                UBG03
+                                {{ $pcName }}
                             </div>
                         </div>
                         <hr>
@@ -182,7 +214,7 @@
                                 <p><strong>Логін:</strong></p>
                             </div>
                             <div class="col">
-                                {{ App\Worker::getTranslitName($worker->name) }}
+                                {{ App\Worker::createAccountAd($worker->name) }}
                             </div>
                         </div>
                         <div class="row">
@@ -195,6 +227,31 @@
                                 b-123456<br>
                                 c-123456 
                                 d-123456
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>Посада:</strong></p>
+                            </div>
+                            <div class="col">
+                                {{ $worker->position }}<br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>Відділ:</strong></p>
+                            </div>
+                            <div class="col">
+                                {{ $worker->department }}<br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p><strong>Організація:</strong></p>
+                            </div>
+                            <div class="col">
+                                БУ «Укрбургаз» (UBG)<br>
                             </div>
                         </div>
                         <hr>
@@ -255,23 +312,31 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
+                                
+                                <!-- -------------------Подпись для эл почты-------------------- -->
+                                
                                 <div>
                                     <p>
                                         З повагою,<br>
                                         {{ $worker->name }} <br>
-                                        {{ $worker->position }} {{ $worker->drill }}
+                                        {{ $worker->position }} {{ $worker->drill }}<br>
+                                        @if($worker->division)
+                                            {{ $worker->division }}<br>
+                                        @endif
+                                        {{ $worker->department }}
                                     <p>
 
                                     <p>
-                                        Полтавське ВБР<br>
-                                        БУ «Укрбургаз» <br>
+                                        {{ $worker->organization }}<br>
+                                        @if(!$isBu)
+                                            БУ «Укрбургаз» {{ $isBu }}<br>
+                                        @endif
                                         АТ «Укргазвидобування»
                                     </p>
                                     <img src=" {{ asset('img/worker/view/logo.jpg') }}">
 
                                     <p>
-                                        вул. Ковалівська, 5<br>
-                                        м. Полтава, 36015, а/с 1715, Україна
+                                        {{ $worker->address }}
                                     </p>
 
                                     <p>
@@ -279,6 +344,9 @@
                                         <a href="#">{{ $worker->email }}</a>
                                     </p>
                                 </div>
+                                
+                                <!-- -------------------------------------------------------------- -->
+                                
                             </div>
                         </div>
                         <hr>

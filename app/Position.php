@@ -9,7 +9,8 @@ class Position extends Model
     protected $fillable = [
         'organization_id', 
         'department_id', 
-        'division_id', 
+        'division_id',
+        'location_id',
         'name'
     ];
 }

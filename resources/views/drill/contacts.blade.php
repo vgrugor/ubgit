@@ -20,7 +20,11 @@
                         <tr>
                             <td>{{ $drillItem->drill }}</td>
                             <td>{{ $drillItem->phone_number }}</td>
-                            <td>{{ $drillItem->email }}</td>
+                            <td>
+                                <a href="mailto:{{ $drillItem->email }}">
+                                    {{ $drillItem->email }}
+                                </a>
+                            </td>
                             <td>{{ $drillItem->address }}</td>
                         </tr>
                     @endforeach

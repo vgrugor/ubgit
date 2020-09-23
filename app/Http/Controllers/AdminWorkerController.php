@@ -151,13 +151,7 @@ class AdminWorkerController extends Controller
         
         $vpns = Vpn_status::select('id', 'name')->get();
         
-        //для определения, какой выпадающий список отображать
-        /*
-        $organizationTypeId = Organization::where('id', $worker->organization_id)->pluck('type');
-        $organizationType = Organization_type::find($organizationTypeId)->first();
-         */
         $organizationType = Organization::getOrganizationType($worker->organization_id);
-        
         
         return view('admin.worker.update')->with([
             'organizationsList' => $organizations,
@@ -218,6 +212,11 @@ class AdminWorkerController extends Controller
     public function dismiss($id)
     {
         $worker = Worker::find($id);
+        
+        //если сотрудник уже был уволен
+        if (!$worker->position_id) {
+            return redirect()->route('viewWorker', $worker->id);
+        }
         
         $position = Position::find($worker->position_id);
         

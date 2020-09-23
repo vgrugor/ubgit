@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 use Carbon\Carbon;
 
+use App\Organization;
+
 class Worker extends Model
 {
     protected $fillable = [
@@ -30,7 +32,7 @@ class Worker extends Model
         return '-';
     }
     
-    public static function getTranslitName($workerName)
+    public static function getTranslit($text)
     {
         $converter = [
             "а" => "a",             "б" => "b",             "в" => "v", 
@@ -59,20 +61,29 @@ class Worker extends Model
             "Ь" => "",              "Э" => "E",             "Ю" => "Yu", 
             "Я" => "Ya",            "’" => "",              "І" => "I", 
             "Ї" => "Yi",            "Є" => "Ye",            "'" => "", 
-            " " => ".",             "." => "."
+            " " => " ",             "." => "."
         ];
         
+        $translitText = strtr($text, $converter);
+        
+        return $translitText;
+    }
+    
+
+    public static function createAccountAd($workerName)
+    {        
         //преобразуем строку в массив
         $dividedWorkerNameArray = explode(' ', $workerName);
         
         //если в массиве есть хотя бы имя и фамилия, разделенный пробелом
         if (count($dividedWorkerNameArray) > 1) {
+            
             list($lastName, $firstName) = $dividedWorkerNameArray;
             
             //правильная последовательность: имя фамилия
-            $workerNameForTranslit = $firstName . ' ' . $lastName;
+            $workerNameForTranslit = $firstName . '.' . $lastName;
         
-            $translitWorkerName = strtr($workerNameForTranslit, $converter);
+            $translitWorkerName = self::getTranslit($workerNameForTranslit);
             
             return $translitWorkerName;
         }
@@ -82,7 +93,7 @@ class Worker extends Model
     
     /**
      * Автоматическая генерация пароля при создании пользователя в AD
-     * @param type $workerId
+     * @param int $workerId
      * @return string
      */
     public static function createPasswordAd($workerId)
@@ -129,8 +140,8 @@ class Worker extends Model
             "ь" => "m",             "э" => "'",             "ю" => ".", 
             "я" => "z",             "і" => "s",             "ї" => "]", 
             "А" => "F",             "Б" => "<",             "В" => "D", 
-            "Г" => "S",             "Ґ" => "U",             "Д" => "L", 
-            "Е" => "E",             "Ё" => "",              "Ж" => ":", 
+            "Г" => "U",                                     "Д" => "L", 
+            "Е" => "T",             "Ё" => "",              "Ж" => ":", 
             "З" => "P",             "И" => "B",             "Й" => "Q", 
             "К" => "R",             "Л" => "K",             "М" => "V", 
             "Н" => "Y",             "О" => "J",             "П" => "G", 
@@ -147,5 +158,82 @@ class Worker extends Model
         $englishPassword = strtr($password, $converter);
         
         return $englishPassword;
+    }
+    
+    /**
+     * Получить ФИО работника по его ид
+     * @param int $workerId
+     * @return string
+     */
+    
+    public static function getTranslitWorkerNameById($workerId)
+    {
+        $worker = self::find($workerId);
+        
+        $translitWorkerName = self::getTranslit($worker->name);
+        
+        return $translitWorkerName;
+    }
+    
+    /**
+     * Получить фамилию сотрудника по id
+     * @param type $workerId
+     * @return type
+     */
+    public static function getWorkerLastNameById($workerId)
+    {
+        $workerName = self::getTranslitWorkerNameById($workerId);
+        
+        $workerNameArray = explode(' ', $workerName);
+        
+        if(count($workerNameArray) > 1) {
+            
+            return $workerNameArray[0];
+        }
+    }
+    
+    public static function getNamePcByWorkerId($workerId)
+    {
+        $workerLastName = self::getWorkerLastNameById($workerId);
+        
+        $workerLastNameUpper = mb_strtoupper($workerLastName);
+        
+        $locationPfefix = self::getWorkerLocationPrefix($workerId);
+        
+        $pcName = $locationPfefix . $workerLastNameUpper;
+        
+        return $pcName;
+    }
+    
+    /**
+     * Получить префикс для организации, в которой размещен работник, по его ид
+     * @param int $workerId
+     * @return string
+     */
+    public static function getWorkerLocationPrefix($workerId)
+    {
+        
+        $worker = self::select('location_id')->where('workers.id', $workerId)
+                ->leftJoin('positions', 'positions.id', '=', 'workers.position_id')
+                ->first();
+        
+        $workerLocationId = $worker->location_id;
+        
+        $organizationPrefix = Organization::getOrganizationPrefixById($workerLocationId);
+        
+        return $organizationPrefix;
+    }
+    
+    public static function getScriptAddAdByLocation($workerId)
+    {
+        $worker = self::select('location_id')->where('workers.id', $workerId)
+                ->leftJoin('positions', 'positions.id', '=', 'workers.position_id')
+                ->first();
+        
+        $workerLocationId = $worker->location_id;
+        
+        $organizationAddAd = Organization::getScriptAddAdById($workerLocationId);
+        
+        return $organizationAddAd;
     }
 }

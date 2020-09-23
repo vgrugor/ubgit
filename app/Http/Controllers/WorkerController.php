@@ -57,10 +57,13 @@ class WorkerController extends Controller
                 ->select(['workers.id', 'workers.name', 'workers.phone_number',
                     'workers.phone_number2',
                     'workers.account_ad', 'workers.email', 'workers.note', 'workers.date_refresh', 
+                    'organizations.id as organization_id',
                     'organizations.name as organization',
+                    'organizations.address as address',
                     'departments.name as department',
                     'divisions.name as division',
                     'positions.name as position',
+                    'positions.location_id as location_id',
                     'drills.name as drill',
                     'motorcades.name as motorcade',
                     'vpn_statuses.name as vpn'])
@@ -69,9 +72,25 @@ class WorkerController extends Controller
         
         $password = Worker::createPasswordAd($worker->id);
         
+        $pcName = Worker::getNamePcByWorkerId($worker->id);
+        
+        $isBu = Organization::organizationTypeIsBu($worker->organization_id);
+        $isVbr = Organization::organizationTypeIsVbr($worker->organization_id);
+        $isVttist = Organization::organizationTypeIsVttist($worker->organization_id);
+        
+        $location = Organization::getOrganizationNameById($worker->location_id);
+        
+        $scriptAddAd = Worker::getScriptAddAdByLocation($worker->id);
+        
         return view('worker.view')->with([
             'worker' => $worker,
-            'password' => $password
+            'password' => $password,
+            'isBu' => $isBu,
+            'isVbr' => $isVbr,
+            'isVttist' => $isVttist,
+            'location' => $location,
+            'pcName' => $pcName,
+            'scriptAddAd' => $scriptAddAd
         ]);
     }
 }

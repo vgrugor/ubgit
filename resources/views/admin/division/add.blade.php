@@ -45,7 +45,8 @@
                     <label for="note">Примітка</label>
                     <textarea name="note" class="form-control" id="note"></textarea>
                 </div>
-                <div class="form-group">
+                <div class="form-group text-right">
+                    <a href="{{ route('adminDivisionsList') }}" class="btn btn-secondary" role="button">Відмінити</a>
                     <input type="submit" name="submit" value="Додати" class="btn btn-success" role="button">
                 </div>
                 {{ csrf_field() }}
