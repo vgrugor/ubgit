@@ -35,6 +35,19 @@
                     <a class="nav-link" href="/workerlist">Працівники</a>
                 </li>
                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Техніка</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{ route('pcLaptopModelsList') }}">Моделі ПК та ноутбуків</a>
+                        <a class="dropdown-item" href="{{ route('pcLaptopsList') }}">ПК та ноутбуки</a>
+                        <a class="dropdown-item" href="#">Моделі моніторів</a>
+                        <a class="dropdown-item" href="#">Монітори</a>
+                        <a class="dropdown-item" href="#">Моделі док-станцій</a>
+                        <a class="dropdown-item" href="#">Док станції</a>
+                        <a class="dropdown-item" href="#">Клавіатури</a>
+                        <a class="dropdown-item" href="#">Мишки</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Довідники</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="{{ route('organizationsList') }}">Організації</a>
