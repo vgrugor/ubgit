@@ -45,7 +45,7 @@ class AdminDepartmentController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, ['organization_id' => 'required|integer',
-            'name' => 'required|unique:departments,name|max:100',
+            'name' => 'required|max:100',
             'phone_number' => 'max:14'
             ]);
         
