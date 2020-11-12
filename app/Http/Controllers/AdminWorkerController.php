@@ -126,7 +126,7 @@ class AdminWorkerController extends Controller
                         'positions.division_id as division_id',
                         )
                 ->find($id);
-        
+
         $organizations = Organization::select('id', 'name')->get();
         
         $departments = Department::select('id', 'name')
