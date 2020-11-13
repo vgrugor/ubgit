@@ -61,7 +61,10 @@ class AdminWorkerController extends Controller
     public function add()
     {
         $organizations = Organization::select('id', 'name')->get();
-        $drills = Drill::select('id', 'name')->get();
+        $drills = Drill::leftJoin('points', 'points.id', '=', 'drills.workers_transfer')
+                ->select(['drills.id' ,'drills.name as drill', 'points.name as point'])
+                ->orderBy('drills.name', 'asc')
+                ->get();
         $motorcades = Motorcade::select('id', 'name')->get();
         $vpns = Vpn_status::select('id', 'name')->get();
         
@@ -145,7 +148,11 @@ class AdminWorkerController extends Controller
                 ->orWhere('workers.position_id', $worker->position_id)
                 ->get();
         
-        $drills = Drill::select('id', 'name')->get();
+        //$drills = Drill::select('id', 'name')->get();
+        $drills = Drill::leftJoin('points', 'points.id', '=', 'drills.workers_transfer')
+                ->select(['drills.id' ,'drills.name as drill', 'points.name as point'])
+                ->orderBy('drills.name', 'asc')
+                ->get();
         
         $motorcades = Motorcade::select('id', 'name')->get();
         

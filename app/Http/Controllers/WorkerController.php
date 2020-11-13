@@ -15,12 +15,14 @@ class WorkerController extends Controller
     public function index() 
     {
         $workers = Worker::leftJoin('drills', 'workers.drill_id', '=', 'drills.id')
+                ->leftJoin('points', 'points.id', '=', 'drills.workers_transfer')
                 ->leftJoin('positions', 'workers.position_id', '=', 'positions.id')
                 ->leftJoin('organizations', 'positions.organization_id', '=', 'organizations.id')
                 ->leftJoin('departments', 'positions.department_id', '=', 'departments.id')
                 ->leftJoin('divisions', 'positions.division_id', '=', 'divisions.id')
                 ->select(['workers.id', 'workers.name as name', 'workers.note',
                     'drills.name as drill', 
+                    'points.name as point',
                     'positions.name as position',
                     'organizations.name as organization',
                     'departments.name as department',
@@ -28,7 +30,7 @@ class WorkerController extends Controller
                 ->whereNotNull('workers.position_id')
                 ->orderBy('name', 'asc')
                 ->get();
-        
+       
         $organizations = Organization::select('name')->get();
         
         $departments = Department::leftJoin('organizations', 'organizations.id', '=', 'departments.organization_id')
@@ -37,7 +39,10 @@ class WorkerController extends Controller
                 ->orderBy('department', 'asc')
                 ->get();
         
-        $drills = Drill::select('name')->orderBy('name', 'asc')->get();
+        $drills = Drill::leftJoin('points', 'points.id', '=', 'drills.workers_transfer')
+                ->select(['drills.name as drill', 'points.name as point'])
+                ->orderBy('drills.name', 'asc')
+                ->get();
         
         return view('worker.list')->with(['workersList' => $workers, 
             'organizationsList' => $organizations, 
@@ -52,6 +57,7 @@ class WorkerController extends Controller
                 ->leftJoin('divisions', 'divisions.id', '=', 'positions.division_id')
                 ->leftJoin('organizations', 'organizations.id', '=', 'positions.organization_id')
                 ->leftJoin('drills', 'drills.id', '=', 'workers.drill_id')
+                ->leftJoin('points', 'points.id', '=', 'drills.workers_transfer')
                 ->leftJoin('motorcades', 'motorcades.id', '=', 'workers.motorcade_id')
                 ->leftJoin('vpn_statuses', 'vpn_statuses.id', '=', 'workers.vpn_status_id')
                 ->select(['workers.id', 'workers.name', 'workers.phone_number',
@@ -65,6 +71,7 @@ class WorkerController extends Controller
                     'positions.name as position',
                     'positions.location_id as location_id',
                     'drills.name as drill',
+                    'points.name as point',
                     'motorcades.name as motorcade',
                     'vpn_statuses.name as vpn'])
                 ->where('workers.id', $id)

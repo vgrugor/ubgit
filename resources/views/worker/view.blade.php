@@ -82,10 +82,18 @@
         @if($isVbr)
             <div class="row">
                 <div class="col-sm-4">
-                    <p><strong>Бурова:</strong></p>
+                    <p><strong>Верстат:</strong></p>
                 </div>
                 <div class="col">
                     {{ $worker->drill }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <p><strong>Точка для буріння:</strong></p>
+                </div>
+                <div class="col">
+                    {{ $worker->point }}
                 </div>
             </div>
         @elseif($isVttist)

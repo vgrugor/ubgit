@@ -76,7 +76,9 @@
                     <select name="drill_id" class="form-control" id="drill_id">
                         <option value="0">не обрано</option>
                         @foreach($drillsList as $drillItem)
-                            <option value="{{ $drillItem->id }}" {{ $drillItem->id == $worker->drill_id ? 'selected' : '' }}>{{ $drillItem->name }}</option>
+                            <option value="{{ $drillItem->id }}" {{ $drillItem->id == $worker->drill_id ? 'selected' : '' }}>
+                                {{ $drillItem->point }} - {{ $drillItem->drill }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
