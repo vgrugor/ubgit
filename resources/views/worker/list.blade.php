@@ -34,7 +34,7 @@
                         <select class="form-control" id="selectDrill">
                             <option value="">Оберіть свердловину</option>
                             @foreach ($drillsList as $drillItem)
-                                <option>{{ $drillItem->name }}</option>
+                                <option>{{ $drillItem->point }} - {{ $drillItem->drill }}</option>
                             @endforeach
                         </select>
                       </div>
@@ -65,7 +65,7 @@
                             <td>{{ $workerItem->department }}</td>
                             <td>{{ $workerItem->division }}</td>
                             <td>{{ $workerItem->position }}</td>
-                            <td>{{ $workerItem->drill }}</td>
+                            <td>{{ $workerItem->point }} - {{ $workerItem->drill }}</td>
                             <td><a href="{{ route('viewWorker', ['id' => $workerItem->id])}}">{{ $workerItem->name }}</a></td>
                             <td class="text-danger">{{ $workerItem->note }}</td>
                         </tr>
