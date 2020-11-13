@@ -7,7 +7,7 @@
             <h1 class="text-center">Керування свердловинами</h1>
             <br/>
             <p class="text-right">
-                <a href="#">
+                <a href="{{ route('drillAdd') }}">
                     <i class="fas fa-plus-circle"></i>
                     Додати свердловину
                 </a>
@@ -35,7 +35,7 @@
                             <td>{{ $drillItem->actual_stage }}</td>
                             <td>{{ $drillItem->note }}</td>
                             <td>
-                                <a href="#" title="Редагувати"><i class="far fa-edit"></i></a>
+                                <a href="{{ route('drillUpdate', $drillItem->id) }}" title="Редагувати"><i class="far fa-edit"></i></a>
                             </td>
                             <td>
                                 <a href="#" title="Видалити"><i class="far fa-trash-alt"></i></a>

@@ -185,9 +185,16 @@ Route::middleware(['auth', 'admin'])->group(function () {
     //-------------------------------БУРОВЫЕ----------------------------------------
 
     Route::get('admin/drills', 'AdminDrillController@drillsList')->name('adminDrillsList');
-    Route::get('admin/drill/add', 'DrillController@add');                                 //страница с формой добавления буровой
-    Route::post('admin/drill/add', 'DrillController@store')->name('drillStore');          //добавление в БД
-    Route::get('admin/drill/{id}', 'DrillController@view')->where('id', '[0-9]+')->name('viewDrill');           //подробно о буровой
+    
+    //Добавление буровой
+    Route::get('admin/drill/add', 'AdminDrillController@add')->name('drillAdd');               //страница с формой добавления буровой
+    Route::post('admin/drill/add', 'AdminDrillController@store')->name('drillStore');          //добавление в БД
+    
+    //Редактирование буровой
+    Route::get('admin/drill/update/{id}', 'AdminDrillController@update')->where('id', '[0-9]+')->name('drillUpdate');
+    Route::post('admin/drill/update/{id}', 'AdminDrillController@save')->where('id', '[0-9]+')->name('drillSave');
+    
+    Route::get('admin/drill/{id}', 'AdminDrillController@view')->where('id', '[0-9]+')->name('viewDrill');           //подробно о буровой
 
     //------------------------------------------------------------------------------
 

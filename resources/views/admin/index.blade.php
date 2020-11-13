@@ -31,7 +31,7 @@
                     <span class="badge">{{ $count['vpnStatuses'] }}</span>
                 </li>
                 <li class="list-group-item">
-                    <a href="{{ route('adminDrillsList') }}">Керування свердловинами</a>
+                    <a href="{{ route('adminDrillsList') }}">Керування буровими верстатами</a>
                     <span class="badge">{{ $count['drills'] }}</span>
                 </li>
                 <li class="list-group-item">
