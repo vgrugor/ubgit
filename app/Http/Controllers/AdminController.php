@@ -11,6 +11,7 @@ use App\Position;
 use App\Worker;
 use App\Vpn_status;
 use App\Drill;
+use App\Point;
 use App\Drill_type;
 use App\Actual_stage;
 use App\Internet_status;
@@ -27,6 +28,7 @@ class AdminController extends Controller
         $total['workers'] = Worker::count();
         $total['vpnStatuses'] = Vpn_status::count();
         $total['drills'] = Drill::count();
+        $total['points'] = Point::count();
         $total['drillTypes'] = Drill_type::count();
         $total['actualStages'] = Actual_stage::count();
         $total['internetStatuses'] = Internet_status::count();

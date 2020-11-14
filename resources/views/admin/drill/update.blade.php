@@ -38,7 +38,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="workers_transfer">Бурову бригаду переведено до</label>
+                    <label for="workers_transfer">Місцезнаходження бурової бригади</label>
                     <select name="workers_transfer" id="workers_transfer" class="form-control">
                         <option value="0">Не вказано</option>
                         @foreach($pointsList as $pointItem)
