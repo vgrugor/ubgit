@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('content')
-    
+
     <div class="row">
         <div class="col">
             <h1 class="text-center">Редагувати інформацію про буровий верстат</h1>
@@ -31,7 +31,6 @@
                 <div class="form-group">
                     <label for="drill_type_id">Вкажіть тип бурової</label>
                     <select name="drill_type_id" id="drill_type_id" class="form-control">
-                        <option value="">Не вказано</option>
                         @foreach($drillTypesList as $drillTypeItem)
                             <option value="{{ $drillTypeItem->id }}" {{ $drillTypeItem->id == $drill->drill_type_id ? 'selected' : '' }}>{{ $drillTypeItem->name }}</option>
                         @endforeach

@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('content')
-    
+
     <div class="row">
         <div class="col">
             <h1 class="text-center">Додати новий буровий верстат</h1>
@@ -21,11 +21,11 @@
             @endif
             <form method="post" action="{{ route('drillStore') }}">
                 <div class="form-group">
-                    <label for="name">Введіть назву бурової за класиіфкацією БУ "Укрбургаз"</label>
+                    <label for="name">Код бурового верстату за класиіфкацією БУ "Укрбургаз"</label>
                     <input type="text" name="name" id="name" class="form-control" value="">
                 </div>
                 <div class="form-group">
-                    <label for="germany_name">Введіть назву бурової за класиіфкацією Bentec</label>
+                    <label for="germany_name">Код бурового верстату за класиіфкацією Bentec</label>
                     <input type="text" name="germany_name" id="germany_name" class="form-control" value="">
                 </div>
                 <div class="form-group">
