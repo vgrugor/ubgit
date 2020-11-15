@@ -49,9 +49,10 @@ Route::post('position/getAjaxListForUpdate', 'PositionController@getAjaxListForU
 //------------------------------------------------------------------------------
 
 
-//-------------------------------БУРОВЫЕ----------------------------------------
+//-------------------------------БУРОВЫЕ И ТОЧКИ--------------------------------
 
 Route::get('drillslist', 'DrillController@drillsList')->name('drillsList');     //общая информация
+Route::get('pointslist', 'PointController@pointsList')->name('pointsList');     //общая информация
 
 Route::get('drill/internet', 'DrillController@internet');                       //состояние интернета
 Route::get('drill/carpet', 'DrillController@carpet');                           //ковер бурения

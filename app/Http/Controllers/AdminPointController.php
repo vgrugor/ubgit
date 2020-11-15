@@ -12,9 +12,11 @@ use App\Http\Requests\point\PointRequest;
 
 class AdminPointController extends Controller
 {
+
+    //---------------------------СПИСОК ТОЧЕК ДЛЯ БУРЕНИЯ-----------------------
+
     public function pointsList()
     {
-        //---------------------------СПИСОК ТОЧЕК ДЛЯ БУРЕНИЯ-------------------
 
         $pointsList = Point::leftJoin('drills', 'drills.id', '=', 'points.drill_id')
                 ->leftJoin('drill_types', 'drill_types.id', '=', 'drills.drill_type_id')
