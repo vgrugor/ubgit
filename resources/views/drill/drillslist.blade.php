@@ -4,27 +4,25 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <h1 class="text-center">Свердловини Полтавського ВБР</h1>
+            <h1 class="text-center">Бурові верстати</h1>
             <br/>
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">№</th>
+                        <th scope="col">id</th>
                         <th scope="col">Тип</th>
                         <th scope="col">Назва</th>
-                        <th scope="col">Етап за килимом</th>
-                        <th scope="col">Етап фактично</th>
+                        <th>Місцезнаходження бурової бригади</th>
                         <th scope="col">Примітка</th>
                     </tr>
                 </thead>
                 <tbody class="table-striped">
                     @foreach ($drillsList as $drillItem)
                         <tr>
-                            <td>{{ $drillItem->number }}</td>
+                            <td>{{ $drillItem->id }}</td>
                             <td>{{ $drillItem->type }}</td>
                             <td><a href="{{ route('viewDrill', ['id' => $drillItem->id]) }}">{{ $drillItem->drill }}</a></td>
-                            <td></td>
-                            <td>{{ $drillItem->actual_stage }}</td>
+                            <td>{{ $drillItem->point }}</td>
                             <td>{{ $drillItem->note }}</td>
                         </tr>
                     @endforeach

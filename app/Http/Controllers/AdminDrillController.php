@@ -16,14 +16,16 @@ class AdminDrillController extends Controller
 
     public function drillsList()
     {
-        $drillsList = Drill::leftJoin('drill_types', 'drills.drill_type_id', '=', 'drill_types.id')
-                ->select('drills.id',
-                        'drills.name as drill',
-                        'drills.note as note',
-                        'drill_types.name as type')
-                ->get();
+      $drills = Drill::leftJoin('drill_types', 'drills.drill_type_id', '=', 'drill_types.id')
+              ->leftJoin('points', 'points.id', '=', 'drills.workers_transfer')
+              ->select('drills.id',
+                      'drills.name as drill',
+                      'points.name as point',
+                      'drills.note as note',
+                      'drill_types.name as type')
+              ->get();
 
-        return view('admin.drill.list')->with('drillsList', $drillsList);
+        return view('admin.drill.list')->with('drillsList', $drills);
     }
 
     //--------------------------------------------------------------------------

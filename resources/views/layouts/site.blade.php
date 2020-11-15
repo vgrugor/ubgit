@@ -24,7 +24,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Свердловини</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/drill/general">Загальна інформація</a>
+                        <a class="dropdown-item" href="{{ route('drillsList') }}">Бурові станки</a>
+                        <a class="dropdown-item" href="/drill/general">Свердловини (точки)</a>
                         <a class="dropdown-item" href="/drill/internet">Стан інтернету</a>
                         <a class="dropdown-item" href="/drill/carpet">Килим буріння</a>
                         <a class="dropdown-item" href="/drill/contacts">Контакти</a>
@@ -69,9 +70,9 @@
                     <a class="nav-link" href="{{ route('test') }}">ТЕСТ</a>
                 </li>
             </ul>
-            
+
             <div class="row justify-content-end">
-                
+
                 <div>
                     @guest
                         <a href="{{ route('login') }}">{{ __('Вхід') }}</a>
@@ -95,7 +96,7 @@
             </div>
 
             @yield('content')
-     
+
     </div>
 
 <!-- Optional JavaScript -->

@@ -51,7 +51,8 @@ Route::post('position/getAjaxListForUpdate', 'PositionController@getAjaxListForU
 
 //-------------------------------БУРОВЫЕ----------------------------------------
 
-Route::get('drill/general', 'DrillController@general');                         //общая информация
+Route::get('drillslist', 'DrillController@drillsList')->name('drillsList');     //общая информация
+
 Route::get('drill/internet', 'DrillController@internet');                       //состояние интернета
 Route::get('drill/carpet', 'DrillController@carpet');                           //ковер бурения
 Route::get('drill/contacts', 'DrillController@contacts');                       //контакты
@@ -187,25 +188,25 @@ Route::middleware(['auth', 'admin'])->group(function () {
     //-------------------------------БУРОВЫЕ СТАНКИ---------------------------------
 
     Route::get('admin/drills', 'AdminDrillController@drillsList')->name('adminDrillsList');
-    
+
     //Добавление буровой
     Route::get('admin/drill/add', 'AdminDrillController@add')->name('drillAdd');               //страница с формой добавления буровой
     Route::post('admin/drill/add', 'AdminDrillController@store')->name('drillStore');          //добавление в БД
-    
+
     //Редактирование буровой
     Route::get('admin/drill/update/{id}', 'AdminDrillController@update')->where('id', '[0-9]+')->name('drillUpdate');
     Route::post('admin/drill/update/{id}', 'AdminDrillController@save')->where('id', '[0-9]+')->name('drillSave');
 
     //------------------------------------------------------------------------------
-    
+
      //-------------------------------ТОЧКИ ДЛЯ БУРЕНИЯ-----------------------------
 
     Route::get('admin/points', 'AdminPointController@pointsList')->name('adminPointsList');
-    
+
     //Добавление буровой
     Route::get('admin/point/add', 'AdminPointController@add')->name('pointAdd');               //страница с формой добавления буровой
     Route::post('admin/point/add', 'AdminPointController@store')->name('pointStore');          //добавление в БД
-    
+
     //Редактирование буровой
     Route::get('admin/point/update/{id}', 'AdminPointController@update')->where('id', '[0-9]+')->name('pointUpdate');
     Route::post('admin/point/update/{id}', 'AdminPointController@save')->where('id', '[0-9]+')->name('pointSave');
