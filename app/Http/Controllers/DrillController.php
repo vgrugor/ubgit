@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Drill;
 use App\Point;
+use App\Worker;
 
 class DrillController extends Controller
 {
@@ -58,8 +59,29 @@ class DrillController extends Controller
 
     public function view($id)
     {
-        $drill = Drill::find($id);
-        dump($drill);
-        //return view('drill.view')->with('drill', $drill);
+        $drill = Drill::leftJoin('drill_types', 'drill_types.id', '=', 'drills.drill_type_id')
+            ->leftJoin('points', 'points.id', '=', 'drills.workers_transfer')
+            ->select(['drills.name as drill',
+                'germany_name', 'drill_types.name as drill_type',
+                'points.name as workers_transfer', 'phone_number',
+                'email', 'drills.note as note'])
+            ->find($id);
+
+        $history = Point::select('id', 'name')
+            ->where('drill_id', '=', $id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $workers = Worker::leftJoin('positions', 'positions.id', '=', 'workers.position_id')
+            ->select('workers.id as id', 'workers.name as worker',
+                'workers.phone_number', 'positions.name as position')
+            ->where('workers.drill_id', '=', $id)
+            ->get();
+
+        return view('drill.view')->with([
+            'drill' => $drill,
+            'historyList' => $history,
+            'workersList' => $workers
+        ]);
     }
 }
