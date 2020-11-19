@@ -16,6 +16,7 @@ use App\Drill_type;
 use App\Actual_stage;
 use App\Internet_status;
 use App\Motorcade;
+use App\Internet_provider;
 
 class AdminController extends Controller
 {
@@ -33,7 +34,8 @@ class AdminController extends Controller
         $total['actualStages'] = Actual_stage::count();
         $total['internetStatuses'] = Internet_status::count();
         $total['motorcades'] = Motorcade::count();
-        
+        $total['internet_providers'] = Internet_provider::count();
+
         return view('admin.index')->with('count', $total);
     }
 }

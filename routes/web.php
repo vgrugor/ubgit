@@ -220,6 +220,18 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     //------------------------------------------------------------------------------
 
+    //----------------------------ПРОВАЙДЕРЫ ИНТЕРНЕТА------------------------------
+
+    Route::get('admin/internetproviders', 'AdminInternetProviderController@internetProvidersList')->name('adminInternetProvidersList');
+
+    Route::get('admin/internetprovider/add', 'AdminInternetProviderController@add')->name('internetProviderAdd');
+    Route::post('admin/internetprovider/add', 'AdminInternetProviderController@store')->name('internetProviderStore');
+
+    Route::get('admin/internetprovider/update/{id}', 'AdminInternetProviderController@update')->where('id', '[0-9]+')->name('internetProviderUpdate');
+    Route::post('admin/internetprovider/update/{id}', 'AdminInternetProviderController@save')->where('id', '[0-9]+')->name('internetProviderSave');
+
+    //------------------------------------------------------------------------------
+
     //-----------------------------СТАТУСЫ ИНТЕРНЕТА--------------------------------
 
     Route::get('admin/internetstatuses', 'AdminInternetStatusController@internetStatusesList')->name('adminInternetStatusesList');

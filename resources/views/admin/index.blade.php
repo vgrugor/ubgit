@@ -51,9 +51,15 @@
                     <span class="badge">{{ $count['actualStages'] }}</span>
                 </li>
                 <li class="list-group-item">
+                    <a href="{{ route('adminInternetProvidersList') }}">Провайдери інтернету</a>
+                    <span class="badge">{{ $count['internet_providers'] }}</span>
+                </li>
+                <!--
+                <li class="list-group-item">
                     <a href="{{ route('adminInternetStatusesList') }}">Статуси інтернету</a>
                     <span class="badge">{{ $count['internetStatuses'] }}</span>
                 </li>
+              -->
                 <!--
                 <li class="list-group-item">
                     <a href="#">Керування користувачами сайту</a>
