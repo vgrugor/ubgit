@@ -52,7 +52,11 @@
                 </li>
                 <li class="list-group-item">
                     <a href="{{ route('adminInternetProvidersList') }}">Провайдери інтернету</a>
-                    <span class="badge">{{ $count['internet_providers'] }}</span>
+                    <span class="badge">{{ $count['internetProviders'] }}</span>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ route('adminInternetRequestTypesList') }}">Типи заявок на інтернет</a>
+                    <span class="badge">{{ $count['internetRequestType'] }}</span>
                 </li>
                 <!--
                 <li class="list-group-item">

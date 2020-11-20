@@ -232,6 +232,18 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     //------------------------------------------------------------------------------
 
+    //-----------------ТИПЫ ЗАЯВОК НА УСТАНОВКУ ИНТЕРНЕТА---------------------------
+
+    Route::get('admin/internetrequesttypes', 'AdminInternetRequestTypeController@internetRequestTypesList')->name('adminInternetRequestTypesList');
+
+    Route::get('admin/internetrequesttype/add', 'AdminInternetRequestTypeController@add')->name('internetRequestTypeAdd');
+    Route::post('admin/internetrequesttype/add', 'AdminInternetRequestTypeController@store')->name('internetRequestTypeStore');
+
+    Route::get('admin/internetrequesttype/update/{id}', 'AdminInternetRequestTypeController@update')->where('id', '[0-9]+')->name('internetRequestTypeUpdate');
+    Route::post('admin/internetrequesttype/update/{id}', 'AdminInternetRequestTypeController@save')->where('id', '[0-9]+')->name('internetRequestTypeSave');
+
+    //------------------------------------------------------------------------------
+
     //-----------------------------СТАТУСЫ ИНТЕРНЕТА--------------------------------
 
     Route::get('admin/internetstatuses', 'AdminInternetStatusController@internetStatusesList')->name('adminInternetStatusesList');
