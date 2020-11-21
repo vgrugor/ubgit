@@ -18,6 +18,7 @@ use App\Internet_status;
 use App\Motorcade;
 use App\Internet_provider;
 use App\Internet_request_type;
+use App\Internet_request;
 
 class AdminController extends Controller
 {
@@ -37,6 +38,7 @@ class AdminController extends Controller
         $total['motorcades'] = Motorcade::count();
         $total['internetProviders'] = Internet_provider::count();
         $total['internetRequestType'] = Internet_request_type::count();
+        $total['internetRequest'] = Internet_request::count();
 
         return view('admin.index')->with('count', $total);
     }
