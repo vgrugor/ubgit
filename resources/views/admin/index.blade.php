@@ -51,9 +51,23 @@
                     <span class="badge">{{ $count['actualStages'] }}</span>
                 </li>
                 <li class="list-group-item">
+                    <a href="{{ route('adminInternetProvidersList') }}">Провайдери інтернету</a>
+                    <span class="badge">{{ $count['internetProviders'] }}</span>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ route('adminInternetRequestTypesList') }}">Типи заявок на інтернет</a>
+                    <span class="badge">{{ $count['internetRequestType'] }}</span>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ route('adminInternetRequestsList') }}">Заявки на інтернет</a>
+                    <span class="badge">{{ $count['internetRequest'] }}</span>
+                </li>
+                <!--
+                <li class="list-group-item">
                     <a href="{{ route('adminInternetStatusesList') }}">Статуси інтернету</a>
                     <span class="badge">{{ $count['internetStatuses'] }}</span>
                 </li>
+              -->
                 <!--
                 <li class="list-group-item">
                     <a href="#">Керування користувачами сайту</a>

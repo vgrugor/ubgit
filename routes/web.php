@@ -228,6 +228,42 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     //------------------------------------------------------------------------------
 
+    //----------------------------ПРОВАЙДЕРЫ ИНТЕРНЕТА------------------------------
+
+    Route::get('admin/internetproviders', 'AdminInternetProviderController@internetProvidersList')->name('adminInternetProvidersList');
+
+    Route::get('admin/internetprovider/add', 'AdminInternetProviderController@add')->name('internetProviderAdd');
+    Route::post('admin/internetprovider/add', 'AdminInternetProviderController@store')->name('internetProviderStore');
+
+    Route::get('admin/internetprovider/update/{id}', 'AdminInternetProviderController@update')->where('id', '[0-9]+')->name('internetProviderUpdate');
+    Route::post('admin/internetprovider/update/{id}', 'AdminInternetProviderController@save')->where('id', '[0-9]+')->name('internetProviderSave');
+
+    //------------------------------------------------------------------------------
+
+    //-----------------------------ТИПЫ ЗАЯВОК НА ИНТЕРНЕТ--------------------------
+
+    Route::get('admin/internetrequesttypes', 'AdminInternetRequestTypeController@internetRequestTypesList')->name('adminInternetRequestTypesList');
+
+    Route::get('admin/internetrequesttype/add', 'AdminInternetRequestTypeController@add')->name('internetRequestTypeAdd');
+    Route::post('admin/internetrequesttype/add', 'AdminInternetRequestTypeController@store')->name('internetRequestTypeStore');
+
+    Route::get('admin/internetrequesttype/update/{id}', 'AdminInternetRequestTypeController@update')->where('id', '[0-9]+')->name('internetRequestTypeUpdate');
+    Route::post('admin/internetrequesttype/update/{id}', 'AdminInternetRequestTypeController@save')->where('id', '[0-9]+')->name('internetRequestTypeSave');
+
+    //------------------------------------------------------------------------------
+
+    //--------------------------------ЗАЯВКИ НА ИНТЕРНЕТ----------------------------
+
+    Route::get('admin/internetrequests', 'AdminInternetRequestController@internetRequestsList')->name('adminInternetRequestsList');
+
+    Route::get('admin/internetrequest/add', 'AdminInternetRequestController@add')->name('internetRequestAdd');
+    Route::post('admin/internetrequest/add', 'AdminInternetRequestController@store')->name('internetRequestStore');
+
+    Route::get('admin/internetrequest/update/{id}', 'AdminInternetRequestController@update')->where('id', '[0-9]+')->name('internetRequestUpdate');
+    Route::post('admin/internetrequest/update/{id}', 'AdminInternetRequestController@save')->where('id', '[0-9]+')->name('internetRequestSave');
+
+    //------------------------------------------------------------------------------
+
     //-----------------------------СТАТУСЫ ИНТЕРНЕТА--------------------------------
 
     Route::get('admin/internetstatuses', 'AdminInternetStatusController@internetStatusesList')->name('adminInternetStatusesList');
