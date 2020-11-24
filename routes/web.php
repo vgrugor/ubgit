@@ -49,10 +49,10 @@ Route::post('position/getAjaxListForUpdate', 'PositionController@getAjaxListForU
 //------------------------------------------------------------------------------
 
 
-//-------------------------------БУРОВЫЕ И ТОЧКИ--------------------------------
+//-------------------------------БУРОВЫЕ----------------------------------------
 
 Route::get('drillslist', 'DrillController@drillsList')->name('drillsList');     //общая информация
-Route::get('pointslist', 'PointController@pointsList')->name('pointsList');     //общая информация
+
 
 Route::get('drill/internet', 'DrillController@internet');                       //состояние интернета
 Route::get('drill/carpet', 'DrillController@carpet');                           //ковер бурения
@@ -60,6 +60,14 @@ Route::get('drill/contacts', 'DrillController@contacts');                       
 Route::get('drill/location', 'DrillController@location');                       //размещение буровых
 
 Route::get('drill/{id}', 'DrillController@view')->where('id', '[0-9]+')->name('viewDrill');           //подробно о буровой
+
+//------------------------------------------------------------------------------
+
+
+//-------------------------------СКВАЖИНЫ (ТОЧКИ)-------------------------------
+
+Route::get('pointslist', 'PointController@pointsList')->name('pointsList');     //общая информация
+Route::get('point/{id}', 'PointController@view')->where('id', '[0-9]+')->name('viewPoint'); //информация о точке бурения
 
 //------------------------------------------------------------------------------
 

@@ -28,4 +28,22 @@ class PointController extends Controller
 
         return view('point.pointslist')->with(['pointsList' => $points ]);
     }
+
+    public function view($id)
+    {
+        $point = Point::leftJoin('actual_stages', 'actual_stages.id', '=', 'points.actual_stage_id')
+            ->select(['points.id as id',
+                'points.name as point',
+                'is_actual', 'nld', 'nlm', 'nls',
+                'eld', 'elm', 'els',
+                'coordinate_stage', 'address',
+                'date_building', 'date_drilling', 'date_demount', 'date_transfer', 'date_refresh',
+                'actual_stages.name as actual_stage',
+                'date_actual_stage_refresh', 'points.note as note'])
+            ->find($id);
+
+        return view('point.view')->with([
+            'point' => $point
+        ]);
+    }
 }
