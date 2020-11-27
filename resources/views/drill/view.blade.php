@@ -38,7 +38,7 @@
             <p><strong>Місцезнаходження бурової бригади:</strong></p>
         </div>
         <div class="col">
-            {{ $drill->workers_transfer }}
+            <a href="{{ route('viewPoint', ['id' => $drill->point_id]) }}">{{ $drill->workers_transfer }}</a>
         </div>
     </div>
     <div class="row">
@@ -72,7 +72,7 @@
         </div>
         <div class="col">
             @foreach($historyList as $historyItem)
-                <div><a href="#">{{ $historyItem->name }}</a></div>
+                <div><a href="{{ route('viewPoint', ['id' => $historyItem->id]) }}">{{ $historyItem->name }}</a></div>
             @endforeach
         </div>
     </div>

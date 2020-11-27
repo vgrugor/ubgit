@@ -64,7 +64,7 @@ class DrillController extends Controller
             ->leftJoin('points', 'points.id', '=', 'drills.workers_transfer')
             ->select(['drills.name as drill',
                 'germany_name', 'drill_types.name as drill_type',
-                'points.name as workers_transfer', 'phone_number',
+                'points.name as workers_transfer', 'points.id as point_id', 'phone_number',
                 'email', 'drills.note as note'])
             ->find($id);
 
