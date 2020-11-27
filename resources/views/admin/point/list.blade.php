@@ -30,7 +30,7 @@
                     @foreach ($pointsList as $pointItem)
                         <tr>
                             <td>{{ $pointItem->id }}</td>
-                            <td>{{ $pointItem->point }}</td>
+                            <td><a href="{{ route('viewPoint', ['id' => $pointItem->id]) }}">{{ $pointItem->point }}</a></td>
                             <td>{{ $pointItem->type }}</td>
                             <td>{{ $pointItem->drill }}</td>
                             <td>{{ $pointItem->germany_name }}</td>

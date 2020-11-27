@@ -21,6 +21,7 @@ class AdminDrillController extends Controller
               ->select('drills.id',
                       'drills.name as drill',
                       'points.name as point',
+                      'points.id as point_id',
                       'drills.note as note',
                       'drill_types.name as type')
               ->get();

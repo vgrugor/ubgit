@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Point;
+use App\Internet_request;
 
 class PointController extends Controller
 {
@@ -42,8 +43,26 @@ class PointController extends Controller
                 'date_actual_stage_refresh', 'points.note as note'])
             ->find($id);
 
+        $internetRequests = Internet_request::leftJoin('Internet_request_types', 'Internet_request_types.id', '=', 'internet_requests.internet_request_type_id')
+            ->leftJoin('points', 'points.id', '=', 'internet_requests.point_id')
+            ->leftJoin('internet_providers', 'internet_providers.id', '=', 'internet_requests.internet_provider_id')
+            ->select([
+                'internet_requests.id as id',
+                'internet_providers.name as provider',
+                'internet_request_types.name as type',
+                'internet_requests.date_send',
+                'internet_requests.date_request',
+                'internet_requests.is_completed',
+                'internet_requests.date_completion',
+                'internet_requests.note as note'
+            ])
+            ->where('points.id', '=', $id)
+            ->orderBy('internet_requests.date_send', 'desc')
+            ->get();
+
         return view('point.view')->with([
-            'point' => $point
+            'point' => $point,
+            'internetRequestsList' => $internetRequests
         ]);
     }
 }

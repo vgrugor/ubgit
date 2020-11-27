@@ -16,6 +16,7 @@ class DrillController extends Controller
             ->leftJoin('points', 'points.id', '=', 'drills.workers_transfer')
             ->select('drills.id',
                     'drills.name as drill',
+                    'points.id as point_id',
                     'points.name as point',
                     'drills.note as note',
                     'drill_types.name as type')
