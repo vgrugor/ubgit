@@ -129,36 +129,39 @@
             <p><strong>Заявки на інтернет:</strong></p>
         </div>
         <div class="col">
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Провайдер</th>
-                        <th scope="col">Тип заявки</th>
-                        <th scope="col">Дата відправки</th>
-                        <th scope="col">Дата в заявці</th>
-                        <th scope="col">Заявка закрита</th>
-                        <th scope="col">Дата закриття</th>
-                        <th scope="col">Примітка</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody class="table-striped">
-                    @foreach ($internetRequestsList as $internetRequestItem)
+            @if(count($internetRequestsList))
+                <table class="table">
+                    <thead class="thead-dark">
                         <tr>
-                            <td>{{ $internetRequestItem->provider }}</td>
-                            <td>{{ $internetRequestItem->type }}</td>
-                            <td>{{ $internetRequestItem->date_send > 0 ? date("d.m.Y", strtotime($internetRequestItem->date_send)) : '-' }}</td>
-                            <td>{{ $internetRequestItem->date_request > 0 ? date("d.m.Y", strtotime($internetRequestItem->date_request)) : '-' }}</td>
-                            <td>{{ $internetRequestItem->is_completed == 1 ? 'Так' : 'Ні' }}</td>
-                            <td>{{ $internetRequestItem->date_completion > 0 ? date("d.m.Y", strtotime($internetRequestItem->date_completion)) : '-' }}</td>
-                            <td>{{ $internetRequestItem->note }}</td>
-                            <td>
-                                <a href="{{ route('internetRequestUpdate', $internetRequestItem->id) }}" title="Редагувати"><i class="far fa-edit"></i></a>
-                            </td>
+                            <th scope="col">Провайдер</th>
+                            <th scope="col">Тип заявки</th>
+                            <th scope="col">Дата відправки</th>
+                            <th scope="col">Дата в заявці</th>
+                            <th scope="col">Заявка закрита</th>
+                            <th scope="col">Дата закриття</th>
+                            <th scope="col">Примітка</th>
+                            <th></th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="table-striped">
+                        @foreach ($internetRequestsList as $internetRequestItem)
+                            <tr>
+                                <td>{{ $internetRequestItem->provider }}</td>
+                                <td>{{ $internetRequestItem->type }}</td>
+                                <td>{{ $internetRequestItem->date_send > 0 ? date("d.m.Y", strtotime($internetRequestItem->date_send)) : '-' }}</td>
+                                <td>{{ $internetRequestItem->date_request > 0 ? date("d.m.Y", strtotime($internetRequestItem->date_request)) : '-' }}</td>
+                                <td>{{ $internetRequestItem->is_completed == 1 ? 'Так' : 'Ні' }}</td>
+                                <td>{{ $internetRequestItem->date_completion > 0 ? date("d.m.Y", strtotime($internetRequestItem->date_completion)) : '-' }}</td>
+                                <td>{{ $internetRequestItem->note }}</td>
+                                <td>
+                                    <a href="{{ route('internetRequestUpdate', $internetRequestItem->id) }}" title="Редагувати"><i class="far fa-edit"></i></a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            @else -
+            @endif
         </div>
     </div>
     <hr>

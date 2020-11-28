@@ -264,6 +264,18 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     //------------------------------------------------------------------------------
 
+    //--------------------------------ВИДЕОНАБЛЮДЕНИЕ НА БУРОВЫХ--------------------
+
+    Route::get('admin/videosurveillances', 'AdminVideoSurveillanceController@videoSurveillancesList')->name('adminVideoSurveillancesList');
+
+    Route::get('admin/videosurveillance/add', 'AdminVideoSurveillanceController@add')->name('videoSurveillanceAdd');
+    Route::post('admin/videosurveillance/add', 'AdminVideoSurveillanceController@store')->name('videoSurveillanceStore');
+
+    Route::get('admin/videosurveillance/update/{id}', 'AdminVideoSurveillanceController@update')->where('id', '[0-9]+')->name('videoSurveillanceUpdate');
+    Route::post('admin/videosurveillance/update/{id}', 'AdminVideoSurveillanceController@save')->where('id', '[0-9]+')->name('videoSurveillanceSave');
+
+    //------------------------------------------------------------------------------
+
     //-----------------------------СТАТУСЫ ИНТЕРНЕТА--------------------------------
 
     Route::get('admin/internetstatuses', 'AdminInternetStatusController@internetStatusesList')->name('adminInternetStatusesList');

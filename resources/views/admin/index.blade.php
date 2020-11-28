@@ -62,6 +62,10 @@
                     <a href="{{ route('adminInternetRequestsList') }}">Заявки на інтернет</a>
                     <span class="badge">{{ $count['internetRequest'] }}</span>
                 </li>
+                <li class="list-group-item">
+                    <a href="{{ route('adminVideoSurveillancesList') }}">Відеонагляд на бурових</a>
+                    <span class="badge">{{ $count['videoSurveillance'] }}</span>
+                </li>
                 <!--
                 <li class="list-group-item">
                     <a href="{{ route('adminInternetStatusesList') }}">Статуси інтернету</a>
