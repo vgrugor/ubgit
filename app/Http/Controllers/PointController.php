@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Point;
 use App\Internet_request;
+use App\Video_Surveillance;
 
 class PointController extends Controller
 {
@@ -60,9 +61,12 @@ class PointController extends Controller
             ->orderBy('internet_requests.date_send', 'desc')
             ->get();
 
+        $videoSurveillance = Video_Surveillance::where('point_id', '=', $id)->first();
+
         return view('point.view')->with([
             'point' => $point,
-            'internetRequestsList' => $internetRequests
+            'internetRequestsList' => $internetRequests,
+            'videoSurveillance' => $videoSurveillance
         ]);
     }
 }

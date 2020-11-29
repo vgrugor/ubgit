@@ -26,10 +26,12 @@
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="{{ route('drillsList') }}">Бурові верстати</a>
                         <a class="dropdown-item" href="{{ route('pointsList') }}">Свердловини (точки)</a>
+                        <!--
                         <a class="dropdown-item" href="/drill/internet">Стан інтернету</a>
                         <a class="dropdown-item" href="/drill/carpet">Килим буріння</a>
                         <a class="dropdown-item" href="/drill/contacts">Контакти</a>
                         <a class="dropdown-item" href="/drill/location">Розташування</a>
+                    -->
                     </div>
                 </li>
                 <li class="nav-item">

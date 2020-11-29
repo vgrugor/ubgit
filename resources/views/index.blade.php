@@ -32,5 +32,35 @@
         <div class="col-sm-6">
             <h4>Незавершено процедуру отримання email:</h4>
         </div>
+        <div class="col-sm-6">
+            <h4>Незакриті заявки на інтернет:</h4>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Свердловина</th>
+                        <th scope="col">Провайдер</th>
+                        <th scope="col">Тип заявки</th>
+                        <th scope="col">Дата відправки заявки</th>
+                        <th scope="col">Дата заявки</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="table-striped">
+                    @foreach ($internetRequestUnfulfilledsList as $internetRequestUnfulfilledItem)
+                        <tr>
+                            <td>{{ $internetRequestUnfulfilledItem->point }}</td>
+                            <td>{{ $internetRequestUnfulfilledItem->provider }}</td>
+                            <td>{{ $internetRequestUnfulfilledItem->type }}</td>
+                            <td>{{ $internetRequestUnfulfilledItem->date_send > 0 ? date("d.m.Y", strtotime($internetRequestUnfulfilledItem->date_send)) : '-' }}</td>
+                            <td>{{ $internetRequestUnfulfilledItem->date_request > 0 ? date("d.m.Y", strtotime($internetRequestUnfulfilledItem->date_request)) : '-' }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-6">
+            <h4>Найближчі зміни стадій буріння:</h4>
+        </div>
     </div>
 @endsection

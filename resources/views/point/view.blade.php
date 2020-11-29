@@ -123,7 +123,6 @@
         </div>
     </div>
     <hr>
-
     <div class="row">
         <div class="col-sm-4">
             <p><strong>Заявки на інтернет:</strong></p>
@@ -164,6 +163,41 @@
             @endif
         </div>
     </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-4">
+            <p><strong>Відеонагляд встановлено:</strong></p>
+        </div>
+        <div class="col">
+            @if($videoSurveillance) Так @else Ні @endif
+        </div>
+    </div>
+    @if($videoSurveillance)
+        <div class="row">
+            <div class="col-sm-4">
+                <p><strong>Дата інсталяції відеоспостереження:</strong></p>
+            </div>
+            <div class="col">
+                {{ $videoSurveillance->date_installation > 0 ? date("d.m.Y", strtotime($videoSurveillance->date_installation)) : '-' }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <p><strong>Дата демонтажу відеоспостереження:</strong></p>
+            </div>
+            <div class="col">
+                {{ $videoSurveillance->date_demount > 0 ? date("d.m.Y", strtotime($videoSurveillance->date_demount)) : '-' }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <p><strong>Примітка по відеоспостереженню:</strong></p>
+            </div>
+            <div class="col">
+                {{ $videoSurveillance->note }}
+            </div>
+        </div>
+    @endif
     <hr>
     <div class="row">
         <div class="col-sm-4">
