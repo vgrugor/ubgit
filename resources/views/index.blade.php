@@ -27,21 +27,23 @@
                         @endforeach
                     </tbody>
                 </table>
+                <br>
             </div>
         @endif
         <div class="col-sm-6">
             <h4>Незавершено процедуру отримання email:</h4>
+            <br>
         </div>
         <div class="col-sm-6">
             <h4>Незакриті заявки на інтернет:</h4>
-            <table class="table">
+            <table class="table table-sm table-hover">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Свердловина</th>
                         <th scope="col">Провайдер</th>
                         <th scope="col">Тип заявки</th>
                         <th scope="col">Дата відправки заявки</th>
-                        <th scope="col">Дата заявки</th>
+                        <th scope="col">Дата в заявці</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -49,7 +51,7 @@
                 <tbody class="table-striped">
                     @foreach ($internetRequestUnfulfilledsList as $internetRequestUnfulfilledItem)
                         <tr>
-                            <td>{{ $internetRequestUnfulfilledItem->point }}</td>
+                            <td><a href="{{ route('viewPoint', ['id' => $internetRequestUnfulfilledItem->point_id]) }}">{{ $internetRequestUnfulfilledItem->point }}</a></td>
                             <td>{{ $internetRequestUnfulfilledItem->provider }}</td>
                             <td>{{ $internetRequestUnfulfilledItem->type }}</td>
                             <td>{{ $internetRequestUnfulfilledItem->date_send > 0 ? date("d.m.Y", strtotime($internetRequestUnfulfilledItem->date_send)) : '-' }}</td>
@@ -58,9 +60,11 @@
                     @endforeach
                 </tbody>
             </table>
+            <br>
         </div>
         <div class="col-sm-6">
             <h4>Найближчі зміни стадій буріння:</h4>
+            <br>
         </div>
     </div>
 @endsection

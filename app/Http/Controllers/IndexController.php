@@ -29,6 +29,7 @@ class IndexController extends Controller
             ->select([
                 'internet_requests.id as id',
                 'points.name as point',
+                'points.id as point_id',
                 'internet_providers.name as provider',
                 'internet_request_types.name as type',
                 'internet_requests.date_send',
