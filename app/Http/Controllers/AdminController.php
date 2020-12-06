@@ -20,6 +20,7 @@ use App\Internet_provider;
 use App\Internet_request_type;
 use App\Internet_request;
 use App\Video_surveillance;
+use App\Video_surveillance_status;
 
 class AdminController extends Controller
 {
@@ -38,9 +39,10 @@ class AdminController extends Controller
         $total['internetStatuses'] = Internet_status::count();
         $total['motorcades'] = Motorcade::count();
         $total['internetProviders'] = Internet_provider::count();
-        $total['internetRequestType'] = Internet_request_type::count();
-        $total['internetRequest'] = Internet_request::count();
-        $total['videoSurveillance'] = Video_surveillance::count();
+        $total['internetRequestTypes'] = Internet_request_type::count();
+        $total['internetRequests'] = Internet_request::count();
+        $total['videoSurveillances'] = Video_surveillance::count();
+        $total['videoSurveillanceStatuses'] = Video_surveillance_status::count();
 
         return view('admin.index')->with('count', $total);
     }

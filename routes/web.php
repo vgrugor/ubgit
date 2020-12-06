@@ -263,7 +263,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('admin/internetrequest/update/{id}', 'AdminInternetRequestController@save')->where('id', '[0-9]+')->name('internetRequestSave');
 
     //------------------------------------------------------------------------------
-
+    
     //--------------------------------ВИДЕОНАБЛЮДЕНИЕ НА БУРОВЫХ--------------------
 
     Route::get('admin/videosurveillances', 'AdminVideoSurveillanceController@videoSurveillancesList')->name('adminVideoSurveillancesList');
@@ -275,7 +275,19 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('admin/videosurveillance/update/{id}', 'AdminVideoSurveillanceController@save')->where('id', '[0-9]+')->name('videoSurveillanceSave');
 
     //------------------------------------------------------------------------------
+    
+    //----------------------СТАТУСЫ ВИДЕОНАБЛЮДЕНИЕ НА БУРОВЫХ----------------------
 
+    Route::get('admin/videosurveillancestatuses', 'AdminVideoSurveillanceStatusController@videoSurveillanceStatusesList')->name('adminVideoSurveillanceStatusesList');
+
+    Route::get('admin/videosurveillancestatus/add', 'AdminVideoSurveillanceStatusController@add')->name('videoSurveillanceStatusAdd');
+    Route::post('admin/videosurveillancestatus/add', 'AdminVideoSurveillanceStatusController@store')->name('videoSurveillanceStatusStore');
+
+    Route::get('admin/videosurveillancestatus/update/{id}', 'AdminVideoSurveillanceStatusController@update')->where('id', '[0-9]+')->name('videoSurveillanceStatusUpdate');
+    Route::post('admin/videosurveillancestatus/update/{id}', 'AdminVideoSurveillanceStatusController@save')->where('id', '[0-9]+')->name('videoSurveillanceStatusSave');
+
+    //------------------------------------------------------------------------------
+    
     //-----------------------------СТАТУСЫ ИНТЕРНЕТА--------------------------------
 
     Route::get('admin/internetstatuses', 'AdminInternetStatusController@internetStatusesList')->name('adminInternetStatusesList');

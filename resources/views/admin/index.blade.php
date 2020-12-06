@@ -56,15 +56,19 @@
                 </li>
                 <li class="list-group-item">
                     <a href="{{ route('adminInternetRequestTypesList') }}">Типи заявок на інтернет</a>
-                    <span class="badge">{{ $count['internetRequestType'] }}</span>
+                    <span class="badge">{{ $count['internetRequestTypes'] }}</span>
                 </li>
                 <li class="list-group-item">
                     <a href="{{ route('adminInternetRequestsList') }}">Заявки на інтернет</a>
-                    <span class="badge">{{ $count['internetRequest'] }}</span>
+                    <span class="badge">{{ $count['internetRequests'] }}</span>
                 </li>
                 <li class="list-group-item">
                     <a href="{{ route('adminVideoSurveillancesList') }}">Відеонагляд на бурових</a>
-                    <span class="badge">{{ $count['videoSurveillance'] }}</span>
+                    <span class="badge">{{ $count['videoSurveillances'] }}</span>
+                </li>
+                <li class="list-group-item">
+                    <a href="{{ route('adminVideoSurveillanceStatusesList') }}">Статуси відеонагляду на бурових</a>
+                    <span class="badge">{{ $count['videoSurveillanceStatuses'] }}</span>
                 </li>
                 <!--
                 <li class="list-group-item">
