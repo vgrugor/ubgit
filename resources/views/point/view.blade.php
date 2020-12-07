@@ -149,7 +149,17 @@
                                 <td>{{ $internetRequestItem->type }}</td>
                                 <td>{{ $internetRequestItem->date_send > 0 ? date("d.m.Y", strtotime($internetRequestItem->date_send)) : '-' }}</td>
                                 <td>{{ $internetRequestItem->date_request > 0 ? date("d.m.Y", strtotime($internetRequestItem->date_request)) : '-' }}</td>
-                                <td>{{ $internetRequestItem->is_completed == 1 ? 'Так' : 'Ні' }}</td>
+                                <td>
+                                    @if($internetRequestItem->is_completed)
+                                        <div class="alert alert-success" role="alert">
+                                            Так
+                                        </div>
+                                    @else
+                                        <div class="alert alert-danger" role="alert">
+                                            Ні
+                                        </div>
+                                    @endif
+                                </td>
                                 <td>{{ $internetRequestItem->date_completion > 0 ? date("d.m.Y", strtotime($internetRequestItem->date_completion)) : '-' }}</td>
                                 <td>{{ $internetRequestItem->note }}</td>
                                 <td>
