@@ -17,6 +17,7 @@
                     <tr>
                         <th scope="col">#id</th>
                         <th scope="col">Свердловина</th>
+                        <th scope="col">Статус</th>
                         <th scope="col">Дата інсталяції</th>
                         <th scope="col">Дата демонтажу</th>
                         <th scope="col">Примітка</th>
@@ -29,6 +30,7 @@
                         <tr>
                             <td>{{ $videoSurveillance->id }}</td>
                             <td><a href="{{ route('viewPoint', ['id' => $videoSurveillance->point_id ]) }}">{{ $videoSurveillance->point }}</a></td>
+                            <td>{{ $videoSurveillance->video_surveillance_status }}</td>
                             <td>{{ $videoSurveillance->date_installation > 0 ? date("d.m.Y", strtotime($videoSurveillance->date_installation)) : '-' }}</td>
                             <td>{{ $videoSurveillance->date_demount > 0 ? date("d.m.Y", strtotime($videoSurveillance->date_demount)) : '-' }}</td>
                             <td>{{ $videoSurveillance->note }}</td>

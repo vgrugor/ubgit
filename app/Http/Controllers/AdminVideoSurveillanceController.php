@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Video_surveillance;
 use App\Point;
+use App\Video_surveillance_status;
 use App\http\Requests\video_surveillance\videoSurveillanceRequest;
 
 class AdminVideoSurveillanceController extends Controller
@@ -15,10 +16,12 @@ class AdminVideoSurveillanceController extends Controller
     public function videoSurveillancesList()
     {
         $videoSurveillances = Video_surveillance::leftJoin('points', 'points.id', '=', 'point_id')
+            ->leftJoin('video_surveillance_statuses', 'video_surveillance_statuses.id', '=', 'video_surveillances.video_surveillance_status_id')
             ->select([
                 'video_surveillances.id as id',
                 'points.id as point_id',
                 'points.name as point',
+                'video_surveillance_statuses.name as video_surveillance_status',
                 'date_installation',
                 'video_surveillances.date_demount as date_demount',
                 'video_surveillances.note as note'])
@@ -36,8 +39,13 @@ class AdminVideoSurveillanceController extends Controller
     public function add()
     {
         $points = Point::select(['id', 'name'])->where('is_actual', '=', 1)->orderBy('created_at', 'desc')->get();
+        $videoSurveillanceStatuses = Video_surveillance_status::select(['id', 'name'])->orderBy('order_by', 'asc')->get();
 
-        return view('admin.video_surveillance.add')->with(['pointsList' => $points]);
+        return view('admin.video_surveillance.add')
+            ->with([
+                'pointsList' => $points,
+                'videoSurveillanceStatusesList' => $videoSurveillanceStatuses
+            ]);
     }
 
     public function store(VideoSurveillanceRequest $request)
@@ -59,11 +67,13 @@ class AdminVideoSurveillanceController extends Controller
     public function update($id)
     {
         $points = Point::select(['id', 'name'])->where('is_actual', '=', 1)->orderBy('created_at', 'desc')->get();
+        $videoSurveillanceStatuses = Video_surveillance_status::select(['id', 'name'])->orderBy('order_by', 'asc')->get();
         $videoSurveillance = Video_surveillance::find($id);
 
         return view('admin.video_surveillance.update')
             ->with(['videoSurveillance' => $videoSurveillance,
             'pointsList' => $points,
+            'videoSurveillanceStatusesList' => $videoSurveillanceStatuses
         ]);
     }
 

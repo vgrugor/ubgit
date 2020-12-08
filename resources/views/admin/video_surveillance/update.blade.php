@@ -29,6 +29,15 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label for="video_surveillance_status_id">Статус відеонагляду</label>
+                    <select name="video_surveillance_status_id" class="form-control" id="video_surveillance_status_id">
+                        <option value="">не обрано</option>
+                        @foreach($videoSurveillanceStatusesList as $videoSurveillanceStatusItem)
+                            <option value="{{ $videoSurveillanceStatusItem->id }}" {{ $videoSurveillanceStatusItem->id == $videoSurveillance->video_surveillance_status_id ? 'selected' : '' }}>{{ $videoSurveillanceStatusItem->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="date_installation">Дата інсталяції</label>
                     <input type="date" name="date_installation" value="{{ $videoSurveillance->date_installation }}" id="date_installation" class="form-control">
                 </div>

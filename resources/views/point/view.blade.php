@@ -176,10 +176,17 @@
     <hr>
     <div class="row">
         <div class="col-sm-4">
-            <p><strong>Відеонагляд встановлено:</strong></p>
+            <p><strong>Відеоспостереження:</strong></p>
         </div>
         <div class="col">
-            @if($videoSurveillance) Так @else Ні @endif
+            @if($videoSurveillance)
+                {{ $videoSurveillance->video_surveillance_status }}
+            @else
+                <a href="{{ route('videoSurveillanceAdd') }}"  title="Додати відеонагляд на бурову">
+                    <i class="fas fa-plus-circle"></i>
+
+                </a>
+            @endif
         </div>
     </div>
     @if($videoSurveillance)

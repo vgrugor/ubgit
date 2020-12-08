@@ -61,7 +61,15 @@ class PointController extends Controller
             ->orderBy('internet_requests.date_send', 'desc')
             ->get();
 
-        $videoSurveillance = Video_Surveillance::where('point_id', '=', $id)->first();
+        $videoSurveillance = Video_Surveillance::leftJoin('video_surveillance_statuses', 'video_surveillance_statuses.id', '=', 'video_surveillances.video_surveillance_status_id')
+            ->select([
+                'video_surveillance_statuses.name as video_surveillance_status',
+                'date_installation',
+                'date_demount',
+                'video_surveillances.note as note'
+            ])
+            ->where('point_id', '=', $id)
+            ->first();
 
         return view('point.view')->with([
             'point' => $point,

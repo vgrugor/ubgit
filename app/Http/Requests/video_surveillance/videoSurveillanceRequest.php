@@ -25,6 +25,7 @@ class videoSurveillanceRequest extends FormRequest
     {
         return [
             'point_id' => 'required|integer',
+            'video_surveillance_status_id' => 'required|integer',
             'date_installation' => 'nullable|date',
             'date_demount' => 'nullable|date',
             'note' => ''
@@ -34,7 +35,8 @@ class videoSurveillanceRequest extends FormRequest
     public function messages()
     {
         return [
-            'point_id.required' => 'Поле "свердловина" обов\'язково має бути заповненим!',
+            'point_id.required' => 'Поле "Свердловина" обов\'язково має бути заповненим!',
+            'video_surveillance_status_id.required' => 'Поле "Статус" обов\'язково має бути заповненим!',
             'date_installation.date' => 'Вкажіть дату інсталяції!',
             'date_demount.date' => 'Вкажіть дату демонтажу!',
         ];
