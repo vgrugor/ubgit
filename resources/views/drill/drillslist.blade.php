@@ -22,7 +22,13 @@
                             <td>{{ $drillItem->id }}</td>
                             <td>{{ $drillItem->type }}</td>
                             <td><a href="{{ route('viewDrill', ['id' => $drillItem->id]) }}">{{ $drillItem->drill }}</a></td>
-                            <td><a href="{{ route('viewPoint', ['id' => $drillItem->point_id ]) }}">{{ $drillItem->point }}</td>
+                            <td>
+                                @if ($drillItem->point_id)
+                                    <a href="{{ route('viewPoint', ['id' => $drillItem->point_id ]) }}">{{ $drillItem->point }}
+                                @else
+                                    -
+                                @endif
+                            </td>
                             <td>{{ $drillItem->note }}</td>
                         </tr>
                     @endforeach

@@ -14,6 +14,7 @@
             <table class="table">
                 <thead class="thead-dark">
                 <tr>
+                    <th scope="col">id</th>
                     <th scope="col">Назва</th>
                     <th></th>
                     <th></th>
@@ -22,6 +23,7 @@
                 <tbody class="table-striped">
                     @foreach($actualStagesList as $actualStageItem)
                         <tr>
+                            <td>{{ $actualStageItem->id }}</td>
                             <td>{{ $actualStageItem->name }}</td>
                             <td>
                                 <a href="#" title="Редагувати"><i class="far fa-edit"></i></a>

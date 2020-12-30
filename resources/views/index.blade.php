@@ -44,8 +44,6 @@
                         <th scope="col">Тип заявки</th>
                         <th scope="col">Дата відправки заявки</th>
                         <th scope="col">Дата в заявці</th>
-                        <th></th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody class="table-striped">

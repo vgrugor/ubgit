@@ -30,7 +30,13 @@
                             <td>{{ $drillItem->id }}</td>
                             <td>{{ $drillItem->type }}</td>
                             <td><a href="{{ route('viewDrill', ['id' => $drillItem->id]) }}">{{ $drillItem->drill }}</a></td>
-                            <td><a href="{{ route('viewPoint', ['id' => $drillItem->point_id ]) }}">{{ $drillItem->point }}</a></td>
+                            <td>
+                                @if($drillItem->point_id)
+                                    <a href="{{ route('viewPoint', ['id' => $drillItem->point_id ]) }}">{{ $drillItem->point }}</a>
+                                @else
+                                    -
+                                @endif
+                            </td>
                             <td>{{ $drillItem->note }}</td>
                             <td>
                                 <a href="{{ route('drillUpdate', $drillItem->id) }}" title="Редагувати"><i class="far fa-edit"></i></a>

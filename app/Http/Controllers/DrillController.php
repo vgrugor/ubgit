@@ -21,6 +21,7 @@ class DrillController extends Controller
                     'drills.note as note',
                     'drill_types.name as type')
             ->get();
+        //dd($drills);
 
         return view('drill.drillslist')->with(['drillsList' => $drills]);
     }

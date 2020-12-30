@@ -38,7 +38,11 @@
             <p><strong>Місцезнаходження бурової бригади:</strong></p>
         </div>
         <div class="col">
-            <a href="{{ route('viewPoint', ['id' => $drill->point_id]) }}">{{ $drill->workers_transfer }}</a>
+            @if($drill->point_id)
+                <a href="{{ route('viewPoint', ['id' => $drill->point_id]) }}">{{ $drill->workers_transfer }}</a>
+            @else
+                -
+            @endif
         </div>
     </div>
     <div class="row">
