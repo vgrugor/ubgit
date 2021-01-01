@@ -65,6 +65,10 @@
                     <input type="text" name="els" value="{{ $point->els }}" class="form-control" id="els">
                 </div>
                 <div class="form-group">
+                    <label for="gps">GPS-координати</label>
+                    <input type="text" name="gps" value="{{ $point->gps }}" class="form-control" id="gps">
+                </div>
+                <div class="form-group">
                     <label for="coordinate_stage">Координати отримано</label>
                     <select name="coordinate_stage" class="form-control" id="coordinate_stage">
                         <option value="0" {{ $point->coordinate_stage == 0 ? 'selected' : '' }}>При плануванні</option>

@@ -99,6 +99,7 @@ class AdminPointController extends Controller
         $point->eld = $request->input('eld');
         $point->elm = $request->input('elm');
         $point->els = $request->input('els');
+        $point->gps = $request->input('gps');
         $point->coordinate_stage = $request->input('coordinate_stage');
         $point->address = $request->input('address');
         $point->date_building = $request->input('date_building');

@@ -40,8 +40,12 @@
             <p><strong>GEO-координати:</strong></p>
         </div>
         <div class="col">
-            Пн.ш. {{ $point->nld }} {{ $point->nlm }} {{ $point->nls }} </br>
-            Сх.д. {{ $point->eld }} {{ $point->elm }} {{ $point->els }}
+            @if ($point->geo)
+                {{ $point->geo['nld'] }}<sup>0</sup>{{ $point->geo['nlm'] }}'{{ $point->geo['nls'] }}"Пн.ш. 
+                {{ $point->geo['eld'] }}<sup>0</sup>{{ $point->geo['elm'] }}'{{ $point->geo['els'] }}"Сх.д. 
+            @else
+                -
+            @endif
         </div>
     </div>
     <div class="row">
@@ -49,7 +53,11 @@
             <p><strong>GPS-координати</strong></p>
         </div>
         <div class="col">
-
+            @if ($point->gps)
+                {{ $point->gps }}
+            @else
+                -
+            @endif
         </div>
     </div>
     <div class="row">

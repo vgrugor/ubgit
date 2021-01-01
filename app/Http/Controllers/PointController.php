@@ -43,6 +43,9 @@ class PointController extends Controller
                 'actual_stages.name as actual_stage',
                 'date_actual_stage_refresh', 'points.note as note'])
             ->find($id);
+        
+        $point->gps = Point::getGpsCoordinate($id);
+        $point->geo = Point::getGeoCoordinate($id);
 
         $internetRequests = Internet_request::leftJoin('Internet_request_types', 'Internet_request_types.id', '=', 'internet_requests.internet_request_type_id')
             ->leftJoin('points', 'points.id', '=', 'internet_requests.point_id')
