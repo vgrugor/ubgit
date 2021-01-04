@@ -80,4 +80,28 @@ class PointController extends Controller
             'videoSurveillance' => $videoSurveillance
         ]);
     }
+    
+    public function carpet() {
+        
+        $days['before'] = 10;
+        $days['after'] = 10;
+        
+        $pointsList = Point::leftJoin('drills', 'points.drill_id', '=', 'drills.id')
+                ->select(['points.id as point_id',
+                    'points.name as point',
+                    'drills.id as drill_id',
+                    'drills.name as drill',
+                    'is_actual',
+                    'date_building', 'date_drilling', 'date_demount', 'date_transfer',
+                    'date_refresh',
+                    'points.note as note'
+                    ])
+                ->orderBy('date_building')
+                ->get();
+        
+        return view('point.carpet')
+                ->with(['pointsList' => $pointsList,
+                    'days' => $days
+                ]);
+    }
 }

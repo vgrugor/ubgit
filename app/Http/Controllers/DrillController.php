@@ -32,17 +32,6 @@ class DrillController extends Controller
     }
 
 
-    public function carpet() {
-
-        $drillsList = Drill::leftJoin('actual_stages', 'drills.actual_stage_id','=', 'actual_stages.id')
-                ->select('drills.name as drill', 'date_building', 'date_drilling',
-                'date_demount', 'date_transfer', 'date_refresh', 'actual_stages.name as actual_stage')
-                ->get();
-
-        return view('drill.carpet')->with('drillsList', $drillsList);
-    }
-
-
     public function contacts() {
 
         $drillsList = Drill::select('name as drill', 'phone_number',
