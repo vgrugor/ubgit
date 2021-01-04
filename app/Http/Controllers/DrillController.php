@@ -21,9 +21,8 @@ class DrillController extends Controller
                     'drills.note as note',
                     'drill_types.name as type')
             ->get();
-        //dd($drills);
 
-        return view('drill.drillslist')->with(['drillsList' => $drills]);
+        return view('drill.list')->with(['drillsList' => $drills]);
     }
 
 
@@ -63,7 +62,8 @@ class DrillController extends Controller
     {
         $drill = Drill::leftJoin('drill_types', 'drill_types.id', '=', 'drills.drill_type_id')
             ->leftJoin('points', 'points.id', '=', 'drills.workers_transfer')
-            ->select(['drills.name as drill',
+            ->select(['drills.id as id',
+                'drills.name as drill',
                 'germany_name', 'drill_types.name as drill_type',
                 'points.name as workers_transfer', 'points.id as point_id', 'phone_number',
                 'email', 'drills.note as note'])

@@ -28,7 +28,7 @@ class PointController extends Controller
               ->orderBy('points.created_at', 'desc')
               ->get();
 
-        return view('point.pointslist')->with(['pointsList' => $points ]);
+        return view('point.list')->with(['pointsList' => $points ]);
     }
 
     public function view($id)

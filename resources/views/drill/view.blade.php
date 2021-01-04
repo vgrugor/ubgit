@@ -13,7 +13,7 @@
             </h1>
         </div>
         <div class="col-sm-2 text-right">
-            <a href="#" title="Редагувати" alt="Редагувати"><i class="far fa-edit"></i></a>
+            <a href="{{ route('drillUpdate', $drill->id) }}" title="Редагувати" alt="Редагувати"><i class="far fa-edit"></i></a>
         </div>
     </div>
     <hr>

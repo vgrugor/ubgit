@@ -65,7 +65,7 @@
                     <input type="text" name="els" value="{{ $point->els }}" class="form-control" id="els">
                 </div>
                 <div class="form-group">
-                    <label for="gps">GPS-координати</label>
+                    <label for="gps">GPS-координати в форматі 00.000000, 00.000000</label>
                     <input type="text" name="gps" value="{{ $point->gps }}" class="form-control" id="gps">
                 </div>
                 <div class="form-group">

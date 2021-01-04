@@ -34,6 +34,7 @@ class PointRequest extends FormRequest
             'eld' => 'nullable|integer',
             'elm' => 'nullable|integer',
             'els' => 'nullable|numeric',
+            'gps' => ['nullable', 'max:20', 'regex:/^\d+[.]\d+[,] \d+[.]\d+$/u' ],
             'coordinate_stage' => 'boolean',
             'address' => 'max:255',
             'date_building' => 'nullable|date',
@@ -52,7 +53,9 @@ class PointRequest extends FormRequest
         return [
             'name.required' => 'Поле з назвою свердловини не може бути пустим!',
             'drill_id.required' => 'Код бурового станка має бути вказаним!',
-            'actual_stage_id.required' => 'Вкажіть актуальну стадію буріння!'
+            'actual_stage_id.required' => 'Вкажіть актуальну стадію буріння!',
+            'gps.max' => 'Максимальна довжина для координат в форматі gps - 20 символів!',
+            'gps.regex' => 'Формат поля з gps-координатами має відповідати масці 00.000000, 00.000000!'
         ];
     }
     
