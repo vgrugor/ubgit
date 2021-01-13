@@ -34,10 +34,16 @@ class DrillController extends Controller
 
     public function contacts() {
 
-        $drillsList = Drill::select('name as drill', 'phone_number',
-                'email', 'address')
+        $drillsList = Drill::leftJoin('points', 'points.drill_id', '=', 'drills.id')
+                ->select('drills.name as drill',
+                    'points.name as point', 
+                    'phone_number',
+                    'email', 'address')
+                ->where('points.is_actual', 1)
                 ->get();
-
+        
+        //dd($drillsList);
+        
         return view('drill.contacts')->with('drillsList', $drillsList);
     }
 

@@ -55,7 +55,7 @@ Route::get('drillslist', 'DrillController@drillsList')->name('drillsList');     
 
 
 Route::get('drill/internet', 'DrillController@internet');                       //состояние интернета
-Route::get('drill/contacts', 'DrillController@contacts');                       //контакты
+Route::get('drill/contacts', 'DrillController@contacts')->name('drillsContacts');                       //контакты
 Route::get('drill/location', 'DrillController@location');                       //размещение буровых
 
 Route::get('drill/{id}', 'DrillController@view')->where('id', '[0-9]+')->name('viewDrill');           //подробно о буровой

@@ -83,8 +83,8 @@ class PointController extends Controller
     
     public function carpet() {
         
-        $days['before'] = 10;
-        $days['after'] = 10;
+        $days['before'] = 15;
+        $days['after'] = 15;
         
         $pointsList = Point::leftJoin('drills', 'points.drill_id', '=', 'drills.id')
                 ->select(['points.id as point_id',
